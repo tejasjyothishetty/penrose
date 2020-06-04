@@ -13,6 +13,15 @@ export const objDict = {
     return distsq(center(s1), center(s2));
   },
 
+  nearHead: ([t1, s1]: [string, any], [t2, txt]: [string, any], xoff: Tensor, yoff: Tensor): Tensor => {
+    if (typesAre([t1,t2], ["Arrow", "Text"]) || typesAre([t1,t2], ["Line", "Text"])) {
+      const end = stack([s1.endX.contents, s1.endY.contents]);
+      const offset = stack([xoff, yoff]);
+      return distsq(center(txt), end.add(offset));
+    }
+    else throw new Error(`${[t1, t2]} not supported for nearHead`)
+  },
+
 
   below: ([t1, bottom]: [string, any], [t2, top]: [string, any], offset = 100) => 
     square(top.y.contents.sub(bottom.y.contents).sub(scalar(offset))),
@@ -80,6 +89,10 @@ export const constrDict = {
     }
   },
 
+  lessThan: (x: Tensor, y: Tensor): Tensor => {
+    return x.sub(y);
+  },
+
   contains: (
     [t1, s1]: [string, any],
     [t2, s2]: [string, any],
@@ -98,9 +111,29 @@ export const constrDict = {
       return d.sub(s1.r.contents).add(textR);
     } else if (t1 === "Square" && t2 === "Circle"){
       // dist (outerx, outery) (innerx, innery) - (0.5 * outer.side - inner.radius)
-      const sq = stack([s1.x.contents, s1.y.contents]);
-      const d = dist(sq, center(s2));
+      // const sq = stack([s1.x.contents, s1.y.contents]);
+      const d = dist(center(s1), center(s2));
       return d.sub(scalar(0.5).mul(s1.side.contents).sub(s2.r.contents));
+    } else if (t1 === "Square" && t2 === "Text"){
+      //  dist (text.x, text.y) (sq.x, sq.y) - sq.side / 2 + text.w / 2
+      const d = dist(center(s1), center(s2));
+      const halfsq = s1.side.contents.div(scalar(2.0));
+      const halftxt = s2.w.contents.div(scalar(2.0));
+      return d.sub(halfsq).add(halftxt);
+    } else if (t1 === "Square" && t2 === "Arrow"){
+      // (lx, ly) = ((x - side / 2) * 0.75, (y - side / 2) * 0.75)
+      // (rx, ry) = ((x + side / 2) * 0.75, (y + side / 2) * 0.75)
+      const halfsq = s1.side.contents.div(scalar(2.0));
+      const lx = s1.x.contents.sub(halfsq).mul(scalar(0.75));
+      const ly = s1.y.contents.sub(halfsq).mul(scalar(0.75));
+      const rx = s1.x.contents.add(halfsq).mul(scalar(0.75));
+      const ry = s1.y.contents.add(halfsq).mul(scalar(0.75));
+
+      // inRange(startX lx rx) + inRange(startY ly ry) + inRange(endX lx rx) + inRange (endY ly ry)
+      return inRange(s2.startX.contents, lx, rx)
+        .add(inRange(s2.startY.contents, ly, ry))
+        .add(inRange(s2.endX.contents, lx, rx))
+        .add(inRange(s2.endY.contents, ly, ry));
     } else {
       console.error(`${[t1, t2]} not supported for contains`);
       return scalar(0.0);
@@ -205,6 +238,12 @@ export const distsq = (p1: Tensor, p2: Tensor): Tensor => {
   return dp.dot(dp);
 }
 
+// if a is outside given range encourage it to be as close to boundary as possible 
+export const inRange = (a: Tensor, l: Tensor, r: Tensor): Tensor => {
+  if (a.less(l)) return a.sub(l).square();
+  else if (a.greater(r)) return a.sub(r).square();
+  else return scalar(0.0);
+}
 
 // with epsilon to avoid NaNs
 export const normalize = (v: Tensor): Tensor => v.div(v.norm().add(epsd));

@@ -261,12 +261,6 @@ export const evalExpr = (
           },
         };
       };
-    case "List":
-      return {
-        tag: "Val",
-        contents:
-        { tag: "ListV", contents: evalExprs(e.contents, trans, varyingVars, autodiff)}
-      };
     case "UOp":
       const {
         contents: [uOp, expr],
