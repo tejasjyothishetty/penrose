@@ -101,7 +101,13 @@ export const constrDict = {
       const sq = stack([s1.x.contents, s1.y.contents]);
       const d = dist(sq, center(s2));
       return d.sub(scalar(0.5).mul(s1.side.contents).sub(s2.r.contents));
-    } else throw new Error(`${[t1, t2]} not supported for contains`);
+    } else {
+      console.error(`${[t1, t2]} not supported for contains`);
+      return scalar(0.0);
+
+      // TODO revert
+      // throw new Error(`${[t1, t2]} not supported for contains`);
+    }
   },
 
   disjoint: ([t1, s1]: [string, any], [t2, s2]: [string, any]) => {
