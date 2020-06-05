@@ -1,0 +1,10 @@
+Box A, B, C
+Arr D, E
+
+To(A, B, D)
+To(B, C, E)
+
+AutoLabel D,E
+Label A $Reduce$
+Label B $Reuse$
+Label C $Recycle$
