@@ -1,0 +1,49 @@
+Colors {
+  Colors.black = rgba(0.0, 0.0, 0.0, 1.0)
+  Colors.lightBlue = rgba(0.1, 0.1, 0.9, 0.2)
+  Colors.lightYellow = rgba(0.95, 0.96, 0.92, 0.5)
+}
+
+forall Box b {
+    b.padding = 50.0
+    b.text = Text {
+        string : b.label
+        -- w : ?
+        -- h : ?
+    }
+    b.shape = Rectangle {
+        strokeWidth : 0
+        -- x : b.text.x + 5.0
+        -- y : b.text.y
+    }
+
+    ensure contains(b.shape, b.text, 5.0)
+    encourage equal(b.shape.w - b.padding, b.text.w)
+    encourage equal(b.shape.h - b.padding, b.text.h)
+    -- encourage equal (b.shape.h, b.text.h + b.padding) THIS DOESN'T WORK - why?
+    -- encourage maximumSize(b.shape, b.text.w * b.text.h)
+    encourage sameCenter(b.text, b.shape)
+    LOCAL.layering = b.shape below b.text
+}
+
+-- is rect x y from bottom left?
+
+Arr a
+where To(X, Y, a) 
+with Box X; Box Y {
+    a.padding = 5.0
+    a.shape = Arrow{
+        startX : X.shape.x + (X.shape.w) / 2.0 + a.padding
+        startY : X.shape.y
+        endX : Y.shape.x - (Y.shape.w) / 2.0 - a.padding
+        endY : Y.shape.y
+        thickness : 2.0
+        color : Colors.black
+    }
+    a.text = Text {
+      string : a.label
+      rotation : 0.0
+    }
+
+    a.labelFn  = encourage centerLabel(a.shape, a.text, 5.0)
+}

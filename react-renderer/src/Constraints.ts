@@ -101,7 +101,12 @@ export const constrDict = {
       const sq = stack([s1.x.contents, s1.y.contents]);
       const d = dist(sq, center(s2));
       return d.sub(scalar(0.5).mul(s1.side.contents).sub(s2.r.contents));
-    } else {
+    } else if (t1 === "Rectangle" && t2 === "Text") {
+      // dist (getX l, getY l) (getX r, getY r) - getNum r "w" / 2 +
+      // getNum l "w" / 2 + padding
+      const d = dist(center(s1), center(s2));
+      return d.sub(s1.w.contents.div(scalar(2.0))).add(s2.w.contents.div(scalar(2.0))).add(offset);
+     } else {
       console.error(`${[t1, t2]} not supported for contains`);
       return scalar(0.0);
 
