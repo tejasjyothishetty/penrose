@@ -195,6 +195,7 @@ const arrowPts = ({ startX, startY, endX, endY }: Properties) =>
   ] as [[number, number], [number, number]];
 
 const checkComp = (fn: string, args: ArgVal<number>[]) => {
+  if (fn == "orientedSquare") console.log(args);
   if (!compDict[fn]) throw new Error(`Computation function "${fn}" not found`);
 };
 

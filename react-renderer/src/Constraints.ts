@@ -13,6 +13,10 @@ export const objDict = {
     return distsq(center(s1), center(s2));
   },
 
+  // orientedSquare: ([t1, s1]: [string, any], [t2, s2]: [string, any] {
+
+  // },
+
   nearHead: ([t1, s1]: [string, any], [t2, txt]: [string, any], xoff: Tensor, yoff: Tensor): Tensor => {
     if (typesAre([t1,t2], ["Arrow", "Text"]) || typesAre([t1,t2], ["Line", "Text"])) {
       const end = stack([s1.endX.contents, s1.endY.contents]);
