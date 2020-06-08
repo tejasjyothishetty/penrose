@@ -76,7 +76,13 @@ class ShapeView extends React.Component<IViewProps, IState> {
 			      (properties.side.contents as number),
 			      (properties.side.contents as number),
 			  ];
-		  } else if (shapeType === "Arrow") {
+      } else if (shapeType === "Rectangle") {
+          [w, h] = 
+          [
+            (properties.w.contents as number),
+            (properties.h.contents as number),
+          ];
+      } else if (shapeType === "Arrow") {
 		      const [sx, sy, ex, ey] = [properties.startX.contents as number, 
 						properties.startY.contents as number, 
 						properties.endX.contents as number, 
@@ -86,6 +92,7 @@ class ShapeView extends React.Component<IViewProps, IState> {
 		      // size of bbox of arrow
 		      [w, h] = [Math.max(Math.abs(ex - sx), padding), Math.max(Math.abs(ey - sy), padding)];
 		  } else {
+          console.log(properties);
 		      [w, h] = [properties.w.contents as number, properties.h.contents as number];
 		  }
 

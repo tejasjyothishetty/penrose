@@ -115,6 +115,26 @@ const compDict = {
       },
     };
   },
+  // perpPath [GPI r@("Arrow", _), GPI l@("Arrow", _), Val (TupV midpt), Val (FloatV size)] = -- Euclidean
+  // let seg1 = (getPoint "start" r, getPoint "end" r)
+  //     seg2 = (getPoint "start" l, getPoint "end" l)
+  //     (ptL, ptLR, ptR) = perpPathFlat size seg1 seg2
+  //     path = Closed $ [Pt ptL, Pt ptLR, Pt ptR, Pt midpt]
+  // in Val $ PathDataV [path]
+  // TODO : annotate return type below
+  // orientedSquare: ([t1, arr1]: [string, any], [t2, arr2]: [string, any], [t3, orig]: [string, any], size: number) => {
+    
+  // } ,
+
+//   perpPathFlat :: Autofloat a => a -> (Pt2 a, Pt2 a) -> (Pt2 a, Pt2 a) -> (Pt2 a, Pt2 a, Pt2 a)
+// perpPathFlat size (startR, endR) (startL, endL) =
+//   let dirR = normalize' $ endR -: startR
+//       dirL = normalize' $ endL -: startL
+//       ptL = startR +: (size *: dirL)
+//       ptR = startR +: (size *: dirR)
+//       ptLR = startR +: (size *: dirL) +: (size *: dirR)
+//   in (ptL, ptLR, ptR)
+  // perpPathFlat(size: number, )
 
   hsva: (h: number, s: number, v: number, a: number): IColorV<number> => {
     return {
@@ -290,6 +310,33 @@ export const evalExpr = (
         }
       } else {
         throw Error("Tuple needs to evaluate to two values (no GPI allowed)");
+      }
+    } break;
+
+    case "List": {
+      const lv = evalExprs(e.contents, trans, varyingVars, autodiff) as Array<any>;
+      let isVal = true
+      let isFloat = true
+      for (const elem of lv) {
+        if (elem.tag !== "Val") isVal = false;
+        if (elem.contents.tag !== "FloatV") isFloat = false;
+      };
+      if (isVal) {
+        if (isFloat) {
+          const retlst = lv.map(x => x.tag.contents);
+          return {
+            tag: "Val",
+            contents:
+            {
+              tag: "ListV",
+              contents: retlst
+            }
+          }
+        } else {
+          throw Error("List must be composed of Float elements");
+        }
+      } else {
+        throw Error("List elements must evaluate to values");
       }
     } break;
 
