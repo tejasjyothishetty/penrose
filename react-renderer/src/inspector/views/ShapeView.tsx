@@ -82,7 +82,7 @@ class ShapeView extends React.Component<IViewProps, IState> {
             (properties.w.contents as number),
             (properties.h.contents as number),
           ];
-      } else if (shapeType === "Arrow") {
+      } else if (shapeType === "Arrow" || shapeType === "Line") {
 		      const [sx, sy, ex, ey] = [properties.startX.contents as number, 
 						properties.startY.contents as number, 
 						properties.endX.contents as number, 

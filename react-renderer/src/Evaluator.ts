@@ -12,7 +12,7 @@ import {
 import { mapValues } from "lodash";
 import { dist, randFloat } from "./Util";
 import seedrandom from "seedrandom";
-import { Tensor, Variable, scalar, pad2d } from "@tensorflow/tfjs";
+import { Tensor, Variable, scalar, pad2d, stack } from "@tensorflow/tfjs";
 import { scalarValue, differentiable, evalEnergyOn } from "./Optimizer";
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -115,26 +115,6 @@ const compDict = {
       },
     };
   },
-  // perpPath [GPI r@("Arrow", _), GPI l@("Arrow", _), Val (TupV midpt), Val (FloatV size)] = -- Euclidean
-  // let seg1 = (getPoint "start" r, getPoint "end" r)
-  //     seg2 = (getPoint "start" l, getPoint "end" l)
-  //     (ptL, ptLR, ptR) = perpPathFlat size seg1 seg2
-  //     path = Closed $ [Pt ptL, Pt ptLR, Pt ptR, Pt midpt]
-  // in Val $ PathDataV [path]
-  // TODO : annotate return type below
-  // orientedSquare: ([t1, arr1]: [string, any], [t2, arr2]: [string, any], [t3, orig]: [string, any], size: number) => {
-    
-  // } ,
-
-//   perpPathFlat :: Autofloat a => a -> (Pt2 a, Pt2 a) -> (Pt2 a, Pt2 a) -> (Pt2 a, Pt2 a, Pt2 a)
-// perpPathFlat size (startR, endR) (startL, endL) =
-//   let dirR = normalize' $ endR -: startR
-//       dirL = normalize' $ endL -: startL
-//       ptL = startR +: (size *: dirL)
-//       ptR = startR +: (size *: dirR)
-//       ptLR = startR +: (size *: dirL) +: (size *: dirR)
-//   in (ptL, ptLR, ptR)
-  // perpPathFlat(size: number, )
 
   hsva: (h: number, s: number, v: number, a: number): IColorV<number> => {
     return {
@@ -145,6 +125,19 @@ const compDict = {
       },
     };
   },
+
+  // annotate return
+  // orientedSquare: ([t1, s1]: [string, any], [t2, s2]: [string, any], midpt: Array<number>, size: number) => {
+  //   const start1 = stack([s1.startX.contents, s1.startY.contents]); 
+  //   const end1 = stack([s1.endX.contents, s1.endY.contents]); 
+  //   const start2 = stack([s2.startX.contents, s2.startY.contents]); 
+  //   const end2 = stack([s2.endX.contents, s2.endY.contents]); 
+  //   let perpflat : Tensor = perpPathFlat(size, start1, end1, start2, end2);
+  //   const path = {
+  //     tag: "Closed",
+  //     contents: perpflat.dataSync().push(midpt);
+  //   }
+  // },
 
   cos: (d: number): IFloatV<number> => {
     return { tag: "FloatV", contents: Math.cos((d * Math.PI) / 180) };
@@ -195,7 +188,7 @@ const arrowPts = ({ startX, startY, endX, endY }: Properties) =>
   ] as [[number, number], [number, number]];
 
 const checkComp = (fn: string, args: ArgVal<number>[]) => {
-  if (fn == "orientedSquare") console.log(args);
+  if (fn === "orientedSquare") console.log(args);
   if (!compDict[fn]) throw new Error(`Computation function "${fn}" not found`);
 };
 
