@@ -4,6 +4,7 @@ Colors {
   Colors.lightYellow = rgba(0.95, 0.96, 0.92, 0.5)
 }
 
+
 forall Box b {
     b.padding = 50.0
     b.text = Text {
@@ -26,6 +27,21 @@ forall Box b {
     LOCAL.layering = b.shape below b.text
 }
 
+Box `A` {
+  override `A`.shape.x = -200.0
+  override `A`.shape.y = 100.0
+}
+
+Box `B` {
+  override `B`.shape.x = 300.0
+  override `B`.shape.y = 100.0
+}
+
+Box `C` {
+  override `C`.shape.x = 0.0
+  override `C`.shape.y = 100.0
+}
+
 -- is rect x y from bottom left?
 
 Box x; Box y {
@@ -38,11 +54,17 @@ Arr a
 where To(X, Y, a) 
 with Box X; Box Y {
     a.padding = 5.0
-    a.shape = Arrow{
+    a.pt1 = ?
+    a.pt2 = ?
+    a.pt3 = ?
+    a.pt4 = ?
+    a.ppts = [a.pt1, a.pt2, a.pt3, a.pt4]
+    a.shape = Curve{
         -- startX : X.shape.x + (X.shape.w) / 2.0 + a.padding
         -- startY : X.shape.y
         -- endX : Y.shape.x - (Y.shape.w) / 2.0 - a.padding
         -- endY : Y.shape.y
+        pathData : pathFromPts(a.ppts) 
         thickness : 2.0
         color : Colors.black
     }
@@ -53,15 +75,21 @@ with Box X; Box Y {
       rotation : 0.0
     }
 
-    ensure connectStraight(a.shape, X.shape, Y.shape)
+    -- note: could have used in range fn but would need to pass sides of box and do arithmetic which bug currently prevents :/
+    ensure withinShapeBounds(a.shape.pt1, X.shape)
+    ensure withinShapeBounds(a.shape.pt4, Y.shape)
+    -- ensure onPerim(pt1, X.shape)
+    -- ensure onPerim(pt4, Y.shape)
+    -- ensure connectStraight(a.shape, X.shape, Y.shape)
     -- a.labelFnMargin = ensure atDist(a.shape, a.text, 20.0)
 }
 
   Arr a {
- -- a.labelFnMargin = ensure atDist((midpointX(a.shape), midpointY(a.shape)), a.text, 20.0)
     a.labelFn  = encourage centerLabel(a.shape, a.text, 1.0)
+    encourage minLength(a.shape)
  }
 
   Arr a; Box B {
     ensure disjoint(B.shape, a.text)
+    ensure disjoint(a.shape, B.shape)
   }

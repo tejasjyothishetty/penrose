@@ -12,7 +12,7 @@ import {
 import { mapValues } from "lodash";
 import { dist, randFloat } from "./Util";
 import seedrandom from "seedrandom";
-import { Tensor, Variable, scalar, pad2d } from "@tensorflow/tfjs";
+import { Tensor, Variable, scalar, pad2d, stack } from "@tensorflow/tfjs";
 import { scalarValue, differentiable, evalEnergyOn } from "./Optimizer";
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -126,6 +126,19 @@ const compDict = {
     };
   },
 
+  // annotate return
+  // orientedSquare: ([t1, s1]: [string, any], [t2, s2]: [string, any], midpt: Array<number>, size: number) => {
+  //   const start1 = stack([s1.startX.contents, s1.startY.contents]); 
+  //   const end1 = stack([s1.endX.contents, s1.endY.contents]); 
+  //   const start2 = stack([s2.startX.contents, s2.startY.contents]); 
+  //   const end2 = stack([s2.endX.contents, s2.endY.contents]); 
+  //   let perpflat : Tensor = perpPathFlat(size, start1, end1, start2, end2);
+  //   const path = {
+  //     tag: "Closed",
+  //     contents: perpflat.dataSync().push(midpt);
+  //   }
+  // },
+
   cos: (d: number): IFloatV<number> => {
     return { tag: "FloatV", contents: Math.cos((d * Math.PI) / 180) };
   },
@@ -142,6 +155,16 @@ const compDict = {
   len: ([type, props]: [string, any]) => {
     const [p1, p2] = arrowPts(props);
     return { tag: "FloatV", contents: dist(p1, p2) };
+  },
+
+  pathFromPts: (pts: Array<IPt<number>>): IPathDataV<number> => {
+    return {
+      tag: "PathDataV",
+      contents: [{
+        tag: "Open",
+        contents: pts
+      }]
+    }
   },
 
   sampleColor: (alpha: number, colorType: string) => {
@@ -175,6 +198,7 @@ const arrowPts = ({ startX, startY, endX, endY }: Properties) =>
   ] as [[number, number], [number, number]];
 
 const checkComp = (fn: string, args: ArgVal<number>[]) => {
+  //if (fn === "orientedSquare") console.log(args);
   if (!compDict[fn]) throw new Error(`Computation function "${fn}" not found`);
 };
 
@@ -290,6 +314,33 @@ export const evalExpr = (
         }
       } else {
         throw Error("Tuple needs to evaluate to two values (no GPI allowed)");
+      }
+    } break;
+
+    case "List": {
+      const lv = evalExprs(e.contents, trans, varyingVars, autodiff) as Array<any>;
+      let isVal = true
+      let isFloat = true
+      for (const elem of lv) {
+        if (elem.tag !== "Val") isVal = false;
+        if (elem.contents.tag !== "FloatV") isFloat = false;
+      };
+      if (isVal) {
+        if (isFloat) {
+          const retlst = lv.map(x => x.tag.contents);
+          return {
+            tag: "Val",
+            contents:
+            {
+              tag: "ListV",
+              contents: retlst
+            }
+          }
+        } else {
+          throw Error("List must be composed of Float elements");
+        }
+      } else {
+        throw Error("List elements must evaluate to values");
       }
     } break;
 
