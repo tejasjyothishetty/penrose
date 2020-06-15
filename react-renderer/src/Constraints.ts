@@ -1,4 +1,4 @@
-import { Tensor, Scalar, Rank, stack, scalar, maximum, tensor, norm, abs, square, squaredDifference } from "@tensorflow/tfjs";
+import { Tensor, Scalar, Rank, stack, scalar, maximum, tensor, norm, abs, square, squaredDifference, atan, sin, cos, print} from "@tensorflow/tfjs";
 import { canvasSize } from "./Canvas";
 import * as _ from "lodash";
 
@@ -19,14 +19,37 @@ export const objDict = {
     // can this be made more efficient (code-wise) by calling "above" and swapping arguments? - stella
 
 
-  centerLabel: ([t1, arr]: [string, any], [t2, text1]: [string, any], w: number): Tensor => {
+  centerLabel: ([t1, arr]: [string, any], [t2, text1]: [string, any], w = 1.0): Tensor => {
     if (typesAre([t1,t2], ["Arrow", "Text"])) {
-      const mx = arr.startX.contents.add(arr.endX.contents).div(scalar(2.0));
-      const my = arr.startY.contents.add(arr.endY.contents).div(scalar(2.0));
-      // entire equation is (mx - lx) ^ 2 + (my + 1.1 * text.h - ly) ^ 2 from Functions.hs - split it into two halves below for readability
-      const lh = mx.sub(text1.x.contents).square();
-      const rh = my.add(text1.h.contents.mul(scalar(1.1))).sub(text1.y.contents).square();
-      return lh.add(rh).mul(w);
+      const startPt = stack([arr.startX.contents, arr.startY.contents]);
+      const endPt = stack([arr.endX.contents, arr.endY.contents]);
+      const m = slope(arr.startX.contents, arr.startY.contents, arr.endX.contents, arr.endY.contents);
+      const newAngle  = atan(m).add(scalar(Math.PI / 12).mul(w)); // add pi/12 degrees to angle of arrow 
+      const xadd = cos(newAngle).mul(dist(startPt, endPt)); // change in x from start pt is cos(theta) * hypotenuse
+      const yadd = sin(newAngle).mul(dist(startPt, endPt));
+      let mx;
+      let my;
+
+      // not exactly sure why the 2 cases are necessary but they are
+      if (arr.startX.contents.greater(arr.endX.contents).dataSync()[0]) {
+        mx = arr.endX.contents.add(xadd.div(scalar(2.0))); // move along the x axis by half of what the change in x to get the end pt would be - i.e. find new midpoint of line
+        my = arr.endY.contents.add(yadd.div(scalar(2.0)));
+      }
+      else {
+        mx = arr.startX.contents.add(xadd.div(scalar(2.0)));
+        my = arr.startY.contents.add(yadd.div(scalar(2.0)));
+      }
+      // final equation is (mx - lx) ^ 2 + (my - ly) ^ 2 
+      // TODO - test on longer/wider labels
+      if (m.greater(zero).dataSync()[0]) {
+        // if slope is positive label will be on top left of arrow, otherwise on top right
+        // put bottom right corner of bb at midpt
+        return squaredDifference(mx, text1.x.contents.add(text1.w.contents.div(scalar(2.0)))).add(squaredDifference(my, text1.y.contents.sub(text1.h.contents.div(scalar(2.0)))));
+      }
+      else {
+        // bottom left corner
+        return squaredDifference(mx, text1.x.contents.sub(text1.w.contents.div(scalar(2.0)))).add(squaredDifference(my, text1.y.contents.sub(text1.h.contents.div(scalar(2.0)))));
+      }
     } else throw new Error(`${[t1, t2]} not supported for centerLabel`)
   },
 
@@ -80,6 +103,33 @@ export const constrDict = {
     }
   },
 
+  // finds closest side midpoint between two rectangles
+  connectStraight: ([t1, arr]: [string, any], [t2, b1]: [string, any], [t3, b2]: [string, any]): Tensor => {
+    if (typesAre([t1, t2, t3], ["Arrow", "Rectangle", "Rectangle"])) {
+      const sides1 = sideMidpts(b1);
+      const sides2 = sideMidpts(b2);
+      const startarr = stack([arr.startX.contents, arr.startY.contents]);
+      const endarr = stack([arr.endX.contents, arr.endY.contents]);
+      let closestv = scalar(9999.0) as Tensor; // initialization
+      let closests1 = tensor([0, 0]);
+      let closests2 = tensor([0, 0]);
+      // console.log(sides1, sides2);
+      sides1.forEach(side1 => {
+        // loop through pairs and find points closest to each other on each box
+        sides2.forEach(side2 => {
+          if (dist(side1, side2).less(closestv).dataSync()[0]) {
+              closestv = dist(side1, side2);
+              closests1 = side1;
+              closests2 = side2;
+          }
+        });
+      });
+      // print(squaredDifference(startarr, closests1).add(squaredDifference(endarr, closests2)));
+      return dist(startarr, closests1).add(dist(endarr, closests2));
+    } else throw new Error(`${[t1, t2, t3]} not supported for connectStraight`)
+  },
+   
+
   contains: (
     [t1, s1]: [string, any],
     [t2, s2]: [string, any],
@@ -120,7 +170,13 @@ export const constrDict = {
       const d = dist(center(s1), center(s2));
       const o = stack([s1.r.contents, s2.r.contents, 10]);
       return o.sum().sub(d);
-    } else throw new Error(`${[t1, t2]} not supported for disjoint`);
+    }
+    else if (t1 === "Rectangle" && (t2 ==="Rectangle" || t2 === "Text")) {
+      const d = dist(center(s1), center(s2));
+      const o = stack([s1.w.contents.mul(scalar(0.5)), s2.w.contents.mul(scalar(0.5)), 10]);
+      return o.sum().sub(d);
+    }
+     else throw new Error(`${[t1, t2]} not supported for disjoint`);
   },
 
   smallerThan: ([t1, s1]: [string, any], [t2, s2]: [string, any]) => {
@@ -183,6 +239,15 @@ const centerArrow2 = (arr: any, center1: Tensor, center2: Tensor, [o1, o2]: Tens
   return distsq(fromPt, start).add(distsq(toPt, end));
 }
 
+// returns midpoints of rectangle sides from left side clockwise
+const sideMidpts = (rect: any): Array<Tensor> => {
+  const ls = stack([rect.x.contents.sub(rect.w.contents.div(scalar(2.0))), rect.y.contents]); // left side
+  const ts = stack([rect.x.contents, rect.y.contents.add(rect.h.contents.div(scalar(2.0)))]); // top side
+  const rs = stack([rect.x.contents.add(rect.w.contents.div(scalar(2.0))), rect.y.contents]); // right side
+  const bs = stack([rect.x.contents, rect.y.contents.sub(rect.h.contents.div(scalar(2.0)))]); // bottom side
+  return [ls, ts, rs, bs];
+}
+
 
 // -------- Utils for objective/constraints/computations
 
@@ -202,6 +267,11 @@ export const center = (props: any): Tensor =>
   stack([props.x.contents, props.y.contents]); // HACK: need to annotate the types of x and y to be Tensor
 
 export const dist = (p1: Tensor, p2: Tensor): Tensor => p1.sub(p2).norm();
+
+// gives slope of line or arrow given start and end points
+export const slope = (startX: Tensor, startY: Tensor, endX: Tensor, endY: Tensor): Tensor => {
+  return (endY.sub(startY)).div(endX.sub(startX));
+}
 
 // Be careful not to use element-wise operations. This should return a scalar.
 // Apparently typescript can't check a return type of `Tensor<Rank.R0>`?

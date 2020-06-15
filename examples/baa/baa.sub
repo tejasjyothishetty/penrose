@@ -1,10 +1,14 @@
-Box A, B, C
-Arr D, E
+Box A, B, C, F, G
+Arr D, E, J, K
 
 To(A, B, D)
 To(B, C, E)
+To(C, F, J)
+To(F, G, K)
 
-AutoLabel D,E
+AutoLabel D, E, J, K
 Label A $Reduce$
 Label B $Reuse$
 Label C $Recycle$
+Label F $Change$
+Label G $The$

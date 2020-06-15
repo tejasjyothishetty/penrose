@@ -28,22 +28,40 @@ forall Box b {
 
 -- is rect x y from bottom left?
 
+Box x; Box y {
+   -- Try to make sure no labels overlap
+   -- LOCAL.genRepelFn = encourage repel(x.shape, y.shape, 2.0) THIS DOESN'T WORK
+   ensure disjoint (x.shape, y.shape)
+}
+
 Arr a
 where To(X, Y, a) 
 with Box X; Box Y {
     a.padding = 5.0
     a.shape = Arrow{
-        startX : X.shape.x + (X.shape.w) / 2.0 + a.padding
-        startY : X.shape.y
-        endX : Y.shape.x - (Y.shape.w) / 2.0 - a.padding
-        endY : Y.shape.y
+        -- startX : X.shape.x + (X.shape.w) / 2.0 + a.padding
+        -- startY : X.shape.y
+        -- endX : Y.shape.x - (Y.shape.w) / 2.0 - a.padding
+        -- endY : Y.shape.y
         thickness : 2.0
         color : Colors.black
     }
     a.text = Text {
+      x: ?
+      y : ?
       string : a.label
       rotation : 0.0
     }
 
-    a.labelFn  = encourage centerLabel(a.shape, a.text, 5.0)
+    ensure connectStraight(a.shape, X.shape, Y.shape)
+    -- a.labelFnMargin = ensure atDist(a.shape, a.text, 20.0)
 }
+
+  Arr a {
+ -- a.labelFnMargin = ensure atDist((midpointX(a.shape), midpointY(a.shape)), a.text, 20.0)
+    a.labelFn  = encourage centerLabel(a.shape, a.text, 1.0)
+ }
+
+  Arr a; Box B {
+    ensure disjoint(B.shape, a.text)
+  }
