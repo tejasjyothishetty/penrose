@@ -20,6 +20,8 @@ export const objDict = {
 
 
   centerLabel: ([t1, arr]: [string, any], [t2, text1]: [string, any], w = 1.0): Tensor => {
+      console.log("shapes:", "arr pathData", arr.pathData.contents); 
+
     if (typesAre([t1,t2], ["Arrow", "Text"])) {
       const startPt = stack([arr.startX.contents, arr.startY.contents]);
       const endPt = stack([arr.endX.contents, arr.endY.contents]);
@@ -54,7 +56,7 @@ export const objDict = {
   },
 
   minLength: ([t1, s1]: [string, any]) => {
-    let totald = zero;
+    const totald = zero;
     if (typesAre([t1], ["Curve"])) {
       for (let i = 0; i < s1.pathData.length - 1; i++) {
         totald.add(dist(tensor(s1.pathData[i]), s1.pathData[i + 1]));
@@ -263,8 +265,8 @@ export const constrDict = {
 
 // -------- Helpers for writing objectives
 
-const typesAre = (inputs: string[], expected: string[]) =>
-  (inputs.length === expected.length) && _.zip(inputs, expected).map(([i, e]) => i === e);
+const typesAre = (inputs: string[], expected: string[]): boolean =>
+  (inputs.length === expected.length) && _.zip(inputs, expected).every(([i, e]) => i === e);
 
 // -------- (Hidden) helpers for objective/constraints/computations
 
