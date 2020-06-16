@@ -14,8 +14,8 @@ forall Box b {
     }
     b.shape = Rectangle {
         strokeWidth : 0
-        -- x : b.text.x + 5.0
-        -- y : b.text.y
+        -- w : b.text.w + 50.0  does not work
+        -- h : b.text.h + 50.0
     }
 
     ensure contains(b.shape, b.text, 5.0)
@@ -53,18 +53,26 @@ Arr a
 where To(X, Y, a) 
 with Box X; Box Y {
     a.padding = 5.0
-    a.pt1 = ?
-    a.pt2 = ?
-    a.pt3 = ?
-    a.pt4 = ?
-    -- a.ppts = [a.pt1, a.pt2, a.pt3, a.pt4]
-    a.ppts = mkPoly(a.pt1, a.pt2, a.pt1, a.pt2, a.pt3, a.pt4)
-    a.shape = Curve{
-        -- startX : X.shape.x + (X.shape.w) / 2.0 + a.padding
-        -- startY : X.shape.y
-        -- endX : Y.shape.x - (Y.shape.w) / 2.0 - a.padding
-        -- endY : Y.shape.y
-        pathData : pathFromPoints(a.ppts) 
+    a.pt1 = Circle{
+        r : 1.0
+        -- x : ?
+        -- y : ?
+        strokeWidth: 0.0
+        color: Colors.black
+    }
+    a.line1 = Line{
+        startX : X.shape.x + (X.shape.w) / 2.0
+        startY : X.shape.y
+        endX : a.pt1.x
+        endY : a.pt1.y
+        thickness : 2.0
+        color : Colors.black
+    }
+    a.line2 = Line{
+        startX : a.pt1.x
+        startY : a.pt1.y
+        endX : Y.shape.x - (Y.shape.w) / 2.0
+        endY : Y.shape.y
         thickness : 2.0
         color : Colors.black
     }
@@ -75,18 +83,19 @@ with Box X; Box Y {
       rotation : 0.0
     }
 
-    -- note: could have used in range fn but would need to pass sides of box and do arithmetic which bug currently prevents :/
-    ensure withinShapeBounds(a.pt1, X.shape)
-    ensure withinShapeBounds(a.pt4, Y.shape)
-    -- ensure onPerim(pt1, X.shape)
-    -- ensure onPerim(pt4, Y.shape)
     -- a.labelFnMargin = ensure atDist(a.shape, a.text, 20.0)
 
-    a.labelFn  = encourage centerLabel(a.shape, a.text, 1.0)
-    encourage minLength(a.shape)
+    a.labelFn  = encourage centerLabel(a.line1, a.text, 1.0)
+    a.llFn = encourage equal(lineLength(a.line1), lineLength(a.line2))
+    encourage minLength(a.line1)
+    encourage minLength(a.line2)
+    -- ensure disjoint(a.pt1, X.shape)
+    -- ensure disjoint(a.pt1, Y.shape)
 }
 
   Arr a; Box B {
     ensure disjoint(B.shape, a.text)
-    ensure disjoint(a.shape, B.shape)
+    ensure disjoint(B.shape, a.line1)
+    ensure disjoint(a.pt1, B.shape)
+    ensure disjoint(B.shape, a.line2)
   }

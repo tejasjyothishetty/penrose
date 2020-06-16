@@ -278,7 +278,7 @@ export const evalExpr = (
   autodiff = false
 ): ArgVal<number | Tensor> => {
 
-    console.log("eval", e, autodiff);
+    // console.log("eval", e, autodiff);
 
   switch (e.tag) {
     case "IntLit": {

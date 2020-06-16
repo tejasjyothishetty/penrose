@@ -1,6 +1,7 @@
-import { Tensor, Scalar, Rank, stack, scalar, maximum, tensor, norm, abs, square, squaredDifference, atan, sin, cos, print} from "@tensorflow/tfjs";
+import { Tensor, Scalar, Rank, stack, scalar, maximum, tensor, norm, abs, square, squaredDifference, atan, sin, cos, print, minimum} from "@tensorflow/tfjs";
 import { canvasSize } from "./Canvas";
 import * as _ from "lodash";
+import { min } from 'lodash';
 
 export const objDict = {
   equal: (x: Tensor, y: Tensor) => squaredDifference(x, y),
@@ -20,13 +21,14 @@ export const objDict = {
 
 
   centerLabel: ([t1, arr]: [string, any], [t2, text1]: [string, any], w = 1.0): Tensor => {
-      console.log("shapes:", "arr pathData", arr.pathData.contents); 
+      // console.log("shapes:", "arr pathData", arr.pathData.contents); 
 
-    if (typesAre([t1,t2], ["Arrow", "Text"])) {
+    if (linelike([t1]) && t2 === "Text") {
       const startPt = stack([arr.startX.contents, arr.startY.contents]);
       const endPt = stack([arr.endX.contents, arr.endY.contents]);
       const m = slope(arr.startX.contents, arr.startY.contents, arr.endX.contents, arr.endY.contents);
-      const newAngle  = atan(m).add(scalar(Math.PI / 12).mul(w)); // add pi/12 degrees to angle of arrow 
+      // TODO - officially decide on the best angle offset (pi / ?)
+      const newAngle  = atan(m).add(scalar(Math.PI / 25).mul(w)); // add pi/15 degrees to angle of arrow 
       const xadd = cos(newAngle).mul(dist(startPt, endPt)); // change in x from start pt is cos(theta) * hypotenuse
       const yadd = sin(newAngle).mul(dist(startPt, endPt));
       let mx;
@@ -56,12 +58,16 @@ export const objDict = {
   },
 
   minLength: ([t1, s1]: [string, any]) => {
-    const totald = zero;
     if (typesAre([t1], ["Curve"])) {
+      const totald = zero;
       for (let i = 0; i < s1.pathData.length - 1; i++) {
         totald.add(dist(tensor(s1.pathData[i]), s1.pathData[i + 1]));
       }
       return totald;
+    } else if (linelike([t1])) {
+      const arrpts = linePtsT(s1);
+      // return distsq(arrpts[0], arrpts[1]).sub(scalar(20.0));
+      return dist(arrpts[0], arrpts[1]).mul(scalar(200.0));  // regular energy is v smol so we boost it
     } else throw new Error(`${[t1]} not supported for minLength`);
   },
 
@@ -195,16 +201,29 @@ export const constrDict = {
     }
   },
 
+  // TODO  - allow for user reordering of parameters
   disjoint: ([t1, s1]: [string, any], [t2, s2]: [string, any]) => {
     if (t1 === "Circle" && t2 === "Circle") {
       const d = dist(center(s1), center(s2));
       const o = stack([s1.r.contents, s2.r.contents, 10]);
       return o.sum().sub(d);
     }
+    else if (t1 === "Circle" && t2 === "Rectangle") {
+      const d = dist(center(s1), center(s2));
+      const o = stack([s1.r.contents, s2.w.contents.mul(scalar(0.5)), 10]); // should be made more exact
+      return o.sum().sub(d);
+    }
     else if (t1 === "Rectangle" && (t2 ==="Rectangle" || t2 === "Text")) {
       const d = dist(center(s1), center(s2));
-      const o = stack([s1.w.contents.mul(scalar(0.5)), s2.w.contents.mul(scalar(0.5)), 10]);
+      const o = stack([s1.w.contents.mul(scalar(0.5)), s2.w.contents.mul(scalar(0.5)), 10]); // should be made more exact
       return o.sum().sub(d);
+    }
+    else if (t1 === "Rectangle" && linelike([t2])) {
+      const lpts = linePtsT(s2);
+      const cp = closestptPtSeg(center(s1), lpts[0], lpts[1]);
+      const d = dist(center(s1), cp);
+      const o = stack([s1.w.contents.div(scalar(2.0)), 10]);    // TODO - make more exact (account for tall skinny boxes)
+      return o.sum().sub(d); 
     }
     else if (t1 === "Curve" && t2 === "Rectangle") {
       const ret = zero;
@@ -220,7 +239,7 @@ export const constrDict = {
         }
         else {
           d = dist(tensorpt, center(s2));
-          o = s2.h.contents.mul(scalar(0.5)).add(scalar(10)); // TODO : FIX - this needs to take into account height - same with case above
+          o = s2.h.contents.mul(scalar(0.5)).add(scalar(10)); // TODO : FIX
           ret.add(o.sub(d));
         }
       });
@@ -267,6 +286,9 @@ export const constrDict = {
 
 const typesAre = (inputs: string[], expected: string[]): boolean =>
   (inputs.length === expected.length) && _.zip(inputs, expected).every(([i, e]) => i === e);
+
+const linelike = (types: string[]): boolean => 
+  (types.every((typ) => typ === "Arrow" || typ === "Line"));
 
 // -------- (Hidden) helpers for objective/constraints/computations
 
@@ -322,11 +344,32 @@ export const looseIntersect = (center1: Tensor, r1: Tensor, center2: Tensor, r2:
 export const center = (props: any): Tensor =>
   stack([props.x.contents, props.y.contents]); // HACK: need to annotate the types of x and y to be Tensor
 
+// same as arrowPts in Evaluator, but returns arr of tensors rather than numbers
+export const linePtsT = (props: any) : Tensor[] => 
+  [stack([props.startX.contents, props.startY.contents]), stack([props.endX.contents, props.endY.contents])];  
+
 export const dist = (p1: Tensor, p2: Tensor): Tensor => p1.sub(p2).norm();
 
 // gives slope of line or arrow given start and end points
 export const slope = (startX: Tensor, startY: Tensor, endX: Tensor, endY: Tensor): Tensor => {
   return (endY.sub(startY)).div(endX.sub(startX));
+}
+
+// finds closest point on line seg defined by start and end to any point pt
+// https://stackoverflow.com/questions/849211/shortest-distance-between-a-point-and-a-line-segment
+export const closestptPtSeg = (pt: Tensor, start: Tensor, end: Tensor): Tensor => {
+  const lensq = distsq(start, end);
+  const eps = Math.pow(10, -3);
+  const dir = end.sub(start);
+  if (lensq.less(scalar(eps)).dataSync()[0]) {
+    // line seg is basically a point
+    return start;
+  }
+  else {
+    const t = (pt.sub(start)).dot(dir).div(lensq);
+    const ct = maximum(zero, minimum(scalar(1.0), t));
+    return start.add(t.mul(dir)); // walk along vector of line seg
+  }
 }
 
 export const inRange = (a: Tensor, l: Tensor, r: Tensor) : Tensor => {
