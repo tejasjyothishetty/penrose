@@ -54,17 +54,19 @@ Arr a
 where To(X, Y, a) 
 with Box X; Box Y {
     a.padding = 5.0
-    a.pt1 = ?
-    a.pt2 = ?
-    a.pt3 = ?
-    a.pt4 = ?
-    a.ppts = [a.pt1, a.pt2, a.pt3, a.pt4]
+    a.pt1x = 0.0
+    a.pt1y = 0.0
+    a.pt1 = (a.pt1x, a.pt1y)
+    a.pt2 = (?, ?)
+    a.pt3 = (?, ?)
+    a.pt4 = (?, ?)
+    a.ppts = [a.pt1]
     a.shape = Curve{
         -- startX : X.shape.x + (X.shape.w) / 2.0 + a.padding
         -- startY : X.shape.y
         -- endX : Y.shape.x - (Y.shape.w) / 2.0 - a.padding
         -- endY : Y.shape.y
-        pathData : pathFromPts(a.ppts) 
+        pathData : pathFromPoints(a.ppts) 
         thickness : 2.0
         color : Colors.black
     }

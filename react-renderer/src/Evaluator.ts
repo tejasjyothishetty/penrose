@@ -12,7 +12,7 @@ import {
 import { mapValues } from "lodash";
 import { dist, randFloat } from "./Util";
 import seedrandom from "seedrandom";
-import { Tensor, Variable, scalar, pad2d, stack } from "@tensorflow/tfjs";
+import { Tensor, Variable, scalar, pad2d, stack, any } from "@tensorflow/tfjs";
 import { scalarValue, differentiable, evalEnergyOn } from "./Optimizer";
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -157,7 +157,7 @@ const compDict = {
     return { tag: "FloatV", contents: dist(p1, p2) };
   },
 
-  pathFromPts: (pts: Array<IPt<number>>): IPathDataV<number> => {
+  pathFromPoints: (pts: [number, number][]) => {
     return {
       tag: "PathDataV",
       contents: [{
