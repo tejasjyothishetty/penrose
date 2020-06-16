@@ -157,15 +157,28 @@ const compDict = {
     return { tag: "FloatV", contents: dist(p1, p2) };
   },
 
-  pathFromPoints: (pts: [number, number][]) => {
+    // TODO: Why doesn't this work with "...pts" for input?
+  pathFromPoints: (...pts: Array<IPt<number>>): IPathDataV<number> => {
+      console.log("path from pts", pts);
     return {
       tag: "PathDataV",
       contents: [{
         tag: "Open",
-        contents: pts
+          contents: [], // TODO: pts
       }]
     }
   },
+
+    // mkPoly: (pts: Array<IPt<number>>): IPtListV<number> => {
+	// return {
+	//     tag: "PtListV",
+	//     contents: pts
+	// };
+    // },
+    mkPoly: (...pts: Array<IPt<number>>): Array<IPt<number>> => {
+	console.log("pts", pts);
+	return pts;
+    },
 
   sampleColor: (alpha: number, colorType: string) => {
     if (colorType === "rgb") {
@@ -198,7 +211,7 @@ const arrowPts = ({ startX, startY, endX, endY }: Properties) =>
   ] as [[number, number], [number, number]];
 
 const checkComp = (fn: string, args: ArgVal<number>[]) => {
-  //if (fn === "orientedSquare") console.log(args);
+  // if (fn === "orientedSquare") console.log(args);
   if (!compDict[fn]) throw new Error(`Computation function "${fn}" not found`);
 };
 
@@ -264,6 +277,8 @@ export const evalExpr = (
   varyingVars?: VaryMap<number | Tensor>,
   autodiff = false
 ): ArgVal<number | Tensor> => {
+
+    console.log("eval", e, autodiff);
 
   switch (e.tag) {
     case "IntLit": {
@@ -379,9 +394,16 @@ export const evalExpr = (
       const [fnName, argExprs] = e.contents;
       // eval all args
       // TODO: how should computations be written? TF numbers?
-      const args = evalExprs(argExprs, trans, varyingVars) as ArgVal<number>[];
+	const args = evalExprs(argExprs, trans, varyingVars, autodiff) as ArgVal<number>[];
       const argValues = args.map((a) => argValue(a));
       checkComp(fnName, args);
+
+	// TODO: Why does the autodiff switch between true and false
+	// TODO: Why does mkPoly return a tensor...
+	console.log("compFn", fnName, argExprs, argValues, compDict[fnName]);
+	// TODO: Why is the input to `pathFromPoints` undefined?
+	console.log("compFn result", compDict[fnName](...argValues));
+
       // retrieve comp function from a global dict and call the function
       return { tag: "Val", contents: compDict[fnName](...argValues) };
     } break;
@@ -428,6 +450,12 @@ export const resolvePath = (
     return floatVal(varyingVal);
   } else {
     const gpiOrExpr = findExpr(trans, path);
+      if (!gpiOrExpr) {
+	  console.error("Translation", trans);
+	  console.error("Path", path);
+	  throw Error("Could not find path in translation (see data logged above). Did you check your Style program to make sure that path exists?");
+      }
+
     switch (gpiOrExpr.tag) {
       case "FGPI":
         const [type, props] = gpiOrExpr.contents;

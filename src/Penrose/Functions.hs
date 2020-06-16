@@ -1320,6 +1320,7 @@ pathFromPoints :: ConstCompFn
 pathFromPoints [Val (PtListV pts)] =
   let path = Open $ map Pt pts
   in Val $ PathDataV [path]
+pathFromPoints x = error $ show x
 
 polygonFromPoints :: ConstCompFn
 polygonFromPoints [Val (PtListV pts)] =
