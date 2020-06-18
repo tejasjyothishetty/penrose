@@ -14,6 +14,14 @@ export const objDict = {
     return distsq(center(s1), center(s2));
   },
 
+  equalLength: ([t1, s1]: [string, any], [t2, s2]: [string, any]): Tensor => {
+    if (linelike([t1, t2])) {
+      const lpts1 = linePtsT(s1);
+      const lpts2 = linePtsT(s2);
+      return squaredDifference(dist(lpts1[0], lpts1[1]), dist(lpts2[0], lpts2[1])).mul(100.0);
+    } else throw new Error(`${[t1, t2]} not supported for equalLength`)
+  },
+
 
   below: ([t1, bottom]: [string, any], [t2, top]: [string, any], offset = 100) => 
     square(top.y.contents.sub(bottom.y.contents).sub(scalar(offset))),
@@ -57,7 +65,29 @@ export const objDict = {
     } else throw new Error(`${[t1, t2]} not supported for centerLabel`)
   },
 
-  minLength: ([t1, s1]: [string, any]) => {
+  //  finds closest side midpoint
+  connectMid: ([t1, s1]: [string, any], [touchx, touchy]: [Tensor, Tensor]): Tensor => {
+    if (t1 === "Rectangle") {
+      const rsides = sideMidpts(s1);
+      const pt = stack([touchx, touchy]);
+      let closestv = scalar(9999.0) as Tensor; // initialization
+      let closests = tensor([0, 0]);
+      rsides.forEach(rside => {
+      // loop through and find midpoint closest to point
+        if (dist(rside, pt).less(closestv).dataSync()[0]) {
+            closestv = dist(rside, pt);
+            closests = rside;
+        }
+      });
+      console.log("flag")
+      print(closests)
+      // print(squaredDifference(startarr, closests1).add(squaredDifference(endarr, closests2)));
+      return dist(closests, pt).mul(1000000.0);
+    } 
+    else throw new Error(`${[t1]} not supported for connectMid`)
+  },
+
+  minLength: ([t1, s1]: [string, any]): Tensor => {
     if (typesAre([t1], ["Curve"])) {
       const totald = zero;
       for (let i = 0; i < s1.pathData.length - 1; i++) {
@@ -70,6 +100,7 @@ export const objDict = {
       return dist(arrpts[0], arrpts[1]).mul(scalar(200.0));  // regular energy is v smol so we boost it
     } else throw new Error(`${[t1]} not supported for minLength`);
   },
+
 
   // Generic repel function for two GPIs with centers
   repel: ([t1, s1]: [string, any], [t2, s2]: [string, any]) => {
@@ -121,6 +152,17 @@ export const constrDict = {
     }
   },
 
+  connect: ([t1, s1]: [string, any], [touchx, touchy]: [Tensor, Tensor]): Tensor => {
+    if (t1 === "Rectangle") {
+      return touchPerim(s1, touchx, touchy)
+    } 
+    else if (t1 === "Circle") {
+      return dist(stack([touchx, touchy]), center(s1))
+    }
+    else throw new Error(`${[t1]} not supported for connect`)
+  },
+
+
   // connectPoly: ([t1, curve]: [string, any], [t2, b1]: [string, any], [t3, b2]: [string, any]): Tensor => {
   //   if (typesAre([t1, t2, t3], ["Curve", "Rectangle", "Rectangle"])) {
   //     //const onPerim1 = onPerim(curve.pt1.contents, b1);
@@ -139,31 +181,6 @@ export const constrDict = {
     else throw new Error(`${[t2]} not supported for withinShapeBounds`)
   },
 
-  // finds closest side midpoint between two rectangles
-  // connectStraight: ([t1, arr]: [string, any], [t2, b1]: [string, any], [t3, b2]: [string, any]): Tensor => {
-  //   if (typesAre([t1, t2, t3], ["Arrow", "Rectangle", "Rectangle"])) {
-  //     const sides1 = sideMidpts(b1);
-  //     const sides2 = sideMidpts(b2);
-  //     const startarr = stack([arr.startX.contents, arr.startY.contents]);
-  //     const endarr = stack([arr.endX.contents, arr.endY.contents]);
-  //     let closestv = scalar(9999.0) as Tensor; // initialization
-  //     let closests1 = tensor([0, 0]);
-  //     let closests2 = tensor([0, 0]);
-  //     // console.log(sides1, sides2);
-  //     sides1.forEach(side1 => {
-  //       // loop through pairs and find points closest to each other on each box
-  //       sides2.forEach(side2 => {
-  //         if (dist(side1, side2).less(closestv).dataSync()[0]) {
-  //             closestv = dist(side1, side2);
-  //             closests1 = side1;
-  //             closests2 = side2;
-  //         }
-  //       });
-  //     });
-  //     // print(squaredDifference(startarr, closests1).add(squaredDifference(endarr, closests2)));
-  //     return dist(startarr, closests1).add(dist(endarr, closests2));
-  //   } else throw new Error(`${[t1, t2, t3]} not supported for connectStraight`)
-  // },
    
 
   contains: (
@@ -312,19 +329,14 @@ const centerArrow2 = (arr: any, center1: Tensor, center2: Tensor, [o1, o2]: Tens
 }
 
 // returns midpoints of rectangle sides from left side clockwise
-// const sideMidpts = (rect: any): Array<Tensor> => {
-//   const ls = stack([rect.x.contents.sub(rect.w.contents.div(scalar(2.0))), rect.y.contents]); // left side
-//   const ts = stack([rect.x.contents, rect.y.contents.add(rect.h.contents.div(scalar(2.0)))]); // top side
-//   const rs = stack([rect.x.contents.add(rect.w.contents.div(scalar(2.0))), rect.y.contents]); // right side
-//   const bs = stack([rect.x.contents, rect.y.contents.sub(rect.h.contents.div(scalar(2.0)))]); // bottom side
-//   return [ls, ts, rs, bs];
-// }
+const sideMidpts = (rect: any): Array<Tensor> => {
+  const ls = stack([rect.x.contents.sub(rect.w.contents.div(scalar(2.0))), rect.y.contents]); // left side
+  const ts = stack([rect.x.contents, rect.y.contents.add(rect.h.contents.div(scalar(2.0)))]); // top side
+  const rs = stack([rect.x.contents.add(rect.w.contents.div(scalar(2.0))), rect.y.contents]); // right side
+  const bs = stack([rect.x.contents, rect.y.contents.sub(rect.h.contents.div(scalar(2.0)))]); // bottom side
+  return [ls, ts, rs, bs];
+}
 
-// const onPerim = ([ptx, pty] : [number, number], b: any) : Tensor => {
-//   if (abs(b.x.contents.sub(scalar(ptx[0]))) === b.w.contents.div(scalar(2.0))) {
-//     //if on left or right side
-//   }
-// }
 
 
 // -------- Utils for objective/constraints/computations
@@ -345,8 +357,8 @@ export const center = (props: any): Tensor =>
   stack([props.x.contents, props.y.contents]); // HACK: need to annotate the types of x and y to be Tensor
 
 // same as arrowPts in Evaluator, but returns arr of tensors rather than numbers
-export const linePtsT = (props: any) : Tensor[] => 
-  [stack([props.startX.contents, props.startY.contents]), stack([props.endX.contents, props.endY.contents])];  
+export const linePtsT = (props: any) : Tensor[] => [stack([props.startX.contents, props.startY.contents]), stack([props.endX.contents, props.endY.contents])];
+
 
 export const dist = (p1: Tensor, p2: Tensor): Tensor => p1.sub(p2).norm();
 
@@ -368,8 +380,17 @@ export const closestptPtSeg = (pt: Tensor, start: Tensor, end: Tensor): Tensor =
   else {
     const t = (pt.sub(start)).dot(dir).div(lensq);
     const ct = maximum(zero, minimum(scalar(1.0), t));
-    return start.add(t.mul(dir)); // walk along vector of line seg
+    return start.add(ct.mul(dir)); // walk along vector of line seg
   }
+}
+
+// takes a rect and a point and places the point on the perimeter of the rect
+export const touchPerim = (s1: any, touchx : Tensor, touchy: Tensor) => {
+  const xrange = inRange(touchx, s1.x.contents.sub(s1.w.contents.div(2.0)).sub(1.0), s1.x.contents.add(s1.w.contents.div(2.0)).add(1.0));
+  const yrange = inRange(touchy, s1.y.contents.sub(s1.h.contents.div(2.0)).sub(1.0), s1.y.contents.add(s1.h.contents.div(2.0)).add(1.0));
+  const d = dist(center(s1), stack([touchx, touchy]));
+  const o = s1.w.contents.mul(scalar(0.5)); // should be made more exact
+  return xrange.add(yrange).add(o.sub(d));
 }
 
 export const inRange = (a: Tensor, l: Tensor, r: Tensor) : Tensor => {

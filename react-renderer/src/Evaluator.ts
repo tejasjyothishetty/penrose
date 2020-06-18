@@ -400,9 +400,9 @@ export const evalExpr = (
 
 	// TODO: Why does the autodiff switch between true and false
 	// TODO: Why does mkPoly return a tensor...
-	console.log("compFn", fnName, argExprs, argValues, compDict[fnName]);
+	// console.log("compFn", fnName, argExprs, argValues, compDict[fnName]);
 	// TODO: Why is the input to `pathFromPoints` undefined?
-	console.log("compFn result", compDict[fnName](...argValues));
+	// console.log("compFn result", compDict[fnName](...argValues));
 
       // retrieve comp function from a global dict and call the function
       return { tag: "Val", contents: compDict[fnName](...argValues) };

@@ -16,6 +16,8 @@ forall Box b {
         strokeWidth : 0
         -- w : b.text.w + 50.0  does not work
         -- h : b.text.h + 50.0
+        w : 124.0   -- REMOVE LATER
+        h : 69.0    -- REMOVE LATER
     }
 
     ensure contains(b.shape, b.text, 5.0)
@@ -61,8 +63,8 @@ with Box X; Box Y {
         color: Colors.black
     }
     a.line1 = Line{
-        startX : X.shape.x + (X.shape.w) / 2.0
-        startY : X.shape.y
+        startX : ?
+        startY : ?
         endX : a.pt1.x
         endY : a.pt1.y
         thickness : 2.0
@@ -71,8 +73,8 @@ with Box X; Box Y {
     a.line2 = Line{
         startX : a.pt1.x
         startY : a.pt1.y
-        endX : Y.shape.x - (Y.shape.w) / 2.0
-        endY : Y.shape.y
+        endX : ?
+        endY : ?
         thickness : 2.0
         color : Colors.black
     }
@@ -86,11 +88,13 @@ with Box X; Box Y {
     -- a.labelFnMargin = ensure atDist(a.shape, a.text, 20.0)
 
     a.labelFn  = encourage centerLabel(a.line1, a.text, 1.0)
-    a.llFn = encourage equal(lineLength(a.line1), lineLength(a.line2))
+    a.llFn = encourage equalLength(a.line1, a.line2)
     encourage minLength(a.line1)
     encourage minLength(a.line2)
-    -- ensure disjoint(a.pt1, X.shape)
-    -- ensure disjoint(a.pt1, Y.shape)
+    ensure connect(X.shape, (a.line1.startX, a.line1.startY))
+    ensure connect(Y.shape, (a.line2.endX, a.line2.endY))
+    encourage connectMid(X.shape, (a.line1.startX, a.line1.startY))
+    encourage connectMid(Y.shape, (a.line2.endX, a.line2.endY))
 }
 
   Arr a; Box B {
