@@ -79,12 +79,42 @@ export const objDict = {
             closests = rside;
         }
       });
-      console.log("flag")
-      print(closests)
       // print(squaredDifference(startarr, closests1).add(squaredDifference(endarr, closests2)));
-      return dist(closests, pt).mul(1000000.0);
+      return dist(closests, pt).mul(3000.0);
     } 
     else throw new Error(`${[t1]} not supported for connectMid`)
+  },
+
+  // encourages line to horizontal or vertical
+  cardinal: ([t1, s1]: [string, any]) : Tensor => {
+    if (linelike([t1])) {
+      const m = slope(s1.startX.contents, s1.startY.contents, s1.endX.contents, s1.endY.contents);
+      if (abs(m).less(1.0).dataSync()[0]) {
+        // horiz line
+        return squaredDifference(s1.startY.contents, s1.endY.contents).mul(50);
+      }
+      else return squaredDifference(s1.startX.contents, s1.endX.contents).mul(50);  // vertical
+    }
+    else throw new Error(`${[t1]} not supported for cardinal`); // TODO - factor out manually writing fn names in error messages
+  },
+
+  sameLine: ([t1, s1]: [string, any], [t2, s2]: [string, any]) : Tensor => {
+    if (linelike([t1, t2])) {
+      const m1 = slope(s1.startX.contents, s1.startY.contents, s1.endX.contents, s1.endY.contents);
+      const m2 = slope(s1.startX.contents, s1.startY.contents, s2.endX.contents, s2.endY.contents);
+      return squaredDifference(m1, m2);
+    }
+    else throw new Error(`${[t1, t2]} not supported for sameLine`);
+  },
+
+  // TODO - MAKE MORE GENERAL
+  totalMinLength: ([t1, s1]: [string, any], [t2, s2]: [string, any], [t3, s3]: [string, any]): Tensor => {
+    if (linelike([t1, t2, t3])) {
+      const arrpts1 = linePtsT(s1);
+      const arrpts2 = linePtsT(s2);
+      const arrpts3 = linePtsT(s3);
+      return dist(arrpts1[0], arrpts1[1]).add(dist(arrpts2[0], arrpts2[1])).add(dist(arrpts3[0], arrpts3[1])).mul(100);  // regular energy is v smol so we boost it
+    } else throw new Error(`${[t1, t2, t3]} not supported for totalMinLength`);
   },
 
   minLength: ([t1, s1]: [string, any]): Tensor => {
@@ -97,18 +127,22 @@ export const objDict = {
     } else if (linelike([t1])) {
       const arrpts = linePtsT(s1);
       // return distsq(arrpts[0], arrpts[1]).sub(scalar(20.0));
-      return dist(arrpts[0], arrpts[1]).mul(scalar(200.0));  // regular energy is v smol so we boost it
+      return dist(arrpts[0], arrpts[1]).mul(500);  // regular energy is v smol so we boost it
     } else throw new Error(`${[t1]} not supported for minLength`);
   },
-
 
   // Generic repel function for two GPIs with centers
   repel: ([t1, s1]: [string, any], [t2, s2]: [string, any]) => {
     // HACK: `repel` typically needs to have a weight multiplied since its magnitude is small
     // TODO: find this out programmatically
     const repelWeight = 10e6;
+    if (t1 === "Rectangle" && linelike([t2])) {   // TODO - NEEDS TESTING
+      const lpts = linePtsT(s2);
+      const cp = closestptPtSeg(center(s1), lpts[0], lpts[1]);
+      return distsq(center(s1), cp).add(epsd).reciprocal().mul(repelWeight);
+    }
     // 1 / (d^2(cx, cy) + eps)
-    return distsq(center(s1), center(s2)).add(epsd).reciprocal().mul(repelWeight);
+    else return distsq(center(s1), center(s2)).add(epsd).reciprocal().mul(repelWeight);
   },
 
   centerArrow: ([t1, arr]: [string, any], [t2, text1]: [string, any], [t3, text2]: [string, any]): Tensor => {
@@ -161,28 +195,7 @@ export const constrDict = {
     }
     else throw new Error(`${[t1]} not supported for connect`)
   },
-
-
-  // connectPoly: ([t1, curve]: [string, any], [t2, b1]: [string, any], [t3, b2]: [string, any]): Tensor => {
-  //   if (typesAre([t1, t2, t3], ["Curve", "Rectangle", "Rectangle"])) {
-  //     //const onPerim1 = onPerim(curve.pt1.contents, b1);
-
-  //   } else throw new Error(`${[t1, t2, t3]} not supported for connectPoly`)
-  // },
-
-  withinShapeBounds: ([ptx, pty]: [number, number], [t2, s2]: [string, any]) : Tensor => {
-    if (typesAre([t2], ["Rectangle"])) {
-      const xl = s2.x.contents.sub(s2.w.contents.div(scalar(2.0))).add(scalar(10.0)); // TODO: remove manual padding
-      const xr = s2.x.contents.add(s2.w.contents.div(scalar(2.0))).sub(scalar(10.0));
-      const yb = s2.y.contents.sub(s2.h.contents.div(scalar(2.0))).sub(scalar(10.0));
-      const yt = s2.y.contents.add(s2.h.contents.div(scalar(2.0))).add(scalar(10.0));
-      return inRange(scalar(ptx), xl, xr).add(inRange(scalar(pty), yb, yt));
-    }
-    else throw new Error(`${[t2]} not supported for withinShapeBounds`)
-  },
-
    
-
   contains: (
     [t1, s1]: [string, any],
     [t2, s2]: [string, any],
@@ -239,8 +252,8 @@ export const constrDict = {
       const lpts = linePtsT(s2);
       const cp = closestptPtSeg(center(s1), lpts[0], lpts[1]);
       const d = dist(center(s1), cp);
-      const o = stack([s1.w.contents.div(scalar(2.0)), 10]);    // TODO - make more exact (account for tall skinny boxes)
-      return o.sum().sub(d); 
+      const o = s1.w.contents.div(scalar(2.0));    // TODO - make more exact (account for tall skinny boxes) or remove
+      return o.sub(d); 
     }
     else if (t1 === "Curve" && t2 === "Rectangle") {
       const ret = zero;
@@ -380,6 +393,8 @@ export const closestptPtSeg = (pt: Tensor, start: Tensor, end: Tensor): Tensor =
   else {
     const t = (pt.sub(start)).dot(dir).div(lensq);
     const ct = maximum(zero, minimum(scalar(1.0), t));
+    console.log("flag");
+    print (start.add(ct.mul(dir)));
     return start.add(ct.mul(dir)); // walk along vector of line seg
   }
 }
@@ -390,6 +405,7 @@ export const touchPerim = (s1: any, touchx : Tensor, touchy: Tensor) => {
   const yrange = inRange(touchy, s1.y.contents.sub(s1.h.contents.div(2.0)).sub(1.0), s1.y.contents.add(s1.h.contents.div(2.0)).add(1.0));
   const d = dist(center(s1), stack([touchx, touchy]));
   const o = s1.w.contents.mul(scalar(0.5)); // should be made more exact
+  // return xrange.add(yrange);
   return xrange.add(yrange).add(o.sub(d));
 }
 

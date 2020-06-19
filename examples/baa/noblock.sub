@@ -1,0 +1,9 @@
+Box A, B
+Arr D, E
+
+To(A, B, D)
+To(B, A, E)
+
+AutoLabel D, E
+Label A $Reduce$
+Label B $Reuse$

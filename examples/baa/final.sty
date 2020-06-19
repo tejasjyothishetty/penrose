@@ -23,26 +23,11 @@ forall Box b {
     ensure contains(b.shape, b.text, 5.0)
     encourage equal(b.shape.w - b.padding, b.text.w)
     encourage equal(b.shape.h - b.padding, b.text.h)
-    -- encourage equal (b.shape.h, b.text.h + b.padding) THIS DOESN'T WORK - why?
     -- encourage maximumSize(b.shape, b.text.w * b.text.h)
     encourage sameCenter(b.text, b.shape)
     LOCAL.layering = b.shape below b.text
 }
 
-Box `A` {
-  override `A`.shape.x = -200.0
-  override `A`.shape.y = 100.0
-}
-
-Box `B` {
-  override `B`.shape.x = 300.0
-  override `B`.shape.y = 100.0
-}
-
-Box `C` {
-  override `C`.shape.x = 0.0
-  override `C`.shape.y = 100.0
-}
 
 
 Box x; Box y {
@@ -62,6 +47,13 @@ with Box X; Box Y {
         strokeWidth: 0.0
         color: Colors.black
     }
+    a.pt2 = Circle{
+        r : 1.0
+        -- x : ?
+        -- y : ?
+        strokeWidth: 0.0
+        color: Colors.black
+    }
     a.line1 = Line{
         startX : ?
         startY : ?
@@ -73,6 +65,14 @@ with Box X; Box Y {
     a.line2 = Line{
         startX : a.pt1.x
         startY : a.pt1.y
+        endX : a.pt2.x
+        endY : a.pt2.y
+        thickness : 2.0
+        color : Colors.black
+    }
+    a.line3 = Line{
+        startX : a.pt2.x
+        startY : a.pt2.y
         endX : ?
         endY : ?
         thickness : 2.0
@@ -88,18 +88,27 @@ with Box X; Box Y {
     -- a.labelFnMargin = ensure atDist(a.shape, a.text, 20.0)
 
     a.labelFn  = encourage centerLabel(a.line1, a.text, 1.0)
-    a.llFn = encourage equalLength(a.line1, a.line2)
-    encourage minLength(a.line1)
-    encourage minLength(a.line2)
+    encourage totalMinLength(a.line1, a.line2, a.line3)
     -- ensure connect(X.shape, (a.line1.startX, a.line1.startY))
-    -- ensure connect(Y.shape, (a.line2.endX, a.line2.endY))
+    -- ensure connect(Y.shape, (a.line3.endX, a.line3.endY))
+    encourage cardinal(a.line1)
+    encourage cardinal (a.line2)
+    encourage cardinal (a.line3)
     encourage connectMid(X.shape, (a.line1.startX, a.line1.startY))
-    encourage connectMid(Y.shape, (a.line2.endX, a.line2.endY))
+    encourage connectMid(Y.shape, (a.line3.endX, a.line3.endY))
+    encourage sameLine(a.line1, a.line2)
+    encourage sameLine(a.line2, a.line3)
 }
 
-  Arr a; Box B {
+Arr x; Arr y {
+    encourage repel(x.text, y.shape)
+}
+
+Arr a; Box B {
     ensure disjoint(B.shape, a.text)
     ensure disjoint(B.shape, a.line1)
     ensure disjoint(a.pt1, B.shape)
+    ensure disjoint(B.shape, a.line3)
+    ensure disjoint(a.pt2, B.shape)
     ensure disjoint(B.shape, a.line2)
   }

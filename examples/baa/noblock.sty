@@ -39,10 +39,6 @@ Box `B` {
   override `B`.shape.y = 100.0
 }
 
-Box `C` {
-  override `C`.shape.x = 0.0
-  override `C`.shape.y = 100.0
-}
 
 
 Box x; Box y {
@@ -91,6 +87,7 @@ with Box X; Box Y {
     a.llFn = encourage equalLength(a.line1, a.line2)
     encourage minLength(a.line1)
     encourage minLength(a.line2)
+    encourage sameLine(a.line1, a.line2)
     -- ensure connect(X.shape, (a.line1.startX, a.line1.startY))
     -- ensure connect(Y.shape, (a.line2.endX, a.line2.endY))
     encourage connectMid(X.shape, (a.line1.startX, a.line1.startY))
