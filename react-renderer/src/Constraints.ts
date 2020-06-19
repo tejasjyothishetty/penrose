@@ -255,26 +255,26 @@ export const constrDict = {
       const o = s1.w.contents.div(scalar(2.0));    // TODO - make more exact (account for tall skinny boxes) or remove
       return o.sub(d); 
     }
-    else if (t1 === "Curve" && t2 === "Rectangle") {
-      const ret = zero;
-      let d;
-      let o;
+    // else if (t1 === "Curve" && t2 === "Rectangle") {     HAS NOT BEEN TESTED
+    //   const ret = zero;
+    //   let d;
+    //   let o;
       
-      s1.pathData.contents.forEach((pt: number)=> {
-        const tensorpt = tensor(pt);
-        if (s2.w.contents.greater(s2.h.contents)) {
-          d = dist(tensorpt, center(s2));
-          o = s2.w.contents.mul(scalar(0.5)).add(scalar(10)); // TODO : FIX - this needs to take into account height - same with case above
-          ret.add(o.sub(d));
-        }
-        else {
-          d = dist(tensorpt, center(s2));
-          o = s2.h.contents.mul(scalar(0.5)).add(scalar(10)); // TODO : FIX
-          ret.add(o.sub(d));
-        }
-      });
-      return ret;
-    }
+    //   s1.pathData.contents.forEach((pt: number)=> {
+    //     const tensorpt = tensor(pt);
+    //     if (s2.w.contents.greater(s2.h.contents)) {
+    //       d = dist(tensorpt, center(s2));
+    //       o = s2.w.contents.mul(scalar(0.5)).add(scalar(10)); // TODO : FIX - this needs to take into account height - same with case above
+    //       ret.add(o.sub(d));
+    //     }
+    //     else {
+    //       d = dist(tensorpt, center(s2));
+    //       o = s2.h.contents.mul(scalar(0.5)).add(scalar(10)); // TODO : FIX
+    //       ret.add(o.sub(d));
+    //     }
+    //   });
+    //   return ret;
+    // }
      else throw new Error(`${[t1, t2]} not supported for disjoint`);
   },
 
