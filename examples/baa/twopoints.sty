@@ -28,6 +28,20 @@ forall Box b {
     LOCAL.layering = b.shape below b.text
 }
 
+Box `A` {
+  override `A`.shape.x = -200.0
+  override `A`.shape.y = 100.0
+}
+
+Box `B` {
+  override `B`.shape.x = 300.0
+  override `B`.shape.y = 100.0
+}
+
+Box `C` {
+  override `C`.shape.x = 0.0
+  override `C`.shape.y = 100.0
+}
 
 
 Box x; Box y {
