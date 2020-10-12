@@ -215,15 +215,15 @@ export const evalExpr = (
   switch (e.tag) {
     case "IntLit": {
       return { tag: "Val", contents: { tag: "IntV", contents: e.contents } }
-    } break;
+    }
 
     case "StringLit": {
       return { tag: "Val", contents: { tag: "StrV", contents: e.contents } }
-    } break;
+    }
 
     case "BoolLit": {
       return { tag: "Val", contents: { tag: "BoolV", contents: e.contents } }
-    } break;
+    }
 
     case "AFloat": {
       if (e.contents.tag === "Vary") {
@@ -240,7 +240,7 @@ export const evalExpr = (
           },
         };
       }
-    } break;
+    }
 
     case "Tuple": {
       const [e1, e2] = e.contents;
@@ -263,7 +263,7 @@ export const evalExpr = (
       } else {
         throw Error("Tuple needs to evaluate to two values (no GPI allowed)");
       }
-    } break;
+    }
 
     case "UOp": {
       const {
@@ -276,7 +276,7 @@ export const evalExpr = (
         // HACK: coerce the type for now to let the compiler finish
         contents: evalUOp(uOp, arg as IFloatV<VarAD> | IIntV<VarAD>),
       }
-    } break;
+    }
 
     case "BinOp": {
       const [binOp, e1, e2] = e.contents;
@@ -328,7 +328,7 @@ export const evalExpr = (
       checkComp(fnName, args);
       // retrieve comp function from a global dict and call the function
       return { tag: "Val", contents: compDict[fnName](...argValues) };
-    } break;
+    }
 
     default: {
       throw new Error(`cannot evaluate expression of type ${e.tag}`);
