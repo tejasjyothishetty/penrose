@@ -1,15 +1,15 @@
 import * as React from "react";
-import Log from "./Log";
-import Canvas from "./Canvas";
-import ButtonBar from "./ButtonBar";
+import Log from "utils/Log";
+import Canvas from "ui/Canvas";
+import ButtonBar from "ui/ButtonBar";
 import { Step, Resample, converged, initial } from "./packets";
 import { Protocol, ConnectionStatus } from "./Protocol";
-import { decodeState } from "./Evaluator";
-import { step } from "./Optimizer";
+import { decodeState } from "engine/Evaluator";
+import { step } from "engine/Optimizer";
 import { unwatchFile } from "fs";
-import { collectLabels } from "./utils/CollectLabels";
+import { collectLabels } from "utils/CollectLabels";
 import SplitPane from "react-split-pane";
-import Inspector from "./inspector/Inspector";
+import Inspector from "inspector/Inspector";
 
 interface ICanvasState {
   data: State | undefined; // NOTE: if the backend is not connected, data will be undefined, TODO: rename this field
