@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>CompNode | penrose-web</title>
+	<title>IOptInfo | penrose-web</title>
 	<meta name="description" content="Documentation for penrose-web">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -59,29 +59,21 @@
 					<a href="../modules/_types_types_d_.html">&quot;types/types.d&quot;</a>
 				</li>
 				<li>
-					<a href="_types_types_d_.compnode.html">CompNode</a>
+					<a href="_types_types_d_.ioptinfo.html">IOptInfo</a>
 				</li>
 			</ul>
-			<h1>Interface CompNode&lt;T&gt;</h1>
+			<h1>Interface IOptInfo</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-type-parameters">
-				<h3>Type parameters</h3>
-				<ul class="tsd-type-parameters">
-					<li>
-						<h4>T</h4>
-					</li>
-				</ul>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">CompNode</span>
+						<span class="target">IOptInfo</span>
 					</li>
 				</ul>
 			</section>
@@ -92,9 +84,12 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_types_d_.compnode.html#def" class="tsd-kind-icon">def</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_types_d_.compnode.html#status" class="tsd-kind-icon">status</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_types_d_.compnode.html#value" class="tsd-kind-icon">value</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_types_d_.ioptinfo.html#energyval" class="tsd-kind-icon">energy<wbr>Val</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_types_d_.ioptinfo.html#gradient" class="tsd-kind-icon">gradient</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_types_d_.ioptinfo.html#gradientpreconditioned" class="tsd-kind-icon">gradient<wbr>Preconditioned</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_types_d_.ioptinfo.html#newlbfgsinfo" class="tsd-kind-icon">new<wbr>Lbfgs<wbr>Info</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_types_d_.ioptinfo.html#normgrad" class="tsd-kind-icon">norm<wbr>Grad</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_types_d_.ioptinfo.html#xs" class="tsd-kind-icon">xs</a></li>
 							</ul>
 						</section>
 					</div>
@@ -103,32 +98,62 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="def" class="tsd-anchor"></a>
-					<h3>def</h3>
-					<div class="tsd-signature tsd-kind-icon">def<span class="tsd-signature-symbol">:</span> <a href="../modules/_types_types_d_.html#expr" class="tsd-signature-type">Expr</a><span class="tsd-signature-symbol"> | </span><a href="../modules/_types_types_d_.html#gpiexpr" class="tsd-signature-type">GPIExpr</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="energyval" class="tsd-anchor"></a>
+					<h3>energy<wbr>Val</h3>
+					<div class="tsd-signature tsd-kind-icon">energy<wbr>Val<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/4f571b3f/penrose-web/src/types/types.d.ts#L65">src/types/types.d.ts:65</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/4f571b3f/penrose-web/src/types/types.d.ts#L645">src/types/types.d.ts:645</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="status" class="tsd-anchor"></a>
-					<h3>status</h3>
-					<div class="tsd-signature tsd-kind-icon">status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"Done"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"Uninitialized"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"Pending"</span></div>
+					<a name="gradient" class="tsd-anchor"></a>
+					<h3>gradient</h3>
+					<div class="tsd-signature tsd-kind-icon">gradient<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/4f571b3f/penrose-web/src/types/types.d.ts#L64">src/types/types.d.ts:64</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/4f571b3f/penrose-web/src/types/types.d.ts#L648">src/types/types.d.ts:648</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="value" class="tsd-anchor"></a>
-					<h3>value</h3>
-					<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <a href="../modules/_types_types_d_.html#value" class="tsd-signature-type">Value</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
+					<a name="gradientpreconditioned" class="tsd-anchor"></a>
+					<h3>gradient<wbr>Preconditioned</h3>
+					<div class="tsd-signature tsd-kind-icon">gradient<wbr>Preconditioned<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/4f571b3f/penrose-web/src/types/types.d.ts#L66">src/types/types.d.ts:66</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/4f571b3f/penrose-web/src/types/types.d.ts#L649">src/types/types.d.ts:649</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="newlbfgsinfo" class="tsd-anchor"></a>
+					<h3>new<wbr>Lbfgs<wbr>Info</h3>
+					<div class="tsd-signature tsd-kind-icon">new<wbr>Lbfgs<wbr>Info<span class="tsd-signature-symbol">:</span> <a href="../modules/_types_types_d_.html#lbfgsparams" class="tsd-signature-type">LbfgsParams</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/4f571b3f/penrose-web/src/types/types.d.ts#L647">src/types/types.d.ts:647</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="normgrad" class="tsd-anchor"></a>
+					<h3>norm<wbr>Grad</h3>
+					<div class="tsd-signature tsd-kind-icon">norm<wbr>Grad<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/4f571b3f/penrose-web/src/types/types.d.ts#L646">src/types/types.d.ts:646</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="xs" class="tsd-anchor"></a>
+					<h3>xs</h3>
+					<div class="tsd-signature tsd-kind-icon">xs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/4f571b3f/penrose-web/src/types/types.d.ts#L644">src/types/types.d.ts:644</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -149,17 +174,26 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="_types_types_d_.compnode.html" class="tsd-kind-icon">Comp<wbr>Node</a>
+					<li class="current tsd-kind-interface tsd-parent-kind-module">
+						<a href="_types_types_d_.ioptinfo.html" class="tsd-kind-icon">IOpt<wbr>Info</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_types_types_d_.compnode.html#def" class="tsd-kind-icon">def</a>
+								<a href="_types_types_d_.ioptinfo.html#energyval" class="tsd-kind-icon">energy<wbr>Val</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_types_types_d_.compnode.html#status" class="tsd-kind-icon">status</a>
+								<a href="_types_types_d_.ioptinfo.html#gradient" class="tsd-kind-icon">gradient</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_types_types_d_.compnode.html#value" class="tsd-kind-icon">value</a>
+								<a href="_types_types_d_.ioptinfo.html#gradientpreconditioned" class="tsd-kind-icon">gradient<wbr>Preconditioned</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_types_types_d_.ioptinfo.html#newlbfgsinfo" class="tsd-kind-icon">new<wbr>Lbfgs<wbr>Info</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_types_types_d_.ioptinfo.html#normgrad" class="tsd-kind-icon">norm<wbr>Grad</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_types_types_d_.ioptinfo.html#xs" class="tsd-kind-icon">xs</a>
 							</li>
 						</ul>
 					</li>
