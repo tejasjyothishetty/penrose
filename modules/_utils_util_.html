@@ -73,6 +73,7 @@
 						<section class="tsd-index-section ">
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="_utils_util_.html#shapeitem" class="tsd-kind-icon">Shape<wbr>Item</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="_utils_util_.html#loadimageelement" class="tsd-kind-icon">load<wbr>Image<wbr>Element</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="_utils_util_.html#topointliststring" class="tsd-kind-icon">to<wbr>Point<wbr>List<wbr>String</a></li>
 							</ul>
@@ -82,6 +83,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_util_.html#arrowhead" class="tsd-kind-icon">Arrowhead</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_util_.html#shadow" class="tsd-kind-icon">Shadow</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_util_.html#bboxdims" class="tsd-kind-icon">b<wbr>Box<wbr>Dims</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_util_.html#dist" class="tsd-kind-icon">dist</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_util_.html#getalpha" class="tsd-kind-icon">get<wbr>Alpha</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_util_.html#getangle" class="tsd-kind-icon">get<wbr>Angle</a></li>
@@ -89,6 +91,7 @@
 								<li class="tsd-kind-function tsd-parent-kind-module tsd-is-not-exported"><a href="_utils_util_.html#hsv2rgb" class="tsd-kind-icon">hsv2rgb</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_util_.html#hsvtorgb" class="tsd-kind-icon">hsv<wbr>ToRGB</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_util_.html#loadimages" class="tsd-kind-icon">load<wbr>Images</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_util_.html#makeviewboxes" class="tsd-kind-icon">make<wbr>View<wbr>Boxes</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_util_.html#mapmap" class="tsd-kind-icon">map<wbr>Map</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_util_.html#penrosetosvg" class="tsd-kind-icon">penrose<wbr>ToSVG</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_util_.html#penrosetransformstr" class="tsd-kind-icon">penrose<wbr>Transform<wbr>Str</a></li>
@@ -114,12 +117,22 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Variables</h2>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="shapeitem" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> Shape<wbr>Item</h3>
+					<div class="tsd-signature tsd-kind-icon">Shape<wbr>Item<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = styled.li&lt;any&gt;&#x60;display: block;padding: 1em;margin-top: -1px;border: 1px solid #d1d1d1;background-color: ${({ selected }: any) &#x3D;&gt;selected ? &quot;#F9F9F9&quot; : &quot;#f0f0f0&quot;};color: rgba(0, 0, 0, 0.5);font-family: monospace;display: flex;flex-direction: row;align-items: center;cursor: pointer;&#x60;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L76">src/utils/Util.tsx:76</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
 					<a name="loadimageelement" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> load<wbr>Image<wbr>Element</h3>
 					<div class="tsd-signature tsd-kind-icon">load<wbr>Image<wbr>Element<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> = memoize(async (url: string): Promise&lt;any&gt; &#x3D;&gt;new Promise((resolve, reject) &#x3D;&gt; {const img &#x3D; new Image();img.onload &#x3D; () &#x3D;&gt; resolve(img);img.onerror &#x3D; reject;img.src &#x3D; url;}))</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L218">src/utils/Util.tsx:218</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L302">src/utils/Util.tsx:302</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -129,7 +142,7 @@
 					<div class="tsd-signature tsd-kind-icon">to<wbr>Point<wbr>List<wbr>String<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> = memoize(// Why memoize?(ptList: any[], canvasSize: [number, number]) &#x3D;&gt;ptList.map((coords: [number, number]) &#x3D;&gt; {const pt &#x3D; coords;return pt[0].toString() + &quot; &quot; + pt[1].toString();}).join(&quot; &quot;))</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L133">src/utils/Util.tsx:133</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L217">src/utils/Util.tsx:217</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -146,7 +159,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L67">src/utils/Util.tsx:67</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L151">src/utils/Util.tsx:151</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -186,7 +199,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L50">src/utils/Util.tsx:50</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L134">src/utils/Util.tsx:134</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -205,6 +218,32 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="bboxdims" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> b<wbr>Box<wbr>Dims</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">b<wbr>Box<wbr>Dims<span class="tsd-signature-symbol">(</span>properties<span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#properties" class="tsd-signature-type">Properties</a>, shapeType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L53">src/utils/Util.tsx:53</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>properties: <a href="_types_types_d_.html#properties" class="tsd-signature-type">Properties</a></h5>
+								</li>
+								<li>
+									<h5>shapeType: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
 					<a name="dist" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> dist</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
@@ -214,7 +253,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L28">src/utils/Util.tsx:28</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L30">src/utils/Util.tsx:30</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -245,7 +284,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L144">src/utils/Util.tsx:144</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L228">src/utils/Util.tsx:228</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -268,7 +307,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L205">src/utils/Util.tsx:205</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L289">src/utils/Util.tsx:289</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -300,7 +339,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L214">src/utils/Util.tsx:214</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L298">src/utils/Util.tsx:298</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -332,7 +371,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L155">src/utils/Util.tsx:155</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L239">src/utils/Util.tsx:239</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -364,7 +403,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L167">src/utils/Util.tsx:167</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L251">src/utils/Util.tsx:251</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -387,7 +426,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L230">src/utils/Util.tsx:230</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L314">src/utils/Util.tsx:314</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -401,6 +440,53 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="makeviewboxes" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> make<wbr>View<wbr>Boxes</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">make<wbr>View<wbr>Boxes<span class="tsd-signature-symbol">(</span>shapes<span class="tsd-signature-symbol">: </span><a href="../interfaces/_types_types_d_.ishape.html" class="tsd-signature-type">IShape</a><span class="tsd-signature-symbol">[]</span>, selectedShape<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, setSelectedShape<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Element</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L91">src/utils/Util.tsx:91</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>shapes: <a href="../interfaces/_types_types_d_.ishape.html" class="tsd-signature-type">IShape</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5>selectedShape: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>setSelectedShape: <span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-signature">
+											<ul class="tsd-signatures tsd-kind-type-literal">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>key: <span class="tsd-signature-type">number</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
 					<a name="mapmap" class="tsd-anchor"></a>
 					<h3>map<wbr>Map</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
@@ -410,7 +496,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L280">src/utils/Util.tsx:280</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L364">src/utils/Util.tsx:364</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -436,7 +522,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L100">src/utils/Util.tsx:100</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L184">src/utils/Util.tsx:184</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -459,7 +545,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L108">src/utils/Util.tsx:108</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L192">src/utils/Util.tsx:192</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -482,7 +568,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L9">src/utils/Util.tsx:9</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L11">src/utils/Util.tsx:11</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -523,7 +609,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L17">src/utils/Util.tsx:17</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L19">src/utils/Util.tsx:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -564,7 +650,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L250">src/utils/Util.tsx:250</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L334">src/utils/Util.tsx:334</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -587,7 +673,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L254">src/utils/Util.tsx:254</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L338">src/utils/Util.tsx:338</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -613,7 +699,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L121">src/utils/Util.tsx:121</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L205">src/utils/Util.tsx:205</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -639,7 +725,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L191">src/utils/Util.tsx:191</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L275">src/utils/Util.tsx:275</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -662,7 +748,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L146">src/utils/Util.tsx:146</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L230">src/utils/Util.tsx:230</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -685,7 +771,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L92">src/utils/Util.tsx:92</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L176">src/utils/Util.tsx:176</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -710,7 +796,7 @@
 					<div class="tsd-signature tsd-kind-icon">arrowheads<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L31">src/utils/Util.tsx:31</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L33">src/utils/Util.tsx:33</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
@@ -719,7 +805,7 @@
 						<div class="tsd-signature tsd-kind-icon">arrowhead-<wbr>1<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L32">src/utils/Util.tsx:32</a></li>
+								<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L34">src/utils/Util.tsx:34</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -728,7 +814,7 @@
 							<div class="tsd-signature tsd-kind-icon">height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 8</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L34">src/utils/Util.tsx:34</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L36">src/utils/Util.tsx:36</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -738,7 +824,7 @@
 							<div class="tsd-signature tsd-kind-icon">path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;M0,0 A30,30,0,0,0,8,4 A30,30,0,0,0,0,8 L2.5,4 z&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L38">src/utils/Util.tsx:38</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L40">src/utils/Util.tsx:40</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -748,7 +834,7 @@
 							<div class="tsd-signature tsd-kind-icon">refX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;4&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L36">src/utils/Util.tsx:36</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L38">src/utils/Util.tsx:38</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -758,7 +844,7 @@
 							<div class="tsd-signature tsd-kind-icon">refY<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;4&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L37">src/utils/Util.tsx:37</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L39">src/utils/Util.tsx:39</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -768,7 +854,7 @@
 							<div class="tsd-signature tsd-kind-icon">viewbox<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;0 0 8 8&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L35">src/utils/Util.tsx:35</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L37">src/utils/Util.tsx:37</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -778,7 +864,7 @@
 							<div class="tsd-signature tsd-kind-icon">width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 8</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L33">src/utils/Util.tsx:33</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L35">src/utils/Util.tsx:35</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -789,7 +875,7 @@
 						<div class="tsd-signature tsd-kind-icon">arrowhead-<wbr>2<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L40">src/utils/Util.tsx:40</a></li>
+								<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L42">src/utils/Util.tsx:42</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -798,7 +884,7 @@
 							<div class="tsd-signature tsd-kind-icon">height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 8.12</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L42">src/utils/Util.tsx:42</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L44">src/utils/Util.tsx:44</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -808,7 +894,7 @@
 							<div class="tsd-signature tsd-kind-icon">path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;M9.95 4.06 0 8.12 2.36 4.06 0 0 9.95 4.06z&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L46">src/utils/Util.tsx:46</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L48">src/utils/Util.tsx:48</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -818,7 +904,7 @@
 							<div class="tsd-signature tsd-kind-icon">refX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;2.36&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L44">src/utils/Util.tsx:44</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L46">src/utils/Util.tsx:46</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -828,7 +914,7 @@
 							<div class="tsd-signature tsd-kind-icon">refY<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;4.06&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L45">src/utils/Util.tsx:45</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L47">src/utils/Util.tsx:47</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -838,7 +924,7 @@
 							<div class="tsd-signature tsd-kind-icon">viewbox<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;0 0 9.95 8.12&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L43">src/utils/Util.tsx:43</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L45">src/utils/Util.tsx:45</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -848,7 +934,7 @@
 							<div class="tsd-signature tsd-kind-icon">width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 9.95</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/d5959820/penrose-web/src/utils/Util.tsx#L41">src/utils/Util.tsx:41</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/4a0f0ef3/penrose-web/src/utils/Util.tsx#L43">src/utils/Util.tsx:43</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -870,6 +956,9 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="_utils_util_.html#shapeitem" class="tsd-kind-icon">Shape<wbr>Item</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
 						<a href="_utils_util_.html#loadimageelement" class="tsd-kind-icon">load<wbr>Image<wbr>Element</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-module">
@@ -880,6 +969,9 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_utils_util_.html#shadow" class="tsd-kind-icon">Shadow</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_utils_util_.html#bboxdims" class="tsd-kind-icon">b<wbr>Box<wbr>Dims</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_utils_util_.html#dist" class="tsd-kind-icon">dist</a>
@@ -901,6 +993,9 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_utils_util_.html#loadimages" class="tsd-kind-icon">load<wbr>Images</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_utils_util_.html#makeviewboxes" class="tsd-kind-icon">make<wbr>View<wbr>Boxes</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_utils_util_.html#mapmap" class="tsd-kind-icon">map<wbr>Map</a>
