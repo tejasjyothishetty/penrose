@@ -11,6 +11,9 @@ const DEBUG_ENERGY = false;
 const DEBUG_GRADIENT = true;
 const DEBUG_GRADIENT_UNIT_TESTS = false;
 
+// Turns on/off the `debug` statement console logging
+const DEBUG_AUTODIFF = false;
+
 // Consts
 const NUM_SAMPLES = 5; // Number of samples to evaluate gradient tests at
 export const EPS_DENOM = 10e-6; // Avoid divide-by-zero in denominator
@@ -479,7 +482,7 @@ export const cos = (v: VarAD, isCompNode = true): VarAD => {
 
 export const arccos = (v: VarAD, isCompNode = true): VarAD => {
   // Clamp argument to a valid range [-1,1]
-  const z = variableAD(Math.acos(Math.max(-1.0,Math.min(1.0,v.val))), "arccos");
+  const z = variableAD(Math.acos(Math.max(-1.0, Math.min(1.0, v.val))), "arccos");
   z.isCompNode = isCompNode;
 
   // The derivative of arccos(x) is -1/sqrt(1-x^2), which is valid
@@ -496,12 +499,12 @@ export const arccos = (v: VarAD, isCompNode = true): VarAD => {
               sub(
                 gvarOf(1.0),
                 squared(v, false),
-              false),
+                false),
               gvarOf(EPS_ARCTRIG),
+              false),
             false),
           false),
-        false),
-      false)
+        false)
     );
     v.parents.push({ node: z, sensitivityNode: node });
 
@@ -748,11 +751,11 @@ export const debug = (v: VarAD, debugInfo = "no additional info"): VarAD => {
 };
 
 export const vdebug = (v: VarAD[], debugInfo = "no additional info"): VarAD[] => {
-   for( let e of v ) {
-      e.debug = true;
-      e.debugInfo = debugInfo;
-   }
-   return v;
+  for (let e of v) {
+    e.debug = true;
+    e.debugInfo = debugInfo;
+  }
+  return v;
 }
 
 const opMap = {
@@ -1171,7 +1174,7 @@ const traverseGraph = (i: number, z: IVarAD, setting: string): any => {
 
     stmts.push(stmt);
 
-    if (z.debug) {
+    if (z.debug && DEBUG_AUTODIFF) {
       const stmt2 = `console.log("${z.debugInfo} (var ${leafName}) | value: ", ${leafName}, "during ${setting} evaluation");`;
       stmts.push(stmt2);
     }
@@ -1238,7 +1241,7 @@ const traverseGraph = (i: number, z: IVarAD, setting: string): any => {
 
     stmts.push(stmt);
 
-    if (z.debug) {
+    if (z.debug && DEBUG_AUTODIFF) {
       const stmt2 = `console.log("${z.debugInfo} (var ${parName}) | value: ", ${parName}, "during ${setting} evaluation");`;
       stmts.push(stmt2);
     }
@@ -1306,7 +1309,7 @@ const traverseGraph = (i: number, z: IVarAD, setting: string): any => {
 
     stmts.push(stmt);
 
-    if (z.debug) {
+    if (z.debug && DEBUG_AUTODIFF) {
       const stmt2 = `console.log("${z.debugInfo} (var ${parName}) | value: ", ${parName}, "during ${setting} evaluation");`;
       stmts.push(stmt2);
     }
@@ -1377,7 +1380,7 @@ const traverseGraph = (i: number, z: IVarAD, setting: string): any => {
     stmts.push(stmt);
 
     // TODO: Factor out this code, which is repeated 3 times
-    if (z.debug) {
+    if (z.debug && DEBUG_AUTODIFF) {
       const stmt2 = `console.log("${z.debugInfo} (var ${parName}) | value: ", ${parName}, "during ${setting} evaluation");`;
       stmts.push(stmt2);
     }

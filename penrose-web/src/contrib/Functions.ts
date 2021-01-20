@@ -233,17 +233,22 @@ export const compDict = {
    * Return the unsigned angle between vectors `u` and `v`.
    */
   angleBetween: (u: VarAD[], v: VarAD[]): IFloatV<VarAD> => {
+    // COMBAK: Revert
+    const res = debug(arccos(
+      max(constOf(-1.),
+        min(constOf(1.),
+          ops.vdot(vdebug(ops.vunit(u), "|u| elem"), vdebug(ops.vunit(v), "|v| elem"))
+        )
+      ),
+    ), "angle between");
+
+    // const res = constOf(1.3);
+
     return {
       tag: "FloatV",
       //contents: arccos(ops.vdot(vdebug(ops.vunit(u), "normalized u"), ops.vunit(v))),
       //contents: arccos(ops.vdot(ops.vunit(u), ops.vunit(v))),
-      contents: arccos(
-         max( constOf(-1.),
-            min( constOf(1.),
-               ops.vdot(ops.vunit(u), ops.vunit(v))
-            )
-         )
-      ),
+      contents: res,
     };
   },
 

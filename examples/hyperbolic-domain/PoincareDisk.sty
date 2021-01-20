@@ -38,8 +38,6 @@ where In( p, H ) {
    --ensure contains( H.diskShape, p.dotShape )
 }
 
--- TODO: Fix that we can't add new functions with new names w/o backend complaining
-
 forall IdealPoint p; HyperbolicPlane H
 where In( p, H ) {
    scalar p.angle = ?
@@ -54,38 +52,38 @@ where In( p, H ) {
    }
 }
 
-forall Horocycle h; HyperbolicPlane H {
-  shape h.circleShape = Circle {
-    color : Colors.none
-    strokeWidth : 2.0
-    strokeColor : Colors.black
-  }
+-- forall Horocycle h; HyperbolicPlane H {
+--   shape h.circleShape = Circle {
+--     color : Colors.none
+--     strokeWidth : 2.0
+--     strokeColor : Colors.black
+--   }
 
-  scalar R = H.diskShape.r
+--   scalar R = H.diskShape.r
 
-  ensure inRange(h.circleShape.r, R/8., R/2.)
-  constraint h.inDisk      = ensure contains(H.diskShape, h.circleShape)
-  constraint h.tangentDisk = ensure tangentTo(H.diskShape, h.circleShape)
-}
+--   ensure inRange(h.circleShape.r, R/8., R/2.)
+--   constraint h.inDisk      = ensure contains(H.diskShape, h.circleShape)
+--   constraint h.tangentDisk = ensure tangentTo(H.diskShape, h.circleShape)
+-- }
 
-forall IdealPoint p; Horocycle h; HyperbolicPlane H
-where IsCenter( p, h ); In( p, H ) {
+-- forall IdealPoint p; Horocycle h; HyperbolicPlane H
+-- where IsCenter( p, h ); In( p, H ) {
 
-   scalar R = H.diskShape.r
-   scalar r = h.circleShape.r
-   vec2 x = p.dotShape.center
+--    scalar R = H.diskShape.r
+--    scalar r = h.circleShape.r
+--    vec2 x = p.dotShape.center
 
-   -- -- set the center of the horocycle h so that it is
-   -- -- tangent to the hyperbolic plane H at ideal point p
-   scalar a = R - r
-   h.circleShape.center = a*unit(x)
+--    -- -- set the center of the horocycle h so that it is
+--    -- -- tangent to the hyperbolic plane H at ideal point p
+--    scalar a = R - r
+--    h.circleShape.center = a*unit(x)
 
-   -- since we've computed the location of the center
-   -- explicitly, we should no longer need constraints to
-   -- ensure containment/tangency in the Poincaré disk
-   delete h.inDisk
-   delete h.tangentDisk
-}
+--    -- since we've computed the location of the center
+--    -- explicitly, we should no longer need constraints to
+--    -- ensure containment/tangency in the Poincaré disk
+--    delete h.inDisk
+--    delete h.tangentDisk
+-- }
 
 -- default "constructor"
 forall Geodesic g; HyperbolicPlane H
@@ -100,15 +98,21 @@ where g := MakeGeodesic( p, q )
 {
    vec2 P = p.dotShape.center
    vec2 Q = q.dotShape.center
+
+   -- scalar theta = 1.0
    scalar theta = angleBetween( P, Q )
+   -- COMBAK revert ^
    scalar L = H.diskShape.r
    scalar R = L/cos(theta/2.)
-   vec2 c = R*unit(P+Q)
    scalar r = norm(c - P)
+   vec2 c = R*unit(P+Q)
 
    g.shape = Circle {
       center: c
+      -- center: 100.0
       r: r
+      -- r: 100.0
+   -- COMBAK revert ^
    }
 
    -- g.shape = Line {
@@ -133,23 +137,39 @@ where PerpendicularAt( g, h, p ); In( p, H )
    scalar Rg = g.shape.r
 
    -- ensure that g passes through p
+   -- COMBAK: Put this back in
    ensure equalTo( Rg, norm( Cg - P ))
 
    -- also ensure that g and h are orthogonal
    ensure orthogonalCircles( g.shape, h.shape )
 }
 
+-- WHen ONLY `pi` is set to 3.14/2., then the first sample lays out, and the second one crashes
+-- So is it due to the second one's position, or needing to take derivatives of two points' positions/angles?
+-- Well it doesn't crash when the points are hardcoded to the same position that made it crash... so is it due to needing to take the derivative of pj? But it's not special...
+
 IdealPoint `pi`
 {
-   override `pi`.angle = 0.0
+   -- override `pi`.angle = 3.14/2.
+   -- override `pi`.angle = 0.
 }
 
 IdealPoint `pj`
 {
-   override `pj`.angle = 2.0*3.1415926/3.0
+
+   -- override `pj`.angle = 2.0*3.1415926/3.0
+   -- override `pj`.angle = 0.8
+   override `pj`.angle = 3.14/2. 
 }
+
+-- -- TODO: Also crashes if `pk` is commented in below, but does that create an impossible problem...?
 
 IdealPoint `pk`
 {
-   override `pk`.angle = 4.0*3.1415926/3.0
+   -- override `pk`.angle = 1.0
+   -- override `pk`.angle = 10.0
+   -- override `pk`.angle = 4.0*3.1415926/3.0
+  override `pk`.angle = 6.28 - 0.8
 }
+
+-- NOTE: This works fine if the points are spaced out equally

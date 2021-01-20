@@ -17,6 +17,8 @@ import {
   squared,
   sub,
   varOf,
+  debug,
+  vdebug
 } from "engine/Autodiff";
 import * as _ from "lodash";
 import { canvasSize } from "ui/Canvas";
@@ -300,19 +302,19 @@ export const constrDict = {
   */
   smallerThan: ([t1, s1]: [string, any], [t2, s2]: [string, any]) => {
 
-     if(t1 === "Circle" && t2 === "Circle") {
-        // s1 is smaller than s2
-        const offset = mul(varOf(0.4), s2.r.contents);
-        return sub(sub(s1.r.contents, s2.r.contents), offset);
-     } else throw new Error(`${[t1, t2]} not supported for smallerThan`);
+    if (t1 === "Circle" && t2 === "Circle") {
+      // s1 is smaller than s2
+      const offset = mul(varOf(0.4), s2.r.contents);
+      return sub(sub(s1.r.contents, s2.r.contents), offset);
+    } else throw new Error(`${[t1, t2]} not supported for smallerThan`);
   },
 
   lessThan: (x: VarAD, y: VarAD) => {
-     return squared(sub(x, y));
+    return squared(sub(x, y));
   },
 
   equalTo: (x: VarAD, y: VarAD) => {
-     return absVal(sub(x, y));
+    return debug(absVal(sub(debug(x, "Rg"), debug(y, "normRes"))), `equalTo ${x.name} ${y.name}`);
   },
 
   /** 
@@ -370,15 +372,18 @@ export const constrDict = {
     [t2, s2]: [string, any]
   ) => {
     if (t1 === "Circle" && t2 === "Circle") {
-       // Two circles of radii r1,r2 at a distance d will be
-       // orthogonal iff d^2 = r1^2 + r2^2.
-      const d2 = ops.vdistsq(fns.center(s1), fns.center(s2));
-      const r1 = s1.r.contents;
-      const r2 = s2.r.contents;
+      // Two circles of radii r1,r2 at a distance d will be
+      // orthogonal iff d^2 = r1^2 + r2^2.
+
+      const s1o = vdebug(fns.center(s1), "s1");
+
+      const d2 = debug(ops.vdistsq(s1o, vdebug(fns.center(s2), "s2")), "d2");
+      const r1 = debug(s1.r.contents, "s1 r");
+      const r2 = debug(s2.r.contents, "s2 r");
       const r12 = squared(r1);
       const r22 = squared(r2);
-      const e = sub(d2,add(r12,r22));
-      return absVal(e);
+      const e = debug(sub(d2, add(r12, r22)), "e");
+      return debug(absVal(e), `orthogonalCircles ${s1.name.contents} ${s2.name.contents}`);
     } else throw new Error(`${[t1, t2]} not supported for orthogonalCircles`);
   },
 

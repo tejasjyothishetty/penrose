@@ -8,8 +8,8 @@ pj ∈ H
 pk ∈ H
 
 Geodesic gij := pi <-> pj
-Geodesic gjk := pj <-> pk
-Geodesic gki := pk <-> pi
+-- Geodesic gjk := pj <-> pk
+-- Geodesic gki := pk <-> pi
 
 PerpendicularAt( a, gij, pk )
 

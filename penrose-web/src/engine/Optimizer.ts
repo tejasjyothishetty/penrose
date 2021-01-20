@@ -784,7 +784,7 @@ const minimize = (
   // const numSteps = 1e2;
   // const numSteps = 100;
   // const numSteps = 1000;
-  const numSteps = DEBUG_GRAD_DESCENT ? 2 : 10000; // Value for speed testing
+  const numSteps = DEBUG_GRAD_DESCENT ? 1 : 10000; // Value for speed testing
   // TODO: Do a UO convergence check here? Since the EP check is tied to the render cycle...
 
   console.log("-------------------------------------");
