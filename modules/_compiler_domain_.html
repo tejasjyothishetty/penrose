@@ -123,7 +123,7 @@
 					<div class="tsd-signature tsd-kind-icon">Checker<wbr>Result<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Result</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_compiler_domain_.env.html" class="tsd-signature-type">Env</a><span class="tsd-signature-symbol">, </span><a href="_types_errors_d_.html#domainerror" class="tsd-signature-type">DomainError</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L41">src/compiler/Domain.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L45">src/compiler/Domain.ts:45</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -136,7 +136,7 @@
 					<div class="tsd-signature tsd-kind-icon">builtin<wbr>Types<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/_types_types_d_.typedecl.html" class="tsd-signature-type">TypeDecl</a><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [[&quot;String&quot;,{start: { line: 1, col: 1 },end: { line: 1, col: 1 },nodeType: &quot;Substance&quot;,children: [],tag: &quot;TypeDecl&quot;,name: idOf(&quot;String&quot;, &quot;Domain&quot;),params: [],},],]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L59">src/compiler/Domain.ts:59</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L63">src/compiler/Domain.ts:63</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -153,7 +153,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L255">src/compiler/Domain.ts:255</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L259">src/compiler/Domain.ts:259</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -179,7 +179,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L90">src/compiler/Domain.ts:90</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L94">src/compiler/Domain.ts:94</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -212,7 +212,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L100">src/compiler/Domain.ts:100</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L104">src/compiler/Domain.ts:104</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -238,7 +238,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L213">src/compiler/Domain.ts:213</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L217">src/compiler/Domain.ts:217</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -279,7 +279,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L235">src/compiler/Domain.ts:235</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L239">src/compiler/Domain.ts:239</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -320,13 +320,23 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L33">src/compiler/Domain.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L37">src/compiler/Domain.ts:37</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Top-level function for the Domain parser and checker. Given Domain program string, it outputs either a <code>PenroseError</code> or an <code>Env</code> context.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>prog: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Domain program string</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Result</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_compiler_domain_.env.html" class="tsd-signature-type">Env</a><span class="tsd-signature-symbol">, </span><a href="_types_errors_d_.html#penroseerror" class="tsd-signature-type">PenroseError</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -343,7 +353,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L258">src/compiler/Domain.ts:258</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L262">src/compiler/Domain.ts:262</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -366,7 +376,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L73">src/compiler/Domain.ts:73</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L77">src/compiler/Domain.ts:77</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_compiler_domain_.env.html" class="tsd-signature-type">Env</a></h4>
@@ -383,7 +393,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L278">src/compiler/Domain.ts:278</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L282">src/compiler/Domain.ts:282</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -422,7 +432,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L301">src/compiler/Domain.ts:301</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L305">src/compiler/Domain.ts:305</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -451,7 +461,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L23">src/compiler/Domain.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L23">src/compiler/Domain.ts:23</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -474,7 +484,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L343">src/compiler/Domain.ts:343</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L347">src/compiler/Domain.ts:347</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -506,7 +516,7 @@
 					<div class="tsd-signature tsd-kind-icon">bottom<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L333">src/compiler/Domain.ts:333</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L337">src/compiler/Domain.ts:337</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -515,7 +525,7 @@
 						<div class="tsd-signature tsd-kind-icon">args<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">never</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L336">src/compiler/Domain.ts:336</a></li>
+								<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L340">src/compiler/Domain.ts:340</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -525,7 +535,7 @@
 						<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_types_types_d_.identifier.html" class="tsd-signature-type">Identifier</a><span class="tsd-signature-symbol"> = idOf(&quot;void&quot;, &quot;Domain&quot;)</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L335">src/compiler/Domain.ts:335</a></li>
+								<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L339">src/compiler/Domain.ts:339</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -535,7 +545,7 @@
 						<div class="tsd-signature tsd-kind-icon">tag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"TypeConstructor"</span><span class="tsd-signature-symbol"> = &quot;TypeConstructor&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L334">src/compiler/Domain.ts:334</a></li>
+								<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L338">src/compiler/Domain.ts:338</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -546,7 +556,7 @@
 					<div class="tsd-signature tsd-kind-icon">top<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L327">src/compiler/Domain.ts:327</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L331">src/compiler/Domain.ts:331</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -555,7 +565,7 @@
 						<div class="tsd-signature tsd-kind-icon">args<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">never</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L330">src/compiler/Domain.ts:330</a></li>
+								<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L334">src/compiler/Domain.ts:334</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -565,7 +575,7 @@
 						<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_types_types_d_.identifier.html" class="tsd-signature-type">Identifier</a><span class="tsd-signature-symbol"> = idOf(&quot;type&quot;, &quot;Domain&quot;)</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L329">src/compiler/Domain.ts:329</a></li>
+								<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L333">src/compiler/Domain.ts:333</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -575,7 +585,7 @@
 						<div class="tsd-signature tsd-kind-icon">tag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"TypeConstructor"</span><span class="tsd-signature-symbol"> = &quot;TypeConstructor&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/compiler/Domain.ts#L328">src/compiler/Domain.ts:328</a></li>
+								<li>Defined in <a href="https://github.com/penrose/penrose/blob/76ada1f2/packages/penrose-core/src/compiler/Domain.ts#L332">src/compiler/Domain.ts:332</a></li>
 							</ul>
 						</aside>
 					</section>
