@@ -240,7 +240,8 @@
 <span class="hljs-comment">// For TS pre-3.7:</span>
 context!: React.ContextType&lt;<span class="hljs-keyword">typeof</span> MyContext&gt;
 <span class="hljs-comment">// For TS 3.7 and above:</span>
-<span class="hljs-keyword">declare</span> context: React.ContextType&lt;<span class="hljs-keyword">typeof</span> MyContext&gt;</code></pre>
+<span class="hljs-keyword">declare</span> context: React.ContextType&lt;<span class="hljs-keyword">typeof</span> MyContext&gt;
+</code></pre>
 						<dl class="tsd-comment-tags">
 							<dt>see</dt>
 							<dd><p><a href="https://reactjs.org/docs/context.html">https://reactjs.org/docs/context.html</a></p>
@@ -300,16 +301,17 @@ context!: React.ContextType&lt;<span class="hljs-keyword">typeof</span> MyContex
 							<p>If set, <code>this.context</code> will be set at runtime to the current value of the given Context.</p>
 						</div>
 						<p>Usage:</p>
-						<pre><code class="language-ts">type MyContext = number
-const Ctx = React.createContext&lt;MyContext&gt;(0)
+						<pre><code class="language-ts"><span class="hljs-keyword">type</span> MyContext = <span class="hljs-built_in">number</span>
+<span class="hljs-keyword">const</span> Ctx = React.createContext&lt;MyContext&gt;(<span class="hljs-number">0</span>)
 
-class Foo extends React.Component {
-  static contextType = Ctx
-  context!: React.ContextType&lt;typeof Ctx&gt;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  <span class="hljs-keyword">static</span> contextType = Ctx
+  context!: React.ContextType&lt;<span class="hljs-keyword">typeof</span> Ctx&gt;
   render () {
-    return &lt;&gt;My context&#x27;s value: {this.context}&lt;/&gt;;
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;&gt;</span>My context&#x27;s value: {this.context}<span class="hljs-tag">&lt;/&gt;</span></span>;
   }
-}</code></pre>
+}
+</code></pre>
 						<dl class="tsd-comment-tags">
 							<dt>see</dt>
 							<dd><p><a href="https://reactjs.org/docs/context.html#classcontexttype">https://reactjs.org/docs/context.html#classcontexttype</a></p>
@@ -524,7 +526,7 @@ class Foo extends React.Component {
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_shapes_circle_.circle.html">Circle</a>.<a href="_shapes_circle_.circle.html#componentdidupdate">componentDidUpdate</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L53">src/inspector/views/mod/LabeledInput.tsx:53</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L53">src/inspector/views/mod/LabeledInput.tsx:53</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -765,7 +767,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L247">src/inspector/views/mod/LabeledInput.tsx:247</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L247">src/inspector/views/mod/LabeledInput.tsx:247</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
@@ -782,7 +784,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L70">src/inspector/views/mod/LabeledInput.tsx:70</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L70">src/inspector/views/mod/LabeledInput.tsx:70</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -808,7 +810,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L89">src/inspector/views/mod/LabeledInput.tsx:89</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L89">src/inspector/views/mod/LabeledInput.tsx:89</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -834,7 +836,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L99">src/inspector/views/mod/LabeledInput.tsx:99</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L99">src/inspector/views/mod/LabeledInput.tsx:99</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -860,7 +862,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L75">src/inspector/views/mod/LabeledInput.tsx:75</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L75">src/inspector/views/mod/LabeledInput.tsx:75</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -895,7 +897,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L106">src/inspector/views/mod/LabeledInput.tsx:106</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L106">src/inspector/views/mod/LabeledInput.tsx:106</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -921,7 +923,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L83">src/inspector/views/mod/LabeledInput.tsx:83</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L83">src/inspector/views/mod/LabeledInput.tsx:83</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -950,7 +952,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L92">src/inspector/views/mod/LabeledInput.tsx:92</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L92">src/inspector/views/mod/LabeledInput.tsx:92</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -976,7 +978,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L216">src/inspector/views/mod/LabeledInput.tsx:216</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L216">src/inspector/views/mod/LabeledInput.tsx:216</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -993,7 +995,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L220">src/inspector/views/mod/LabeledInput.tsx:220</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L220">src/inspector/views/mod/LabeledInput.tsx:220</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -1010,7 +1012,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L265">src/inspector/views/mod/LabeledInput.tsx:265</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L265">src/inspector/views/mod/LabeledInput.tsx:265</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -1027,7 +1029,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L290">src/inspector/views/mod/LabeledInput.tsx:290</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L290">src/inspector/views/mod/LabeledInput.tsx:290</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -1044,7 +1046,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L258">src/inspector/views/mod/LabeledInput.tsx:258</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L258">src/inspector/views/mod/LabeledInput.tsx:258</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Element</span></h4>
@@ -1061,7 +1063,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L136">src/inspector/views/mod/LabeledInput.tsx:136</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L136">src/inspector/views/mod/LabeledInput.tsx:136</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -1078,7 +1080,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L211">src/inspector/views/mod/LabeledInput.tsx:211</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L211">src/inspector/views/mod/LabeledInput.tsx:211</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -1095,7 +1097,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L175">src/inspector/views/mod/LabeledInput.tsx:175</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L175">src/inspector/views/mod/LabeledInput.tsx:175</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -1112,7 +1114,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L122">src/inspector/views/mod/LabeledInput.tsx:122</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L122">src/inspector/views/mod/LabeledInput.tsx:122</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -1129,7 +1131,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L239">src/inspector/views/mod/LabeledInput.tsx:239</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L239">src/inspector/views/mod/LabeledInput.tsx:239</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -1146,7 +1148,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L253">src/inspector/views/mod/LabeledInput.tsx:253</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L253">src/inspector/views/mod/LabeledInput.tsx:253</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -1163,7 +1165,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L127">src/inspector/views/mod/LabeledInput.tsx:127</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L127">src/inspector/views/mod/LabeledInput.tsx:127</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1195,7 +1197,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L197">src/inspector/views/mod/LabeledInput.tsx:197</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L197">src/inspector/views/mod/LabeledInput.tsx:197</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -1212,7 +1214,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L206">src/inspector/views/mod/LabeledInput.tsx:206</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L206">src/inspector/views/mod/LabeledInput.tsx:206</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -1230,7 +1232,7 @@ class Foo extends React.Component {
 							<aside class="tsd-sources">
 								<p>Overrides Component.render</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L306">src/inspector/views/mod/LabeledInput.tsx:306</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L306">src/inspector/views/mod/LabeledInput.tsx:306</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -1320,7 +1322,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L115">src/inspector/views/mod/LabeledInput.tsx:115</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L115">src/inspector/views/mod/LabeledInput.tsx:115</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1343,7 +1345,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L60">src/inspector/views/mod/LabeledInput.tsx:60</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L60">src/inspector/views/mod/LabeledInput.tsx:60</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1369,7 +1371,7 @@ class Foo extends React.Component {
 					<aside class="tsd-sources">
 						<p>Overrides <a href="_shapes_circle_.circle.html">Circle</a>.<a href="_shapes_circle_.circle.html#state">state</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L50">src/inspector/views/mod/LabeledInput.tsx:50</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L50">src/inspector/views/mod/LabeledInput.tsx:50</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1378,7 +1380,7 @@ class Foo extends React.Component {
 						<div class="tsd-signature tsd-kind-icon">e<wbr>Value<span class="tsd-signature-symbol">:</span> <a href="../modules/_types_types_d_.html#value" class="tsd-signature-type">Value</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = this.props.eValue</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/penrose/penrose/blob/08567677/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L51">src/inspector/views/mod/LabeledInput.tsx:51</a></li>
+								<li>Defined in <a href="https://github.com/penrose/penrose/blob/cee03e73/packages/penrose-core/src/inspector/views/mod/LabeledInput.tsx#L51">src/inspector/views/mod/LabeledInput.tsx:51</a></li>
 							</ul>
 						</aside>
 					</section>
