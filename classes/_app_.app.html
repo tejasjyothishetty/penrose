@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>App | penrose-web</title>
-	<meta name="description" content="Documentation for penrose-web">
+	<title>App | penrose-core</title>
+	<meta name="description" content="Documentation for penrose-core">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">penrose-web</a>
+					<a href="../index.html" class="title">penrose-core</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -99,7 +99,6 @@
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_app_.app.html#canvas" class="tsd-kind-icon">canvas</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_app_.app.html#context" class="tsd-kind-icon">context</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_app_.app.html#props" class="tsd-kind-icon">props</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_app_.app.html#protocol" class="tsd-kind-icon">protocol</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_app_.app.html#refs" class="tsd-kind-icon">refs</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_app_.app.html#contexttype" class="tsd-kind-icon">context<wbr>Type</a></li>
 							</ul>
@@ -118,17 +117,17 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_app_.app.html#componentwillreceiveprops" class="tsd-kind-icon">component<wbr>Will<wbr>Receive<wbr>Props</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_app_.app.html#componentwillunmount" class="tsd-kind-icon">component<wbr>Will<wbr>Unmount</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_app_.app.html#componentwillupdate" class="tsd-kind-icon">component<wbr>Will<wbr>Update</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_app_.app.html#connecttosocket" class="tsd-kind-icon">connect<wbr>ToSocket</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_app_.app.html#downloadpdf" class="tsd-kind-icon">downloadPDF</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_app_.app.html#downloadsvg" class="tsd-kind-icon">downloadSVG</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_app_.app.html#downloadstate" class="tsd-kind-icon">download<wbr>State</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_app_.app.html#forceupdate" class="tsd-kind-icon">force<wbr>Update</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_app_.app.html#genstatefrontend" class="tsd-kind-icon">gen<wbr>State<wbr>Frontend</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_app_.app.html#getsnapshotbeforeupdate" class="tsd-kind-icon">get<wbr>Snapshot<wbr>Before<wbr>Update</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_app_.app.html#hideinspector" class="tsd-kind-icon">hide<wbr>Inspector</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_app_.app.html#modcanvas" class="tsd-kind-icon">mod<wbr>Canvas</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_app_.app.html#modshapes" class="tsd-kind-icon">mod<wbr>Shapes</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_app_.app.html#oncanvasstate" class="tsd-kind-icon">on<wbr>Canvas<wbr>State</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_app_.app.html#onconnectionstatus" class="tsd-kind-icon">on<wbr>Connection<wbr>Status</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_app_.app.html#onversion" class="tsd-kind-icon">on<wbr>Version</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_app_.app.html#render" class="tsd-kind-icon">render</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_app_.app.html#renderapp" class="tsd-kind-icon">render<wbr>App</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_app_.app.html#resample" class="tsd-kind-icon">resample</a></li>
@@ -221,7 +220,7 @@
 					<div class="tsd-signature tsd-kind-icon">buttons<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RefObject</span><span class="tsd-signature-symbol">&lt;</span><a href="_ui_buttonbar_.buttonbar.html" class="tsd-signature-type">ButtonBar</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = React.createRef&lt;ButtonBar&gt;()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L32">src/App.tsx:32</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L47">src/App.tsx:47</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -231,7 +230,7 @@
 					<div class="tsd-signature tsd-kind-icon">canvas<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RefObject</span><span class="tsd-signature-symbol">&lt;</span><a href="_ui_canvas_.canvas.html" class="tsd-signature-type">Canvas</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = React.createRef&lt;Canvas&gt;()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L31">src/App.tsx:31</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L46">src/App.tsx:46</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -271,16 +270,6 @@ context!: React.ContextType&lt;<span class="hljs-keyword">typeof</span> MyContex
 						<p>Inherited from <a href="_shapes_circle_.circle.html">Circle</a>.<a href="_shapes_circle_.circle.html#props">props</a></p>
 						<ul>
 							<li>Defined in node_modules/@types/react/index.d.ts:501</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="protocol" class="tsd-anchor"></a>
-					<h3>protocol</h3>
-					<div class="tsd-signature tsd-kind-icon">protocol<span class="tsd-signature-symbol">:</span> <a href="_protocol_.protocol.html" class="tsd-signature-type">Protocol</a><span class="tsd-signature-symbol"> = new Protocol(socketAddress, [{onConnectionStatus: this.onConnectionStatus,onVersion: this.onVersion,onCanvasState: this.onCanvasState,onError: console.warn,kind: &quot;renderer&quot;,},])</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L89">src/App.tsx:89</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -492,7 +481,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L83">src/App.tsx:83</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L92">src/App.tsx:92</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -536,17 +525,17 @@ class Foo extends React.Component {
 					<a name="componentdidmount" class="tsd-anchor"></a>
 					<h3>component<wbr>Did<wbr>Mount</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">component<wbr>Did<wbr>Mount<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">component<wbr>Did<wbr>Mount<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_shapes_circle_.circle.html">Circle</a>.<a href="_shapes_circle_.circle.html#componentdidmount">componentDidMount</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L113">src/App.tsx:113</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L222">src/App.tsx:222</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -745,6 +734,23 @@ class Foo extends React.Component {
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="connecttosocket" class="tsd-anchor"></a>
+					<h3>connect<wbr>ToSocket</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">connect<wbr>ToSocket<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L185">src/App.tsx:185</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="downloadpdf" class="tsd-anchor"></a>
 					<h3>downloadPDF</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -754,7 +760,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L73">src/App.tsx:73</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L82">src/App.tsx:82</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -771,7 +777,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L68">src/App.tsx:68</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L77">src/App.tsx:77</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -788,7 +794,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L78">src/App.tsx:78</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L87">src/App.tsx:87</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -816,6 +822,29 @@ class Foo extends React.Component {
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="genstatefrontend" class="tsd-anchor"></a>
+					<h3>gen<wbr>State<wbr>Frontend</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">gen<wbr>State<wbr>Frontend<span class="tsd-signature-symbol">(</span>files<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_shapes_draggable_.istate.html" class="tsd-signature-type">IState</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L115">src/App.tsx:115</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>files: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_shapes_draggable_.istate.html" class="tsd-signature-type">IState</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -865,7 +894,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L141">src/App.tsx:141</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L240">src/App.tsx:240</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -882,7 +911,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L46">src/App.tsx:46</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L55">src/App.tsx:55</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -905,7 +934,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L34">src/App.tsx:34</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L49">src/App.tsx:49</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -928,7 +957,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L54">src/App.tsx:54</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L63">src/App.tsx:63</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -938,52 +967,6 @@ class Foo extends React.Component {
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="onconnectionstatus" class="tsd-anchor"></a>
-					<h3>on<wbr>Connection<wbr>Status</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">on<wbr>Connection<wbr>Status<span class="tsd-signature-symbol">(</span>conn<span class="tsd-signature-symbol">: </span><a href="../enums/_protocol_.connectionstatus.html" class="tsd-signature-type">ConnectionStatus</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L38">src/App.tsx:38</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>conn: <a href="../enums/_protocol_.connectionstatus.html" class="tsd-signature-type">ConnectionStatus</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="onversion" class="tsd-anchor"></a>
-					<h3>on<wbr>Version</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">on<wbr>Version<span class="tsd-signature-symbol">(</span>version<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L41">src/App.tsx:41</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>version: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -998,7 +981,7 @@ class Foo extends React.Component {
 							<aside class="tsd-sources">
 								<p>Overrides Component.render</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L208">src/App.tsx:208</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L312">src/App.tsx:312</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -1015,7 +998,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L145">src/App.tsx:145</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L244">src/App.tsx:244</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -1032,7 +1015,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L103">src/App.tsx:103</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L104">src/App.tsx:104</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1049,7 +1032,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L134">src/App.tsx:134</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L233">src/App.tsx:233</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1145,7 +1128,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L98">src/App.tsx:98</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L99">src/App.tsx:99</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1162,7 +1145,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L138">src/App.tsx:138</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L237">src/App.tsx:237</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1179,7 +1162,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L127">src/App.tsx:127</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L226">src/App.tsx:226</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1202,7 +1185,7 @@ class Foo extends React.Component {
 					<aside class="tsd-sources">
 						<p>Overrides <a href="_shapes_circle_.circle.html">Circle</a>.<a href="_shapes_circle_.circle.html#state">state</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L23">src/App.tsx:23</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L36">src/App.tsx:36</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1211,7 +1194,17 @@ class Foo extends React.Component {
 						<div class="tsd-signature tsd-kind-icon">autostep<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> = true</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L26">src/App.tsx:26</a></li>
+								<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L39">src/App.tsx:39</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="state.connected" class="tsd-anchor"></a>
+						<h3>connected</h3>
+						<div class="tsd-signature tsd-kind-icon">connected<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> = false</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L44">src/App.tsx:44</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1221,7 +1214,17 @@ class Foo extends React.Component {
 						<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> = undefined</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L24">src/App.tsx:24</a></li>
+								<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L37">src/App.tsx:37</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="state.files" class="tsd-anchor"></a>
+						<h3>files</h3>
+						<div class="tsd-signature tsd-kind-icon">files<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L43">src/App.tsx:43</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1231,7 +1234,7 @@ class Foo extends React.Component {
 						<div class="tsd-signature tsd-kind-icon">history<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">never</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L25">src/App.tsx:25</a></li>
+								<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L38">src/App.tsx:38</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1241,7 +1244,7 @@ class Foo extends React.Component {
 						<div class="tsd-signature tsd-kind-icon">penrose<wbr>Version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L28">src/App.tsx:28</a></li>
+								<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L41">src/App.tsx:41</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1251,7 +1254,7 @@ class Foo extends React.Component {
 						<div class="tsd-signature tsd-kind-icon">processed<wbr>Initial<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> = false</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L27">src/App.tsx:27</a></li>
+								<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L40">src/App.tsx:40</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1261,7 +1264,7 @@ class Foo extends React.Component {
 						<div class="tsd-signature tsd-kind-icon">show<wbr>Inspector<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> = true</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/App.tsx#L29">src/App.tsx:29</a></li>
+								<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/App.tsx#L42">src/App.tsx:42</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1300,9 +1303,6 @@ class Foo extends React.Component {
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="_app_.app.html#props" class="tsd-kind-icon">props</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_app_.app.html#protocol" class="tsd-kind-icon">protocol</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="_app_.app.html#refs" class="tsd-kind-icon">refs</a>
@@ -1344,6 +1344,9 @@ class Foo extends React.Component {
 								<a href="_app_.app.html#componentwillupdate" class="tsd-kind-icon">component<wbr>Will<wbr>Update</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_app_.app.html#connecttosocket" class="tsd-kind-icon">connect<wbr>ToSocket</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_app_.app.html#downloadpdf" class="tsd-kind-icon">downloadPDF</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -1354,6 +1357,9 @@ class Foo extends React.Component {
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="_app_.app.html#forceupdate" class="tsd-kind-icon">force<wbr>Update</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_app_.app.html#genstatefrontend" class="tsd-kind-icon">gen<wbr>State<wbr>Frontend</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="_app_.app.html#getsnapshotbeforeupdate" class="tsd-kind-icon">get<wbr>Snapshot<wbr>Before<wbr>Update</a>
@@ -1369,12 +1375,6 @@ class Foo extends React.Component {
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_app_.app.html#oncanvasstate" class="tsd-kind-icon">on<wbr>Canvas<wbr>State</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_app_.app.html#onconnectionstatus" class="tsd-kind-icon">on<wbr>Connection<wbr>Status</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_app_.app.html#onversion" class="tsd-kind-icon">on<wbr>Version</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
 								<a href="_app_.app.html#render" class="tsd-kind-icon">render</a>
@@ -1446,9 +1446,6 @@ class Foo extends React.Component {
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>

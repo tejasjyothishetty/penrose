@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IBoolLit | penrose-web</title>
-	<meta name="description" content="Documentation for penrose-web">
+	<title>IBoolLit | penrose-core</title>
+	<meta name="description" content="Documentation for penrose-core">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">penrose-web</a>
+					<a href="../index.html" class="title">penrose-core</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -73,7 +73,12 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IBoolLit</span>
+						<a href="_types_types_d_.astnode.html" class="tsd-signature-type">ASTNode</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">IBoolLit</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -84,8 +89,12 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_types_types_d_.iboollit.html#children" class="tsd-kind-icon">children</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_types_d_.iboollit.html#contents" class="tsd-kind-icon">contents</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_types_d_.iboollit.html#tag" class="tsd-kind-icon">tag</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_types_types_d_.iboollit.html#end" class="tsd-kind-icon">end</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_types_types_d_.iboollit.html#nodetype" class="tsd-kind-icon">node<wbr>Type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_types_types_d_.iboollit.html#start" class="tsd-kind-icon">start</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="_types_types_d_.iboollit.html#tag" class="tsd-kind-icon">tag</a></li>
 							</ul>
 						</section>
 					</div>
@@ -93,23 +102,68 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="children" class="tsd-anchor"></a>
+					<h3>children</h3>
+					<div class="tsd-signature tsd-kind-icon">children<span class="tsd-signature-symbol">:</span> <a href="_types_types_d_.astnode.html" class="tsd-signature-type">ASTNode</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_types_types_d_.istringlit.html">IStringLit</a>.<a href="_types_types_d_.istringlit.html#children">children</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/types/types.d.ts#L1628">src/types/types.d.ts:1628</a></li>
+						</ul>
+					</aside>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="contents" class="tsd-anchor"></a>
 					<h3>contents</h3>
 					<div class="tsd-signature tsd-kind-icon">contents<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/types/types.d.ts#L193">src/types/types.d.ts:193</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/types/types.d.ts#L136">src/types/types.d.ts:136</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="end" class="tsd-anchor"></a>
+					<h3>end</h3>
+					<div class="tsd-signature tsd-kind-icon">end<span class="tsd-signature-symbol">:</span> <a href="_types_types_d_.sourceloc.html" class="tsd-signature-type">SourceLoc</a></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_types_types_d_.istringlit.html">IStringLit</a>.<a href="_types_types_d_.istringlit.html#end">end</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/types/types.d.ts#L1626">src/types/types.d.ts:1626</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="nodetype" class="tsd-anchor"></a>
+					<h3>node<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">node<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_types_types_d_.istringlit.html">IStringLit</a>.<a href="_types_types_d_.istringlit.html#nodetype">nodeType</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/types/types.d.ts#L1627">src/types/types.d.ts:1627</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="start" class="tsd-anchor"></a>
+					<h3>start</h3>
+					<div class="tsd-signature tsd-kind-icon">start<span class="tsd-signature-symbol">:</span> <a href="_types_types_d_.sourceloc.html" class="tsd-signature-type">SourceLoc</a></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_types_types_d_.istringlit.html">IStringLit</a>.<a href="_types_types_d_.istringlit.html#start">start</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/types/types.d.ts#L1625">src/types/types.d.ts:1625</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
 					<a name="tag" class="tsd-anchor"></a>
 					<h3>tag</h3>
 					<div class="tsd-signature tsd-kind-icon">tag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"BoolLit"</span></div>
 					<aside class="tsd-sources">
+						<p>Overrides <a href="_types_types_d_.astnode.html">ASTNode</a>.<a href="_types_types_d_.astnode.html#tag">tag</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/f56d55f5/penrose-web/src/types/types.d.ts#L192">src/types/types.d.ts:192</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/types/types.d.ts#L135">src/types/types.d.ts:135</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -133,10 +187,22 @@
 					<li class="current tsd-kind-interface tsd-parent-kind-module">
 						<a href="_types_types_d_.iboollit.html" class="tsd-kind-icon">IBool<wbr>Lit</a>
 						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_types_types_d_.iboollit.html#children" class="tsd-kind-icon">children</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_types_types_d_.iboollit.html#contents" class="tsd-kind-icon">contents</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_types_types_d_.iboollit.html#end" class="tsd-kind-icon">end</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_types_types_d_.iboollit.html#nodetype" class="tsd-kind-icon">node<wbr>Type</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_types_types_d_.iboollit.html#start" class="tsd-kind-icon">start</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
 								<a href="_types_types_d_.iboollit.html#tag" class="tsd-kind-icon">tag</a>
 							</li>
 						</ul>
@@ -164,9 +230,6 @@
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>

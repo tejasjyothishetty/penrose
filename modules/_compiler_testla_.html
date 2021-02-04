@@ -1,0 +1,187 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>&quot;compiler/TestLA&quot; | penrose-core</title>
+	<meta name="description" content="Documentation for penrose-core">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">penrose-core</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="_compiler_testla_.html">&quot;compiler/TestLA&quot;</a>
+				</li>
+			</ul>
+			<h1>Module &quot;compiler/TestLA&quot;</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Variables</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="_compiler_testla_.html#domainstr" class="tsd-kind-icon">domain<wbr>Str</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="_compiler_testla_.html#stystr" class="tsd-kind-icon">sty<wbr>Str</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="_compiler_testla_.html#substrsugared" class="tsd-kind-icon">sub<wbr>Str<wbr>Sugared</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="_compiler_testla_.html#substrunsugared" class="tsd-kind-icon">sub<wbr>Str<wbr>Unsugared</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Variables</h2>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="domainstr" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> domain<wbr>Str</h3>
+					<div class="tsd-signature tsd-kind-icon">domain<wbr>Str<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"-- Typestype Scalartype VectorSpacetype Vectortype LinearMaptype UnitVector -- just for testingUnitVector &lt;: Vectorconstructor Vec2: Scalar x * Scalar y -&gt; Vector v-- Operatorsfunction neg: Vector v -&gt; Vectorfunction scale: Scalar c * Vector v -&gt; Vector cvfunction addV: Vector * Vector -&gt; Vectorfunction addS: Scalar s1 * Scalar s2 -&gt; Scalarfunction norm: Vector v -&gt; Scalarfunction innerProduct: Vector * Vector -&gt; Scalarfunction determinant: Vector * Vector -&gt; Scalarfunction apply: LinearMap f * Vector -&gt; Vector-- Predicatespredicate In: Vector * VectorSpace Vpredicate From: LinearMap V * VectorSpace domain * VectorSpace codomainpredicate Not: Prop p1predicate Orthogonal: Vector v1 * Vector v2predicate Unit: Vector v-- Syntactic sugarnotation &quot;det(v1, v2)&quot; ~ &quot;determinant(v1, v2)&quot;notation &quot;LinearMap f : U → V&quot; ~ &quot;LinearMap f; From(f, U, V)&quot;notation &quot;v1 + v2&quot; ~ &quot;addV(v1, v2)&quot;notation &quot;-v1&quot; ~ &quot;neg(v1)&quot;notation &quot;Vector a ∈ U&quot; ~ &quot;Vector a; In(a, U)&quot;notation &quot;|y1|&quot; ~ &quot;norm(y1)&quot;notation &quot;&lt;v1,v2&gt;&quot; ~ &quot;innerProduct(v1, v2)&quot;notation &quot;s * v1&quot; ~ &quot;scale(s, v1)&quot;notation &quot;Scalar c :&#x3D; &quot; ~ &quot;Scalar c; c :&#x3D; &quot;notation &quot;f(v)&quot; ~ &quot;apply(f, v)&quot;-- Examples for prelude, just for reproducing (Should be removed)--value T : VectorSpace-- value T1 : VectorSpace"</span><span class="tsd-signature-symbol"> = &#x60;-- Typestype Scalartype VectorSpacetype Vectortype LinearMaptype UnitVector -- just for testingUnitVector &lt;: Vectorconstructor Vec2: Scalar x * Scalar y -&gt; Vector v-- Operatorsfunction neg: Vector v -&gt; Vectorfunction scale: Scalar c * Vector v -&gt; Vector cvfunction addV: Vector * Vector -&gt; Vectorfunction addS: Scalar s1 * Scalar s2 -&gt; Scalarfunction norm: Vector v -&gt; Scalarfunction innerProduct: Vector * Vector -&gt; Scalarfunction determinant: Vector * Vector -&gt; Scalarfunction apply: LinearMap f * Vector -&gt; Vector-- Predicatespredicate In: Vector * VectorSpace Vpredicate From: LinearMap V * VectorSpace domain * VectorSpace codomainpredicate Not: Prop p1predicate Orthogonal: Vector v1 * Vector v2predicate Unit: Vector v-- Syntactic sugarnotation &quot;det(v1, v2)&quot; ~ &quot;determinant(v1, v2)&quot;notation &quot;LinearMap f : U → V&quot; ~ &quot;LinearMap f; From(f, U, V)&quot;notation &quot;v1 + v2&quot; ~ &quot;addV(v1, v2)&quot;notation &quot;-v1&quot; ~ &quot;neg(v1)&quot;notation &quot;Vector a ∈ U&quot; ~ &quot;Vector a; In(a, U)&quot;notation &quot;|y1|&quot; ~ &quot;norm(y1)&quot;notation &quot;&lt;v1,v2&gt;&quot; ~ &quot;innerProduct(v1, v2)&quot;notation &quot;s * v1&quot; ~ &quot;scale(s, v1)&quot;notation &quot;Scalar c :&#x3D; &quot; ~ &quot;Scalar c; c :&#x3D; &quot;notation &quot;f(v)&quot; ~ &quot;apply(f, v)&quot;-- Examples for prelude, just for reproducing (Should be removed)--value T : VectorSpace-- value T1 : VectorSpace&#x60;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/compiler/TestLA.ts#L1">src/compiler/TestLA.ts:1</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="stystr" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> sty<wbr>Str</h3>
+					<div class="tsd-signature tsd-kind-icon">sty<wbr>Str<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"const { -- 0scalar perpLen &#x3D; 20.0-- For unit markscalar markerPadding &#x3D; 15.0scalar barSize &#x3D; 5.0scalar vectorSpaceSize &#x3D; 350.0scalar repelWeight &#x3D; 0.7scalar arrowheadSize &#x3D; 0.7scalar lineThickness &#x3D; 1.int intForTesting &#x3D; 1bool boolForTesting &#x3D; true}C { -- 1-- black &#x3D; #000000color black &#x3D; rgba(0.,0.,0.,1.)white &#x3D; rgba(1., 1., 1., 1.)lightBlue &#x3D; rgba(1e-1, 0.1, 0.9, 1.0)darkBlue &#x3D; rgba(lightBlue.r / 2., lightBlue.g / 2., lightBlue.b / 2., 0.5)darkGray &#x3D; rgba(0.4, 0.4, 0.4, 1.)gray &#x3D; rgba(0.6, 0.6, 0.6, 1.)green &#x3D; rgba(0., 0.8, 0., 1.)-- blue &#x3D; #0000ffnone &#x3D; rgba(0., 0., 0., 0.)}-- Just some weird definitions to test parser. Not used in rest of programtesting { -- 2-- COMBAK: Test that plugins still run-- pluginVar &#x3D; &quot;ddg&quot;[&quot;a&quot;][&quot;length&quot;]x &#x3D; { 1, {2, 3} }y &#x3D; [-2., const.perpLen, const.markerPadding + 3]a &#x3D; (-1.0, ?)a1 &#x3D; (-1.0, 2.) + (1e5, 2.0)m &#x3D; (a, (-1., 2.))v &#x3D; (a + (2., 900.))  / (4.0 + 3.)-- z &#x3D; Colors.black.gasum &#x3D; a[1] + a[0]c &#x3D; 0b &#x3D; 1msum &#x3D; m[1][0] + m[c][b]nv &#x3D; -vt1 &#x3D; x[1][b]-- test parser access of matrix-- test0 &#x3D; f(0)[1]-- test1 &#x3D; makeMatrix((1, 0.0, 5.0), (-1, -9., -4.))[2][0]-- test2 &#x3D; (makeVector(-1, 3.0) + (3.4, 2.1))[0]}forall VectorSpace U { -- 3scalar axisSize &#x3D; const.vectorSpaceSize / 2.0 -- This should get promoted to floatvec2 U.origin &#x3D; (0., 0.)vec2 o &#x3D; U.originU.axisColor &#x3D; C.grayshape U.background &#x3D; Square {center : U.originside : const.vectorSpaceSizecolor : C.nonestrokeColor : C.none-- strokeWidth : 2.0}shape U.xAxis &#x3D; Line {start : (o[0] - axisSize, o[1]) -- TODO This gets mis-parsed as a matrix accessend : (o[0] + axisSize, o[1])thickness : const.lineThicknessstyle : &quot;solid&quot;color : U.axisColorleftArrowhead: truerightArrowhead: truearrowheadSize : const.arrowheadSize * 2.}U.yAxis &#x3D; Line {start : (o[0], o[1] - axisSize)end : (o[0], o[1] + axisSize)thickness : const.lineThicknessstyle : &quot;solid&quot;color : U.axisColorleftArrowhead: truerightArrowhead: truearrowheadSize : const.arrowheadSize * 2.}U.text &#x3D; Text {string : U.labelcenter : (U.origin[0] - axisSize, U.origin[1] + axisSize)color : U.axisColor}}forall Vector u; VectorSpace U -- 4where In(u,U) {u.text &#x3D; Text {-- center : (?, ?) -- This should be done automaticallystring : u.labelcolor : u.arrow.color}u.arrow &#x3D; Arrow {start : U.originend : (?, ?)thickness : 3.0color : C.lightBluearrowheadSize : const.arrowheadSize}u.vector &#x3D; u.arrow.end - u.arrow.start -- Vector sugar for subtractionensure contains(U.background, u.arrow)ensure contains(U.background, u.text)ensure atDist(u.arrow, u.text, 15.0)ensure minSize(u.arrow)layer u.text above U.xAxislayer u.text above U.yAxis}forall Vector u; Vector v -- 5with VectorSpace Uwhere Orthogonal(u, v); In(u, U); In(v, U) {startR &#x3D; u.arrow.start -- TODO: Do we want destructuring syntax like vec2[] [startR, endR] &#x3D; [u.arrow.start, u.arrow.end]endR &#x3D; u.arrow.endstartL &#x3D; v.arrow.startendL &#x3D; v.arrow.enddirR &#x3D; normalize(endR - startR)  -- Syntax sugar for vectors (better in Style because JS doesn&#x27;t allow it!)dirL &#x3D; normalize(endL - startL)ptL &#x3D; startR + const.perpLen * dirLptR &#x3D; startR + const.perpLen * dirRptLR &#x3D; ptL + const.perpLen * dirRpts &#x3D; [startR, ptL, ptLR, ptR]-- toPath &#x3D; functions.pathFromPoints -- COMBAK: Add ability to alias function names-- Draw perpendicular mark -- NOTE: local shapes should still be drawnperpMark &#x3D; Path {pathData : pathFromPoints(&quot;closed&quot;, pts)strokeWidth : 2.0color : C.blackfill : C.white}-- Make sure vectors are orthogonal (use ensure?)-- eq &#x3D; functions.equalencourage equal(dot(u.vector, v.vector), 0.0) -- NOTE: Have to import Penrose fns-- COMBAK: Test parsing the expressions that involve local varslayer v.arrow above perpMarklayer u.arrow above perpMark}forall Vector v -- 6with VectorSpace U; Vector wwhere In(v, U); Unit(v); Orthogonal(v, w) {-- Usually, the unit vector shouldn&#x27;t need to know about orthogonal vectors-- but we need to position the unit mark so it doesn&#x27;t overlap with the &quot;inside&quot; of the two vectorsstrokeWidth &#x3D; 2.0padding &#x3D; 15.0 -- COMBAK: What is this?-- toPath &#x3D; functions.pathFromPoints -- COMBAK-- The start and end of the body of the unit marker line-- NOTE: We need to have lists of vectorsdir &#x3D; normalize(w.arrow.end - w.arrow.start)normal &#x3D; -dirmarkStart &#x3D; v.arrow.start + padding * normalmarkEnd &#x3D; v.arrow.end + padding * normalv.markerLine &#x3D; [markStart, markEnd]v.unitMarkerLine &#x3D; Path {pathData : pathFromPoints(&quot;open&quot;, v.markerLine)strokeWidth : strokeWidthcolor : C.blackfill : C.none}-- Could use normal instead, just doing this to demonstrate how to use matricesmat2x2 rot90CW &#x3D; ((0., 1.), (-1., 0.))vec2 markNormal &#x3D; mul(rot90CW, normalize(v.arrow.end - v.arrow.start)) -- TODO: Do we want syntactic sugar for matrix-vector multiplication? Or a better name?scalar c &#x3D; const.barSizevec2 halfvec &#x3D; c * markNormalv.unitMarkerEnd1 &#x3D; Path {pathData : pathFromPoints(&quot;open&quot;, [markStart - halfvec, markStart + halfvec]) -- TODO: Can we infer this type if it&#x27;s written anonymously?strokeWidth : strokeWidthcolor : C.blackfill : C.none}v.unitMarkerEnd2 &#x3D; Path {pathData : pathFromPoints(&quot;open&quot;, [markEnd - halfvec, markEnd + halfvec])strokeWidth : strokeWidthcolor : C.blackfill : C.none}vec2 midpointLoc &#x3D; (v.markerLine[0] + v.markerLine[1]) / 2.vec2 labelPos &#x3D; midpointLoc + const.markerPadding * normalv.unitMarkerText &#x3D; Text {string : &quot;1&quot;center : labelPoscolor : C.black}layer v.unitMarkerLine above U.xAxislayer v.unitMarkerLine above U.yAxis}forall Vector &#x60;x2&#x60; { -- 7override &#x60;x2&#x60;.arrow.color &#x3D; C.green}"</span><span class="tsd-signature-symbol"> = &#x60;const { -- 0scalar perpLen &#x3D; 20.0-- For unit markscalar markerPadding &#x3D; 15.0scalar barSize &#x3D; 5.0scalar vectorSpaceSize &#x3D; 350.0scalar repelWeight &#x3D; 0.7scalar arrowheadSize &#x3D; 0.7scalar lineThickness &#x3D; 1.int intForTesting &#x3D; 1bool boolForTesting &#x3D; true}C { -- 1-- black &#x3D; #000000color black &#x3D; rgba(0.,0.,0.,1.)white &#x3D; rgba(1., 1., 1., 1.)lightBlue &#x3D; rgba(1e-1, 0.1, 0.9, 1.0)darkBlue &#x3D; rgba(lightBlue.r / 2., lightBlue.g / 2., lightBlue.b / 2., 0.5)darkGray &#x3D; rgba(0.4, 0.4, 0.4, 1.)gray &#x3D; rgba(0.6, 0.6, 0.6, 1.)green &#x3D; rgba(0., 0.8, 0., 1.)-- blue &#x3D; #0000ffnone &#x3D; rgba(0., 0., 0., 0.)}-- Just some weird definitions to test parser. Not used in rest of programtesting { -- 2-- COMBAK: Test that plugins still run-- pluginVar &#x3D; &quot;ddg&quot;[&quot;a&quot;][&quot;length&quot;]x &#x3D; { 1, {2, 3} }y &#x3D; [-2., const.perpLen, const.markerPadding + 3]a &#x3D; (-1.0, ?)a1 &#x3D; (-1.0, 2.) + (1e5, 2.0)m &#x3D; (a, (-1., 2.))v &#x3D; (a + (2., 900.))  / (4.0 + 3.)-- z &#x3D; Colors.black.gasum &#x3D; a[1] + a[0]c &#x3D; 0b &#x3D; 1msum &#x3D; m[1][0] + m[c][b]nv &#x3D; -vt1 &#x3D; x[1][b]-- test parser access of matrix-- test0 &#x3D; f(0)[1]-- test1 &#x3D; makeMatrix((1, 0.0, 5.0), (-1, -9., -4.))[2][0]-- test2 &#x3D; (makeVector(-1, 3.0) + (3.4, 2.1))[0]}forall VectorSpace U { -- 3scalar axisSize &#x3D; const.vectorSpaceSize / 2.0 -- This should get promoted to floatvec2 U.origin &#x3D; (0., 0.)vec2 o &#x3D; U.originU.axisColor &#x3D; C.grayshape U.background &#x3D; Square {center : U.originside : const.vectorSpaceSizecolor : C.nonestrokeColor : C.none-- strokeWidth : 2.0}shape U.xAxis &#x3D; Line {start : (o[0] - axisSize, o[1]) -- TODO This gets mis-parsed as a matrix accessend : (o[0] + axisSize, o[1])thickness : const.lineThicknessstyle : &quot;solid&quot;color : U.axisColorleftArrowhead: truerightArrowhead: truearrowheadSize : const.arrowheadSize * 2.}U.yAxis &#x3D; Line {start : (o[0], o[1] - axisSize)end : (o[0], o[1] + axisSize)thickness : const.lineThicknessstyle : &quot;solid&quot;color : U.axisColorleftArrowhead: truerightArrowhead: truearrowheadSize : const.arrowheadSize * 2.}U.text &#x3D; Text {string : U.labelcenter : (U.origin[0] - axisSize, U.origin[1] + axisSize)color : U.axisColor}}forall Vector u; VectorSpace U -- 4where In(u,U) {u.text &#x3D; Text {-- center : (?, ?) -- This should be done automaticallystring : u.labelcolor : u.arrow.color}u.arrow &#x3D; Arrow {start : U.originend : (?, ?)thickness : 3.0color : C.lightBluearrowheadSize : const.arrowheadSize}u.vector &#x3D; u.arrow.end - u.arrow.start -- Vector sugar for subtractionensure contains(U.background, u.arrow)ensure contains(U.background, u.text)ensure atDist(u.arrow, u.text, 15.0)ensure minSize(u.arrow)layer u.text above U.xAxislayer u.text above U.yAxis}forall Vector u; Vector v -- 5with VectorSpace Uwhere Orthogonal(u, v); In(u, U); In(v, U) {startR &#x3D; u.arrow.start -- TODO: Do we want destructuring syntax like vec2[] [startR, endR] &#x3D; [u.arrow.start, u.arrow.end]endR &#x3D; u.arrow.endstartL &#x3D; v.arrow.startendL &#x3D; v.arrow.enddirR &#x3D; normalize(endR - startR)  -- Syntax sugar for vectors (better in Style because JS doesn&#x27;t allow it!)dirL &#x3D; normalize(endL - startL)ptL &#x3D; startR + const.perpLen * dirLptR &#x3D; startR + const.perpLen * dirRptLR &#x3D; ptL + const.perpLen * dirRpts &#x3D; [startR, ptL, ptLR, ptR]-- toPath &#x3D; functions.pathFromPoints -- COMBAK: Add ability to alias function names-- Draw perpendicular mark -- NOTE: local shapes should still be drawnperpMark &#x3D; Path {pathData : pathFromPoints(&quot;closed&quot;, pts)strokeWidth : 2.0color : C.blackfill : C.white}-- Make sure vectors are orthogonal (use ensure?)-- eq &#x3D; functions.equalencourage equal(dot(u.vector, v.vector), 0.0) -- NOTE: Have to import Penrose fns-- COMBAK: Test parsing the expressions that involve local varslayer v.arrow above perpMarklayer u.arrow above perpMark}forall Vector v -- 6with VectorSpace U; Vector wwhere In(v, U); Unit(v); Orthogonal(v, w) {-- Usually, the unit vector shouldn&#x27;t need to know about orthogonal vectors-- but we need to position the unit mark so it doesn&#x27;t overlap with the &quot;inside&quot; of the two vectorsstrokeWidth &#x3D; 2.0padding &#x3D; 15.0 -- COMBAK: What is this?-- toPath &#x3D; functions.pathFromPoints -- COMBAK-- The start and end of the body of the unit marker line-- NOTE: We need to have lists of vectorsdir &#x3D; normalize(w.arrow.end - w.arrow.start)normal &#x3D; -dirmarkStart &#x3D; v.arrow.start + padding * normalmarkEnd &#x3D; v.arrow.end + padding * normalv.markerLine &#x3D; [markStart, markEnd]v.unitMarkerLine &#x3D; Path {pathData : pathFromPoints(&quot;open&quot;, v.markerLine)strokeWidth : strokeWidthcolor : C.blackfill : C.none}-- Could use normal instead, just doing this to demonstrate how to use matricesmat2x2 rot90CW &#x3D; ((0., 1.), (-1., 0.))vec2 markNormal &#x3D; mul(rot90CW, normalize(v.arrow.end - v.arrow.start)) -- TODO: Do we want syntactic sugar for matrix-vector multiplication? Or a better name?scalar c &#x3D; const.barSizevec2 halfvec &#x3D; c * markNormalv.unitMarkerEnd1 &#x3D; Path {pathData : pathFromPoints(&quot;open&quot;, [markStart - halfvec, markStart + halfvec]) -- TODO: Can we infer this type if it&#x27;s written anonymously?strokeWidth : strokeWidthcolor : C.blackfill : C.none}v.unitMarkerEnd2 &#x3D; Path {pathData : pathFromPoints(&quot;open&quot;, [markEnd - halfvec, markEnd + halfvec])strokeWidth : strokeWidthcolor : C.blackfill : C.none}vec2 midpointLoc &#x3D; (v.markerLine[0] + v.markerLine[1]) / 2.vec2 labelPos &#x3D; midpointLoc + const.markerPadding * normalv.unitMarkerText &#x3D; Text {string : &quot;1&quot;center : labelPoscolor : C.black}layer v.unitMarkerLine above U.xAxislayer v.unitMarkerLine above U.yAxis}forall Vector \&#x60;x2\&#x60; { -- 7override \&#x60;x2\&#x60;.arrow.color &#x3D; C.green}&#x60;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/compiler/TestLA.ts#L70">src/compiler/TestLA.ts:70</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="substrsugared" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> sub<wbr>Str<wbr>Sugared</h3>
+					<div class="tsd-signature tsd-kind-icon">sub<wbr>Str<wbr>Sugared<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"VectorSpace XVector x1 ∈ XVector x2 ∈ XUnit(x1)Orthogonal(x1, x2)Label x1 $x_1$Label x2 $x_2$"</span><span class="tsd-signature-symbol"> = &#x60;VectorSpace XVector x1 ∈ XVector x2 ∈ XUnit(x1)Orthogonal(x1, x2)Label x1 $x_1$Label x2 $x_2$&#x60;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/compiler/TestLA.ts#L48">src/compiler/TestLA.ts:48</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="substrunsugared" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> sub<wbr>Str<wbr>Unsugared</h3>
+					<div class="tsd-signature tsd-kind-icon">sub<wbr>Str<wbr>Unsugared<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"VectorSpace XVector x1In(x1, X)Vector x2In(x2, X)Unit(x1)Orthogonal(x1, x2)Label x1 $x_1$Label x2 $x_2$"</span><span class="tsd-signature-symbol"> = &#x60;VectorSpace XVector x1In(x1, X)Vector x2In(x2, X)Unit(x1)Orthogonal(x1, x2)Label x1 $x_1$Label x2 $x_2$&#x60;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/7842b61a/packages/penrose-core/src/compiler/TestLA.ts#L58">src/compiler/TestLA.ts:58</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="_compiler_testla_.html">&quot;compiler/<wbr>TestLA&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="_compiler_testla_.html#domainstr" class="tsd-kind-icon">domain<wbr>Str</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="_compiler_testla_.html#stystr" class="tsd-kind-icon">sty<wbr>Str</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="_compiler_testla_.html#substrsugared" class="tsd-kind-icon">sub<wbr>Str<wbr>Sugared</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="_compiler_testla_.html#substrunsugared" class="tsd-kind-icon">sub<wbr>Str<wbr>Unsugared</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
