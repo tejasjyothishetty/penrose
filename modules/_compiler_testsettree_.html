@@ -90,7 +90,7 @@
 					<div class="tsd-signature tsd-kind-icon">domain<wbr>Str<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"type Settype Pointtype Mapconstructor Singleton : Point p -&gt; Setfunction Intersection : Set a * Set b -&gt; Setfunction Union : Set a * Set b -&gt; Setfunction Subtraction : Set a * Set b -&gt; Setfunction CartesianProduct : Set a * Set b -&gt; Setfunction Difference : Set a * Set b -&gt; Setfunction Subset : Set a * Set b -&gt; Setfunction AddPoint : Point p * Set s1 -&gt; Setpredicate Not : Prop p1predicate From : Map f * Set domain * Set codomainpredicate Empty : Set spredicate Intersecting : Set s1 * Set s2predicate IsSubset : Set s1 * Set s2predicate PointIn : Set s * Point ppredicate In : Point p * Set spredicate Injection : Map mpredicate Surjection : Map mpredicate Bijection : Map mpredicate PairIn : Point * Point * Mapnotation &quot;A ⊂ B&quot; ~ &quot;IsSubset(A, B)&quot;notation &quot;p ∈ A&quot; ~ &quot;PointIn(A, p)&quot;notation &quot;p ∉ A&quot; ~ &quot;PointNotIn(A, p)&quot;notation &quot;A ∩ B &#x3D; ∅&quot; ~ &quot;Not(Intersecting(A, B))&quot;notation &quot;f: A -&gt; B&quot; ~ &quot;Map f; From(f, A, B)&quot;"</span><span class="tsd-signature-symbol"> = &#x60;type Settype Pointtype Mapconstructor Singleton : Point p -&gt; Setfunction Intersection : Set a * Set b -&gt; Setfunction Union : Set a * Set b -&gt; Setfunction Subtraction : Set a * Set b -&gt; Setfunction CartesianProduct : Set a * Set b -&gt; Setfunction Difference : Set a * Set b -&gt; Setfunction Subset : Set a * Set b -&gt; Setfunction AddPoint : Point p * Set s1 -&gt; Setpredicate Not : Prop p1predicate From : Map f * Set domain * Set codomainpredicate Empty : Set spredicate Intersecting : Set s1 * Set s2predicate IsSubset : Set s1 * Set s2predicate PointIn : Set s * Point ppredicate In : Point p * Set spredicate Injection : Map mpredicate Surjection : Map mpredicate Bijection : Map mpredicate PairIn : Point * Point * Mapnotation &quot;A ⊂ B&quot; ~ &quot;IsSubset(A, B)&quot;notation &quot;p ∈ A&quot; ~ &quot;PointIn(A, p)&quot;notation &quot;p ∉ A&quot; ~ &quot;PointNotIn(A, p)&quot;notation &quot;A ∩ B &#x3D; ∅&quot; ~ &quot;Not(Intersecting(A, B))&quot;notation &quot;f: A -&gt; B&quot; ~ &quot;Map f; From(f, A, B)&quot;&#x60;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/d4b58097/packages/penrose-core/src/compiler/TestSetTree.ts#L1">src/compiler/TestSetTree.ts:1</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/172cf6bf/packages/penrose-core/src/compiler/TestSetTree.ts#L1">src/compiler/TestSetTree.ts:1</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -100,7 +100,7 @@
 					<div class="tsd-signature tsd-kind-icon">sty<wbr>Str<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"Set x {x.icon &#x3D; Text { string : x.label }}Set x; Set y {-- Try to make sure no labels overlapencourage repel(x.icon, y.icon, 5.0)}-- TODO: Phase this back inSet x; Set ywhere IsSubset(x, y) {arrow &#x3D; Arrow {thickness : 2.0color : rgba(0.0, 0.0, 0.0, 1.0)}-- Draw the arrow from y to xencourage centerArrow(arrow, x.icon, y.icon)-- Position y above xencourage above(y.icon, x.icon)-- Have sets &#x27;fight&#x27; to be aligned with the superset&#x27;s x-positionencourage equal(x.icon.center[0], y.icon.center[0])}/*-- TODO: This one currently causes convergence to become very slow but works eventuallySet x1; Set x2where IsSubset(x1, S); IsSubset(x2, S)with Set S {-- If two sets are direct subsets of the same set, give them the same y-positionheightFn &#x3D; ensure sameHeight(x1.icon, x2.icon)}*/"</span><span class="tsd-signature-symbol"> = &#x60;Set x {x.icon &#x3D; Text { string : x.label }}Set x; Set y {-- Try to make sure no labels overlapencourage repel(x.icon, y.icon, 5.0)}-- TODO: Phase this back inSet x; Set ywhere IsSubset(x, y) {arrow &#x3D; Arrow {thickness : 2.0color : rgba(0.0, 0.0, 0.0, 1.0)}-- Draw the arrow from y to xencourage centerArrow(arrow, x.icon, y.icon)-- Position y above xencourage above(y.icon, x.icon)-- Have sets &#x27;fight&#x27; to be aligned with the superset&#x27;s x-positionencourage equal(x.icon.center[0], y.icon.center[0])}/*-- TODO: This one currently causes convergence to become very slow but works eventuallySet x1; Set x2where IsSubset(x1, S); IsSubset(x2, S)with Set S {-- If two sets are direct subsets of the same set, give them the same y-positionheightFn &#x3D; ensure sameHeight(x1.icon, x2.icon)}*/&#x60;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/d4b58097/packages/penrose-core/src/compiler/TestSetTree.ts#L55">src/compiler/TestSetTree.ts:55</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/172cf6bf/packages/penrose-core/src/compiler/TestSetTree.ts#L55">src/compiler/TestSetTree.ts:55</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -110,7 +110,7 @@
 					<div class="tsd-signature tsd-kind-icon">sub<wbr>Str<wbr>Sugared<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">""</span><span class="tsd-signature-symbol"> = &#x60;&#x60;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/d4b58097/packages/penrose-core/src/compiler/TestSetTree.ts#L35">src/compiler/TestSetTree.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/172cf6bf/packages/penrose-core/src/compiler/TestSetTree.ts#L35">src/compiler/TestSetTree.ts:35</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -120,7 +120,7 @@
 					<div class="tsd-signature tsd-kind-icon">sub<wbr>Str<wbr>Unsugared<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"Set A, B, C, D, E, F, GIsSubset(B, A)IsSubset(C, A)IsSubset(D, B)IsSubset(E, B)IsSubset(F, C)IsSubset(G, C)Not(Intersecting(E, D))Not(Intersecting(F, G))Not(Intersecting(B, C))AutoLabel All"</span><span class="tsd-signature-symbol"> = &#x60;Set A, B, C, D, E, F, GIsSubset(B, A)IsSubset(C, A)IsSubset(D, B)IsSubset(E, B)IsSubset(F, C)IsSubset(G, C)Not(Intersecting(E, D))Not(Intersecting(F, G))Not(Intersecting(B, C))AutoLabel All&#x60;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/d4b58097/packages/penrose-core/src/compiler/TestSetTree.ts#L38">src/compiler/TestSetTree.ts:38</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/172cf6bf/packages/penrose-core/src/compiler/TestSetTree.ts#L38">src/compiler/TestSetTree.ts:38</a></li>
 						</ul>
 					</aside>
 				</section>
