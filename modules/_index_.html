@@ -66,6 +66,426 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_index_.html#penrosestate" class="tsd-kind-icon">Penrose<wbr>State</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_index_.html#compiletrio" class="tsd-kind-icon">compile<wbr>Trio</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_index_.html#diagram" class="tsd-kind-icon">diagram</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_index_.html#interactivediagram" class="tsd-kind-icon">interactive<wbr>Diagram</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_index_.html#preparestate" class="tsd-kind-icon">prepare<wbr>State</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_index_.html#resample" class="tsd-kind-icon">resample</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_index_.html#stateconverged" class="tsd-kind-icon">state<wbr>Converged</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_index_.html#stateinitial" class="tsd-kind-icon">state<wbr>Initial</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_index_.html#stepstate" class="tsd-kind-icon">step<wbr>State</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_index_.html#stepuntilconvergence" class="tsd-kind-icon">step<wbr>Until<wbr>Convergence</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="penrosestate" class="tsd-anchor"></a>
+					<h3>Penrose<wbr>State</h3>
+					<div class="tsd-signature tsd-kind-icon">Penrose<wbr>State<span class="tsd-signature-symbol">:</span> <a href="_types_types_d_.html#state" class="tsd-signature-type">State</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/index.ts#L184">packages/penrose-core/src/index.ts:184</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="compiletrio" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> compile<wbr>Trio</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">compile<wbr>Trio<span class="tsd-signature-symbol">(</span>domainProg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, subProg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, styProg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Result</span><span class="tsd-signature-symbol">&lt;</span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">, </span><a href="_types_errors_d_.html#penroseerror" class="tsd-signature-type">PenroseError</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/index.ts#L116">packages/penrose-core/src/index.ts:116</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Given a trio of Domain, Substance, and Style programs, compile them into an initial <code>State</code>. Note that this function does <em>not</em> evaluate the shapes. Generation of shapes is handled in <code>prepareState</code>.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>domainProg: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>a Domain program string</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>subProg: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>a Substance program string</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>styProg: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>a Style program string</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Result</span><span class="tsd-signature-symbol">&lt;</span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">, </span><a href="_types_errors_d_.html#penroseerror" class="tsd-signature-type">PenroseError</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="diagram" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> diagram</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">diagram<span class="tsd-signature-symbol">(</span>domainProg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, subProg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, styProg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, node<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLElement</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/index.ts#L61">packages/penrose-core/src/index.ts:61</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Embed a static Penrose diagram in a DOM node.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>domainProg: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>a Domain program string</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>subProg: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>a Substance program string</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>styProg: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>a Style program string</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>node: <span class="tsd-signature-type">HTMLElement</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>a node in the DOM tree</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="interactivediagram" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> interactive<wbr>Diagram</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">interactive<wbr>Diagram<span class="tsd-signature-symbol">(</span>domainProg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, subProg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, styProg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, node<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLElement</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/index.ts#L86">packages/penrose-core/src/index.ts:86</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Embed an interactive Penrose diagram in a DOM node.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>domainProg: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>a Domain program string</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>subProg: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>a Substance program string</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>styProg: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>a Style program string</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>node: <span class="tsd-signature-type">HTMLElement</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>a node in the DOM tree</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="preparestate" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> prepare<wbr>State</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">prepare<wbr>State<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/index.ts#L140">packages/penrose-core/src/index.ts:140</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Generate all shapes and collect labels and images (if applicable) given an initial <code>State</code>.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>state: <a href="_types_types_d_.html#state" class="tsd-signature-type">State</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>an initial diagram state</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="resample" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> resample</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">resample<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a>, numSamples<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/index.ts#L28">packages/penrose-core/src/index.ts:28</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Resample all shapes in the state by generating a number of samples (<code>numSamples</code>) and picking the sample with the lowest initial energy value.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>state: <a href="_types_types_d_.html#state" class="tsd-signature-type">State</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>current state</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>numSamples: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>number of samples to choose from</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_types_types_d_.html#state" class="tsd-signature-type">State</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="stateconverged" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> state<wbr>Converged</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">state<wbr>Converged<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/index.ts#L174">packages/penrose-core/src/index.ts:174</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns true if state is converged</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>state: <a href="_types_types_d_.html#state" class="tsd-signature-type">State</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>current state</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="stateinitial" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> state<wbr>Initial</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">state<wbr>Initial<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/index.ts#L181">packages/penrose-core/src/index.ts:181</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns true if state is the initial frame</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>state: <a href="_types_types_d_.html#state" class="tsd-signature-type">State</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>current state</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="stepstate" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> step<wbr>State</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">step<wbr>State<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a>, numSteps<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/index.ts#L37">packages/penrose-core/src/index.ts:37</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Take n steps in the optimizer given the current state.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>state: <a href="_types_types_d_.html#state" class="tsd-signature-type">State</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>current state</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> numSteps: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 1</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>number of steps to take (default: 1)</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_types_types_d_.html#state" class="tsd-signature-type">State</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="stepuntilconvergence" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> step<wbr>Until<wbr>Convergence</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">step<wbr>Until<wbr>Convergence<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/index.ts#L45">packages/penrose-core/src/index.ts:45</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Repeatedly take one step in the optimizer given the current state until convergence.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>state: <a href="_types_types_d_.html#state" class="tsd-signature-type">State</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>current state</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_types_types_d_.html#state" class="tsd-signature-type">State</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
@@ -80,6 +500,36 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_index_.html#penrosestate" class="tsd-kind-icon">Penrose<wbr>State</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_index_.html#compiletrio" class="tsd-kind-icon">compile<wbr>Trio</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_index_.html#diagram" class="tsd-kind-icon">diagram</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_index_.html#interactivediagram" class="tsd-kind-icon">interactive<wbr>Diagram</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_index_.html#preparestate" class="tsd-kind-icon">prepare<wbr>State</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_index_.html#resample" class="tsd-kind-icon">resample</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_index_.html#stateconverged" class="tsd-kind-icon">state<wbr>Converged</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_index_.html#stateinitial" class="tsd-kind-icon">state<wbr>Initial</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_index_.html#stepstate" class="tsd-kind-icon">step<wbr>State</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_index_.html#stepuntilconvergence" class="tsd-kind-icon">step<wbr>Until<wbr>Convergence</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

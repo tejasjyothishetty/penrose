@@ -96,6 +96,7 @@
 								<li class="tsd-kind-function tsd-parent-kind-module tsd-is-not-exported"><a href="_engine_optimizer_.html#dotvec" class="tsd-kind-icon">dot<wbr>Vec</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module tsd-is-not-exported"><a href="_engine_optimizer_.html#epconverged2" class="tsd-kind-icon">ep<wbr>Converged2</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_engine_optimizer_.html#evalenergyoncustom" class="tsd-kind-icon">eval<wbr>Energy<wbr>OnCustom</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_engine_optimizer_.html#initializemat" class="tsd-kind-icon">initialize<wbr>Mat</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module tsd-is-not-exported"><a href="_engine_optimizer_.html#lbfgs" class="tsd-kind-icon">lbfgs</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module tsd-is-not-exported"><a href="_engine_optimizer_.html#lbfgsinner" class="tsd-kind-icon">lbfgs<wbr>Inner</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module tsd-is-not-exported"><a href="_engine_optimizer_.html#minimize" class="tsd-kind-icon">minimize</a></li>
@@ -117,7 +118,7 @@
 					<div class="tsd-signature tsd-kind-icon">BREAK_<wbr>EARLY<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> = true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L76">src/engine/Optimizer.ts:76</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L77">packages/penrose-core/src/engine/Optimizer.ts:77</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -127,7 +128,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEBUG_<wbr>GRAD_<wbr>DESCENT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> = false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L74">src/engine/Optimizer.ts:74</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L75">packages/penrose-core/src/engine/Optimizer.ts:75</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -137,7 +138,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEBUG_<wbr>LBFGS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> = false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L77">src/engine/Optimizer.ts:77</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L78">packages/penrose-core/src/engine/Optimizer.ts:78</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -147,7 +148,7 @@
 					<div class="tsd-signature tsd-kind-icon">EPS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">0.01</span><span class="tsd-signature-symbol"> = uoStop</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L79">src/engine/Optimizer.ts:79</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L80">packages/penrose-core/src/engine/Optimizer.ts:80</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -157,7 +158,7 @@
 					<div class="tsd-signature tsd-kind-icon">EPSD<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">1e-11</span><span class="tsd-signature-symbol"> = 1e-11</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L63">src/engine/Optimizer.ts:63</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L64">packages/penrose-core/src/engine/Optimizer.ts:64</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -167,19 +168,46 @@
 					<div class="tsd-signature tsd-kind-icon">USE_<wbr>LINE_<wbr>SEARCH<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> = true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L75">src/engine/Optimizer.ts:75</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L76">packages/penrose-core/src/engine/Optimizer.ts:76</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
 					<a name="clone" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> clone</h3>
-					<div class="tsd-signature tsd-kind-icon">clone<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = require(&quot;rfdc&quot;)({ proto: false, circles: false })</span></div>
+					<div class="tsd-signature tsd-kind-icon">clone<span class="tsd-signature-symbol">:</span> &lt;T&gt;<span class="tsd-signature-symbol">(</span>input<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> = rfdc({ proto: false, circles: false })</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L44">src/engine/Optimizer.ts:44</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L45">packages/penrose-core/src/engine/Optimizer.ts:45</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable tsd-has-type-parameter tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon">&lt;T&gt;<span class="tsd-signature-symbol">(</span>input<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-type-parameters-title">Type parameters</h4>
+										<ul class="tsd-type-parameters">
+											<li>
+												<h4>T</h4>
+											</li>
+										</ul>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>input: <span class="tsd-signature-type">T</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
 					<a name="constraintweight" class="tsd-anchor"></a>
@@ -187,7 +215,7 @@
 					<div class="tsd-signature tsd-kind-icon">constraint<wbr>Weight<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">100000</span><span class="tsd-signature-symbol"> = 100000</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L56">src/engine/Optimizer.ts:56</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L57">packages/penrose-core/src/engine/Optimizer.ts:57</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -197,7 +225,7 @@
 					<div class="tsd-signature tsd-kind-icon">ep<wbr>Stop<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">0.001</span><span class="tsd-signature-symbol"> = 0.001</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L59">src/engine/Optimizer.ts:59</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L60">packages/penrose-core/src/engine/Optimizer.ts:60</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -207,7 +235,7 @@
 					<div class="tsd-signature tsd-kind-icon">log<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Consola</span><span class="tsd-signature-symbol"> = consola.create({ level: LogLevel.Warn }).withScope(&quot;Optimizer&quot;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L41">src/engine/Optimizer.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L42">packages/penrose-core/src/engine/Optimizer.ts:42</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -217,7 +245,7 @@
 					<div class="tsd-signature tsd-kind-icon">uo<wbr>Stop<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">0.01</span><span class="tsd-signature-symbol"> = 0.01</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L68">src/engine/Optimizer.ts:68</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L69">packages/penrose-core/src/engine/Optimizer.ts:69</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -227,7 +255,7 @@
 					<div class="tsd-signature tsd-kind-icon">weight<wbr>Growth<wbr>Factor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">10</span><span class="tsd-signature-symbol"> = 10</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L53">src/engine/Optimizer.ts:53</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L54">packages/penrose-core/src/engine/Optimizer.ts:54</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -244,7 +272,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L109">src/engine/Optimizer.ts:109</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L110">packages/penrose-core/src/engine/Optimizer.ts:110</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -270,7 +298,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L402">src/engine/Optimizer.ts:402</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L410">packages/penrose-core/src/engine/Optimizer.ts:410</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -344,7 +372,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L558">src/engine/Optimizer.ts:558</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L566">packages/penrose-core/src/engine/Optimizer.ts:566</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -367,7 +395,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L570">src/engine/Optimizer.ts:570</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L578">packages/penrose-core/src/engine/Optimizer.ts:578</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -393,7 +421,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L90">src/engine/Optimizer.ts:90</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L91">packages/penrose-core/src/engine/Optimizer.ts:91</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -425,7 +453,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L885">src/engine/Optimizer.ts:885</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L892">packages/penrose-core/src/engine/Optimizer.ts:892</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -444,6 +472,23 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="initializemat" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> initialize<wbr>Mat</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">initialize<wbr>Mat<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L148">packages/penrose-core/src/engine/Optimizer.ts:148</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
 					<a name="lbfgs" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> lbfgs</h3>
@@ -454,7 +499,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L646">src/engine/Optimizer.ts:646</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L653">packages/penrose-core/src/engine/Optimizer.ts:653</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -524,7 +569,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L578">src/engine/Optimizer.ts:578</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L585">packages/penrose-core/src/engine/Optimizer.ts:585</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -553,7 +598,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L763">src/engine/Optimizer.ts:763</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L770">packages/penrose-core/src/engine/Optimizer.ts:770</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -624,7 +669,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L553">src/engine/Optimizer.ts:553</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L561">packages/penrose-core/src/engine/Optimizer.ts:561</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -641,15 +686,20 @@
 					<a name="step" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> step</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">step<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a>, steps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, evaluate<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_shapes_draggable_.istate.html" class="tsd-signature-type">IState</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>overallObjective<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol">; </span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_types_types_d_.iparams.html" class="tsd-signature-type">IParams</a><span class="tsd-signature-symbol"> }</span></li>
+						<li class="tsd-signature tsd-kind-icon">step<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a>, steps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, evaluate<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_types_types_d_.istate.html" class="tsd-signature-type">IState</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>overallObjective<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol">; </span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_types_types_d_.iparams.html" class="tsd-signature-type">IParams</a><span class="tsd-signature-symbol"> }</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L147">src/engine/Optimizer.ts:147</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L158">packages/penrose-core/src/engine/Optimizer.ts:158</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Requires await initializeMat() to be called first</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -660,9 +710,13 @@
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> evaluate: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+										</div>
+									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_shapes_draggable_.istate.html" class="tsd-signature-type">IState</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>overallObjective<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol">; </span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_types_types_d_.iparams.html" class="tsd-signature-type">IParams</a><span class="tsd-signature-symbol"> }</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_types_types_d_.istate.html" class="tsd-signature-type">IState</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>overallObjective<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol">; </span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_types_types_d_.iparams.html" class="tsd-signature-type">IParams</a><span class="tsd-signature-symbol"> }</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -670,13 +724,13 @@
 					<a name="stepuntilconvergence" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> step<wbr>Until<wbr>Convergence</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">step<wbr>Until<wbr>Convergence<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_shapes_draggable_.istate.html" class="tsd-signature-type">IState</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">step<wbr>Until<wbr>Convergence<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_types_types_d_.istate.html" class="tsd-signature-type">IState</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L136">src/engine/Optimizer.ts:136</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L137">packages/penrose-core/src/engine/Optimizer.ts:137</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -690,7 +744,7 @@
 									<h5>state: <a href="_types_types_d_.html#state" class="tsd-signature-type">State</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_shapes_draggable_.istate.html" class="tsd-signature-type">IState</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_types_types_d_.istate.html" class="tsd-signature-type">IState</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -704,7 +758,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L83">src/engine/Optimizer.ts:83</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L84">packages/penrose-core/src/engine/Optimizer.ts:84</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -727,7 +781,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/fc53f9d3/packages/penrose-core/src/engine/Optimizer.ts#L544">src/engine/Optimizer.ts:544</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/72f3bb0b/packages/penrose-core/src/engine/Optimizer.ts#L552">packages/penrose-core/src/engine/Optimizer.ts:552</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -808,6 +862,9 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_engine_optimizer_.html#evalenergyoncustom" class="tsd-kind-icon">eval<wbr>Energy<wbr>OnCustom</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_engine_optimizer_.html#initializemat" class="tsd-kind-icon">initialize<wbr>Mat</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
 						<a href="_engine_optimizer_.html#lbfgs" class="tsd-kind-icon">lbfgs</a>
