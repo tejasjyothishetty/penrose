@@ -1,0 +1,116 @@
+digraph G {
+
+subgraph shapes {
+color=blue;
+node [style=filled];
+label = "shapes";
+
+PtA
+PtB
+PtC
+LabA
+LabB
+LabC
+Theta
+LabTheta
+SegAB
+SegBC
+LabAB
+LabBC
+Plane
+}
+
+subgraph computations {
+node [shape=rectangle]
+midpointAB
+midpointBC
+}
+
+subgraph constraints {
+node [style=filled,color=orange]
+edge [color=orange]
+atDistA
+atDistB
+atDistC
+containedA
+containedALab
+containedB
+containedBLab
+containedC
+containedCLab
+}
+
+subgraph objectives {
+node [style=filled,color=lightgreen]
+repelPtALab
+nearLabAB
+repelPtBLab1
+repelPtBLab2
+nearLabBC
+repelPtCLab
+midpointBC
+repelTheta
+}
+
+// POINTS
+atDistA
+atDistA -> PtA
+atDistA -> LabA
+
+atDistB
+atDistB -> PtB
+atDistB -> LabB
+
+atDistC
+atDistC -> PtC
+atDistC -> LabC
+
+containedA -> Plane
+containedA -> PtA
+
+containedB -> Plane
+containedB -> PtB
+
+containedC -> Plane
+containedC -> PtC
+
+containedALab -> Plane
+containedALab -> LabA
+
+containedBLab -> Plane
+containedBLab -> LabB
+
+containedCLab -> Plane
+containedCLab -> LabC
+
+// SEGMENTS
+// AB
+repelPtALab -> SegAB
+repelPtALab -> LabA
+
+repelPtBLab1 -> SegAB
+repelPtBLab1 -> LabB
+
+nearLabAB -> midpointAB -> SegAB
+nearLabAB -> LabAB
+
+// BC
+repelPtCLab -> SegBC
+repelPtCLab -> LabC
+
+repelPtBLab2 -> SegBC
+repelPtBLab2 -> LabB
+
+nearLabBC -> midpointBC -> SegBC
+nearLabBC -> LabBC
+
+// TODO: Leaving out segment label objectives
+
+// Angles
+
+repelTheta -> Theta
+repelTheta -> LabTheta
+
+// TODO: Some pairwise label objectives
+
+}

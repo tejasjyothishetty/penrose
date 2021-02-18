@@ -1,0 +1,5 @@
+Point A, B, C
+Segment AB := MkSegment(A, B)
+Segment BC := MkSegment(B, C)
+Angle ABC := InteriorAngle(A, B, C)
+AutoLabel All
