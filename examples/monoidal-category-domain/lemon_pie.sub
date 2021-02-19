@@ -1,0 +1,11 @@
+Object egg, yolk, white, sugar, crust, lemon, butter, sugar, filling, unbaked, baked, meringue
+
+Morphism separate := join(egg, tensor(yolk, white)) 
+Morphism meringue := join(white * sugar, meringue)
+Morphism filling := join(tensor(tensor(tensor(lemon, butter), sugar), yolk), filling)
+Morphism fill := join(tensor(crust, filling), unbaked)
+Morphism add := join(tensor(unbaked, meringue), unbaked)
+Morphism oven := join(unbaked, baked)
+
+ -- [lemon, butter, sugar, yolk] ← list?
+-- Note, requires anonymous object, but don’t want to draw it as a separate object (just grouped semantically)
