@@ -2,3 +2,6 @@ Object A, B, C
 
 Object ab := tensor(A, B)
 Morphism abc := join(ab, C)
+
+AutoLabel All
+Label abc $F^2$
