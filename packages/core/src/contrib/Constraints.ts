@@ -435,6 +435,20 @@ export const constrDict = {
   inRange: (x: VarAD, x0: VarAD, x1: VarAD) => {
     return mul(sub(x, x0), sub(x, x1));
   },
+
+  /**
+   * Require that the value `x` is less than the value `y`
+   */
+  equal: (x: VarAD, y: VarAD) => {
+    return equalHard(x, y);
+  },
+
+  /**
+   * Require that the value `x` is less than the value `y`
+   */
+  lessThan: (x: VarAD, y: VarAD) => {
+    return sub(x, max(x, y));
+  },
 };
 
 // -------- Helpers for writing objectives

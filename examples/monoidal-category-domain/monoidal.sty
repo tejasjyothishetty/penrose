@@ -2,7 +2,7 @@ Object o {
     -- object should be as horizontal as possible
 
     vec2 o.v1 = (?, ?)
-    vec2 o.v2 = (?, o.v1[1])
+    vec2 o.v2 = (?, ?)
 
     shape o.shape = Line {
         start: o.v1
@@ -12,8 +12,8 @@ Object o {
         thickness: 5.
     }
 
-    -- encourage equalTo(o.v1[1], o.v2[1]) -- encourage same y coordinate
-    -- ensure lessThan(o.v1[0], o.v2[0]) -- make sure lines move from left to right
+    ensure equal(o.v1[1], o.v2[1]) -- ensure lines are horizontal
+    ensure lessThan(o.v1[0], o.v2[0]) -- ensure lines move from left to right
 
     -- lines should have a nice length, roughly equal to one another
 }
@@ -29,7 +29,9 @@ with Object a; Object b {
     override b.v1[1] = o.v1[1] - 50.
     
     override a.v2[0] = o.v2[0]
+    override a.v2[1] = o.v2[1] + 50.
     override b.v2[0] = o.v2[0]
+    override b.v2[1] = o.v2[1] - 50.
 }
 
 Morphism m {
@@ -44,15 +46,16 @@ Morphism m {
         fontSize: "30pt"
     }
 
-    ensure contains(m.shape, m.text)
+    ensure contains(m.shape, m.text) -- keep label inside box
 }
 
 Morphism m
 where m := join(a, b)
 with Object a; Object b {
+    -- attach objects to morphism
     override a.v2[0] = m.shape.center[0] - m.shape.w/2.
     override b.v1[0] = m.shape.center[0] + m.shape.w/2.
 
-    override a.v1[1] = m.shape.center[1]
+    override a.v2[1] = m.shape.center[1]
     override b.v1[1] = m.shape.center[1]
 }
