@@ -39,7 +39,7 @@ import consola, { LogLevel } from "consola";
 import rfdc from "rfdc";
 
 // NOTE: to view logs, change `level` below to `LogLevel.Info`
-const log = consola.create({ level: LogLevel.Warn }).withScope("Optimizer");
+const log = consola.create({ level: LogLevel.Info }).withScope("Optimizer");
 
 // For deep-cloning the translation
 const clone = rfdc({ proto: false, circles: false });
@@ -71,8 +71,8 @@ const uoStop = 1e-2;
 // const uoStop = 1e-5;
 // const uoStop = 10;
 
-// const DEBUG_GRAD_DESCENT = true;
-const DEBUG_GRAD_DESCENT = false; // COMBAK: Revert
+const DEBUG_GRAD_DESCENT = true; // COMBAK: Revert
+// const DEBUG_GRAD_DESCENT = false;
 const USE_LINE_SEARCH = true;
 const BREAK_EARLY = true;
 const DEBUG_LBFGS = false;
@@ -277,7 +277,7 @@ export const step = (state: State, steps: number, evaluate = true) => {
         state.params.currObjective,
         state.params.currGradient,
         state.params.lbfgsInfo,
-        state.varyingPaths.map((p) => JSON.stringify(p))
+        state.varyingPaths.map((p) => prettyPrintPath(p))
       );
       xs = res.xs;
 

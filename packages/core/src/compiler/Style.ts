@@ -628,7 +628,7 @@ const substituteExpr = (subst: Subst, expr: SelExpr): SelExpr => {
       args: expr.args.map((arg) => substituteExpr(subst, arg)),
     };
   } else {
-    debugger;
+    // debugger;
     throw Error("unsupported tag");
   }
 };
@@ -2205,6 +2205,7 @@ const findNestedVarying = (e: TagExpr<VarAD>, p: Path): Path[] => {
       res.tag === "Tuple"
     ) {
       // COMBAK: This should search, but for now we just don't handle nested varying vars in these
+      throw Error("varying won't work for Matrix/List/Tuple");
       return [];
     }
   }
@@ -2466,7 +2467,9 @@ const getNum = (e: TagExpr<VarAD> | IFGPI<VarAD>): number => {
 // ported from `lookupPaths`
 // lookup paths with the expectation that each one is a float
 export const lookupNumericPaths = (ps: Path[], tr: Translation): number[] => {
-  return ps.map((path) => findExprSafe(tr, path)).map(getNum);
+  const res = ps.map((path) => findExprSafe(tr, path)).map(getNum);
+  // debugger;
+  return res;
 };
 
 const findFieldPending = (
@@ -2515,7 +2518,10 @@ const isFieldOrAccessPath = (p: Path): boolean => {
 // This also samples varying access paths, e.g.
 // Circle { center : (1.1, ?) ... } <// the latter is an access path that gets initialized here
 // NOTE: Mutates translation
-const initFields = (varyingPaths: Path[], tr: Translation): Translation => {
+const initFieldsAndAccessPaths = (
+  varyingPaths: Path[],
+  tr: Translation
+): Translation => {
   const varyingFields = varyingPaths.filter(isFieldOrAccessPath);
   const sampledVals = randFloats(varyingFields.length, canvasXRange);
   const vals: TagExpr<VarAD>[] = sampledVals.map(
@@ -2528,7 +2534,7 @@ const initFields = (varyingPaths: Path[], tr: Translation): Translation => {
     })
   );
   const tr2 = insertExprs(varyingFields, vals, tr);
-
+  // debugger;
   return tr2;
 };
 
@@ -2537,7 +2543,7 @@ const initFields = (varyingPaths: Path[], tr: Translation): Translation => {
 // 2. Initialize all properties of all GPIs
 // NOTE: since we store all varying paths separately, it is okay to mark the default values as Done // they will still be optimized, if needed.
 // TODO: document the logic here (e.g. only sampling varying floats) and think about whether to use translation here or [Shape a] since we will expose the sampler to users later
-
+// TODO: Doesn't sample partial shape properties, like start: (?, 1.) <- this is actually sampled by initFieldsAndAccessPaths
 // NOTE: Shape properties are mutated; they are returned as a courtesy
 const initProperty = (
   shapeType: ShapeTypeStr,
@@ -2736,8 +2742,8 @@ const genOptProblemAndState = (
   const shapePathList: [string, string][] = findShapeNames(trans);
   const shapePaths = shapePathList.map(mkPath);
 
-  // sample varying fieldsr
-  const transInitFields = initFields(varyingPaths, trans);
+  // sample varying fields
+  const transInitFields = initFieldsAndAccessPaths(varyingPaths, trans);
   // sample varying vals and instantiate all the non - float base properties of every GPI in the translation
   const transInit = initShapes(transInitFields, shapePathList);
 

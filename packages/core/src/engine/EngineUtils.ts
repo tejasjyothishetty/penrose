@@ -551,6 +551,7 @@ export const insertExpr = (
 
     // TODO(error): deal with override for accesspaths? I don't know if you can currently write something like `override A.shape.center[0] = 5.` in Style
     case "AccessPath": {
+      // debugger;
       const [innerPath, indices] = [path.path, path.indices];
 
       switch (innerPath.tag) {
