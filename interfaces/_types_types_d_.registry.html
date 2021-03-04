@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>DeletedPropWithNoGPIError | @penrose/core</title>
+	<title>Registry | @penrose/core</title>
 	<meta name="description" content="Documentation for @penrose/core">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,24 +56,31 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_types_errors_.html">&quot;types/errors&quot;</a>
+					<a href="../modules/_types_types_d_.html">&quot;types/types.d&quot;</a>
 				</li>
 				<li>
-					<a href="_types_errors_.deletedpropwithnogpierror.html">DeletedPropWithNoGPIError</a>
+					<a href="_types_types_d_.registry.html">Registry</a>
 				</li>
 			</ul>
-			<h1>Interface DeletedPropWithNoGPIError</h1>
+			<h1>Interface Registry</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Schema for the registry of working examples</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">DeletedPropWithNoGPIError</span>
+						<span class="target">Registry</span>
 					</li>
 				</ul>
 			</section>
@@ -84,11 +91,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_errors_.deletedpropwithnogpierror.html#field" class="tsd-kind-icon">field</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_errors_.deletedpropwithnogpierror.html#path" class="tsd-kind-icon">path</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_errors_.deletedpropwithnogpierror.html#property" class="tsd-kind-icon">property</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_errors_.deletedpropwithnogpierror.html#subobj" class="tsd-kind-icon">sub<wbr>Obj</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_errors_.deletedpropwithnogpierror.html#tag" class="tsd-kind-icon">tag</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_types_d_.registry.html#domains" class="tsd-kind-icon">domains</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_types_d_.registry.html#styles" class="tsd-kind-icon">styles</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_types_d_.registry.html#substances" class="tsd-kind-icon">substances</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_types_d_.registry.html#trios" class="tsd-kind-icon">trios</a></li>
 							</ul>
 						</section>
 					</div>
@@ -97,52 +103,75 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="field" class="tsd-anchor"></a>
-					<h3>field</h3>
-					<div class="tsd-signature tsd-kind-icon">field<span class="tsd-signature-symbol">:</span> <a href="_types_types_d_.identifier.html" class="tsd-signature-type">Identifier</a></div>
+					<a name="domains" class="tsd-anchor"></a>
+					<h3>domains</h3>
+					<div class="tsd-signature tsd-kind-icon">domains<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>URI<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/52f76f14/packages/core/src/types/errors.ts#L274">packages/core/src/types/errors.ts:274</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/52f76f14/packages/core/src/types/types.d.ts#L25">packages/core/src/types/types.d.ts:25</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>URI<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="path" class="tsd-anchor"></a>
-					<h3>path</h3>
-					<div class="tsd-signature tsd-kind-icon">path<span class="tsd-signature-symbol">:</span> <a href="../modules/_renderer_path_.html#path" class="tsd-signature-type">Path</a></div>
+					<a name="styles" class="tsd-anchor"></a>
+					<h3>styles</h3>
+					<div class="tsd-signature tsd-kind-icon">styles<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>URI<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/52f76f14/packages/core/src/types/errors.ts#L276">packages/core/src/types/errors.ts:276</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/52f76f14/packages/core/src/types/types.d.ts#L24">packages/core/src/types/types.d.ts:24</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>URI<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="property" class="tsd-anchor"></a>
-					<h3>property</h3>
-					<div class="tsd-signature tsd-kind-icon">property<span class="tsd-signature-symbol">:</span> <a href="_types_types_d_.identifier.html" class="tsd-signature-type">Identifier</a></div>
+					<a name="substances" class="tsd-anchor"></a>
+					<h3>substances</h3>
+					<div class="tsd-signature tsd-kind-icon">substances<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>URI<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/52f76f14/packages/core/src/types/errors.ts#L275">packages/core/src/types/errors.ts:275</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/52f76f14/packages/core/src/types/types.d.ts#L23">packages/core/src/types/types.d.ts:23</a></li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="subobj" class="tsd-anchor"></a>
-					<h3>sub<wbr>Obj</h3>
-					<div class="tsd-signature tsd-kind-icon">sub<wbr>Obj<span class="tsd-signature-symbol">:</span> <a href="../modules/_types_types_d_.html#bindingform" class="tsd-signature-type">BindingForm</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/52f76f14/packages/core/src/types/errors.ts#L273">packages/core/src/types/errors.ts:273</a></li>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>URI<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
 						</ul>
-					</aside>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="tag" class="tsd-anchor"></a>
-					<h3>tag</h3>
-					<div class="tsd-signature tsd-kind-icon">tag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"DeletedPropWithNoGPIError"</span></div>
+					<a name="trios" class="tsd-anchor"></a>
+					<h3>trios</h3>
+					<div class="tsd-signature tsd-kind-icon">trios<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>domain<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>style<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>substance<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/52f76f14/packages/core/src/types/errors.ts#L272">packages/core/src/types/errors.ts:272</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/52f76f14/packages/core/src/types/types.d.ts#L26">packages/core/src/types/types.d.ts:26</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -155,7 +184,12 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-module">
-						<a href="../modules/_types_errors_.html">&quot;types/errors&quot;</a>
+						<a href="../modules/_types_types_d_.html">&quot;types/types.d&quot;</a>
+						<ul>
+							<li class=" tsd-kind-module tsd-parent-kind-module">
+								<a href="../modules/_types_types_d_._eigen_.html">&quot;eigen&quot;</a>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</nav>
@@ -164,22 +198,19 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module">
-						<a href="_types_errors_.deletedpropwithnogpierror.html" class="tsd-kind-icon">Deleted<wbr>Prop<wbr>With<wbr>NoGPIError</a>
+						<a href="_types_types_d_.registry.html" class="tsd-kind-icon">Registry</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_types_errors_.deletedpropwithnogpierror.html#field" class="tsd-kind-icon">field</a>
+								<a href="_types_types_d_.registry.html#domains" class="tsd-kind-icon">domains</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_types_errors_.deletedpropwithnogpierror.html#path" class="tsd-kind-icon">path</a>
+								<a href="_types_types_d_.registry.html#styles" class="tsd-kind-icon">styles</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_types_errors_.deletedpropwithnogpierror.html#property" class="tsd-kind-icon">property</a>
+								<a href="_types_types_d_.registry.html#substances" class="tsd-kind-icon">substances</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_types_errors_.deletedpropwithnogpierror.html#subobj" class="tsd-kind-icon">sub<wbr>Obj</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_types_errors_.deletedpropwithnogpierror.html#tag" class="tsd-kind-icon">tag</a>
+								<a href="_types_types_d_.registry.html#trios" class="tsd-kind-icon">trios</a>
 							</li>
 						</ul>
 					</li>
