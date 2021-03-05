@@ -1,5 +1,5 @@
-Object A
--- Object A, B, C
+-- Object A
+Object A, B, C
 
 -- Object ab := tensor(A, B)
 -- Morphism abc := join(ab, C)
