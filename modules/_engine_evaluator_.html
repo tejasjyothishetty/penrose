@@ -81,12 +81,9 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_engine_evaluator_.html#argvalue" class="tsd-kind-icon">arg<wbr>Value</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_engine_evaluator_.html#cleanshapes" class="tsd-kind-icon">clean<wbr>Shapes</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_engine_evaluator_.html#decodestate" class="tsd-kind-icon">decode<wbr>State</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module tsd-is-not-exported"><a href="_engine_evaluator_.html#donefloat" class="tsd-kind-icon">done<wbr>Float</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module tsd-is-not-exported"><a href="_engine_evaluator_.html#dummyidentifier" class="tsd-kind-icon">dummy<wbr>Identifier</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module tsd-is-not-exported"><a href="_engine_evaluator_.html#dummysourceloc" class="tsd-kind-icon">dummy<wbr>Source<wbr>Loc</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_engine_evaluator_.html#encodestate" class="tsd-kind-icon">encode<wbr>State</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_engine_evaluator_.html#evalbinop" class="tsd-kind-icon">eval<wbr>Bin<wbr>Op</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_engine_evaluator_.html#evalexpr" class="tsd-kind-icon">eval<wbr>Expr</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_engine_evaluator_.html#evalexprs" class="tsd-kind-icon">eval<wbr>Exprs</a></li>
@@ -115,7 +112,7 @@
 					<div class="tsd-signature tsd-kind-icon">clone<span class="tsd-signature-symbol">:</span> &lt;T&gt;<span class="tsd-signature-symbol">(</span>input<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> = rfdc({ proto: false, circles: false })</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L45">packages/core/src/engine/Evaluator.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/2830bf0f/packages/core/src/engine/Evaluator.ts#L29">packages/core/src/engine/Evaluator.ts:29</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -152,7 +149,7 @@
 					<div class="tsd-signature tsd-kind-icon">log<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Consola</span><span class="tsd-signature-symbol"> = consola.create({ level: LogLevel.Warn }).withScope(&quot;Evaluator&quot;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L47">packages/core/src/engine/Evaluator.ts:47</a></li>
+							<li>Defined in <a href="https://github.com/penrose/penrose/blob/2830bf0f/packages/core/src/engine/Evaluator.ts#L31">packages/core/src/engine/Evaluator.ts:31</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -169,7 +166,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L810">packages/core/src/engine/Evaluator.ts:810</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/2830bf0f/packages/core/src/engine/Evaluator.ts#L793">packages/core/src/engine/Evaluator.ts:793</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -179,62 +176,6 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="cleanshapes" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> clean<wbr>Shapes</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">clean<wbr>Shapes<span class="tsd-signature-symbol">(</span>shapes<span class="tsd-signature-symbol">: </span><a href="_types_shapetypes_.html#shape" class="tsd-signature-type">Shape</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_types_shapetypes_.html#shape" class="tsd-signature-type">Shape</a><span class="tsd-signature-symbol">[]</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L1046">packages/core/src/engine/Evaluator.ts:1046</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>shapes: <a href="_types_shapetypes_.html#shape" class="tsd-signature-type">Shape</a><span class="tsd-signature-symbol">[]</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_types_shapetypes_.html#shape" class="tsd-signature-type">Shape</a><span class="tsd-signature-symbol">[]</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="decodestate" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> decode<wbr>State</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">decode<wbr>State<span class="tsd-signature-symbol">(</span>json<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L987">packages/core/src/engine/Evaluator.ts:987</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Gives types to a serialized <code>State</code></p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>json: <span class="tsd-signature-type">any</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>plain object encoding <code>State</code> of the diagram</p>
-										</div>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_types_types_d_.html#state" class="tsd-signature-type">State</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -248,7 +189,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L150">packages/core/src/engine/Evaluator.ts:150</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/2830bf0f/packages/core/src/engine/Evaluator.ts#L133">packages/core/src/engine/Evaluator.ts:133</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -271,7 +212,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L61">packages/core/src/engine/Evaluator.ts:61</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/2830bf0f/packages/core/src/engine/Evaluator.ts#L45">packages/core/src/engine/Evaluator.ts:45</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -294,7 +235,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L57">packages/core/src/engine/Evaluator.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/2830bf0f/packages/core/src/engine/Evaluator.ts#L41">packages/core/src/engine/Evaluator.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -310,40 +251,6 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="encodestate" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> encode<wbr>State</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">encode<wbr>State<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L1017">packages/core/src/engine/Evaluator.ts:1017</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Serialize the state to match the backend format
-									NOTE: only called on resample now</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>state: <a href="_types_types_d_.html#state" class="tsd-signature-type">State</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>typed <code>State</code> object</p>
-										</div>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
 					<a name="evalbinop" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> eval<wbr>Bin<wbr>Op</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
@@ -353,7 +260,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L829">packages/core/src/engine/Evaluator.ts:829</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/2830bf0f/packages/core/src/engine/Evaluator.ts#L812">packages/core/src/engine/Evaluator.ts:812</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -392,7 +299,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L313">packages/core/src/engine/Evaluator.ts:313</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/2830bf0f/packages/core/src/engine/Evaluator.ts#L296">packages/core/src/engine/Evaluator.ts:296</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -447,7 +354,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L262">packages/core/src/engine/Evaluator.ts:262</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/2830bf0f/packages/core/src/engine/Evaluator.ts#L245">packages/core/src/engine/Evaluator.ts:245</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -499,7 +406,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L186">packages/core/src/engine/Evaluator.ts:186</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/2830bf0f/packages/core/src/engine/Evaluator.ts#L169">packages/core/src/engine/Evaluator.ts:169</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -528,7 +435,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L180">packages/core/src/engine/Evaluator.ts:180</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/2830bf0f/packages/core/src/engine/Evaluator.ts#L163">packages/core/src/engine/Evaluator.ts:163</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -577,7 +484,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L212">packages/core/src/engine/Evaluator.ts:212</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/2830bf0f/packages/core/src/engine/Evaluator.ts#L195">packages/core/src/engine/Evaluator.ts:195</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -637,7 +544,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L79">packages/core/src/engine/Evaluator.ts:79</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/2830bf0f/packages/core/src/engine/Evaluator.ts#L63">packages/core/src/engine/Evaluator.ts:63</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -671,7 +578,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L958">packages/core/src/engine/Evaluator.ts:958</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/2830bf0f/packages/core/src/engine/Evaluator.ts#L941">packages/core/src/engine/Evaluator.ts:941</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -712,7 +619,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L1053">packages/core/src/engine/Evaluator.ts:1053</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/2830bf0f/packages/core/src/engine/Evaluator.ts#L966">packages/core/src/engine/Evaluator.ts:966</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -744,7 +651,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L162">packages/core/src/engine/Evaluator.ts:162</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/2830bf0f/packages/core/src/engine/Evaluator.ts#L145">packages/core/src/engine/Evaluator.ts:145</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -785,7 +692,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L819">packages/core/src/engine/Evaluator.ts:819</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/2830bf0f/packages/core/src/engine/Evaluator.ts#L802">packages/core/src/engine/Evaluator.ts:802</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -808,7 +715,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L669">packages/core/src/engine/Evaluator.ts:669</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/2830bf0f/packages/core/src/engine/Evaluator.ts#L652">packages/core/src/engine/Evaluator.ts:652</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -861,7 +768,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L140">packages/core/src/engine/Evaluator.ts:140</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/2830bf0f/packages/core/src/engine/Evaluator.ts#L123">packages/core/src/engine/Evaluator.ts:123</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -887,7 +794,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L270">packages/core/src/engine/Evaluator.ts:270</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/2830bf0f/packages/core/src/engine/Evaluator.ts#L253">packages/core/src/engine/Evaluator.ts:253</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -910,7 +817,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/5bfb63e4/packages/core/src/engine/Evaluator.ts#L287">packages/core/src/engine/Evaluator.ts:287</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/2830bf0f/packages/core/src/engine/Evaluator.ts#L270">packages/core/src/engine/Evaluator.ts:270</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -953,12 +860,6 @@
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_engine_evaluator_.html#argvalue" class="tsd-kind-icon">arg<wbr>Value</a>
 					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="_engine_evaluator_.html#cleanshapes" class="tsd-kind-icon">clean<wbr>Shapes</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="_engine_evaluator_.html#decodestate" class="tsd-kind-icon">decode<wbr>State</a>
-					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
 						<a href="_engine_evaluator_.html#donefloat" class="tsd-kind-icon">done<wbr>Float</a>
 					</li>
@@ -967,9 +868,6 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
 						<a href="_engine_evaluator_.html#dummysourceloc" class="tsd-kind-icon">dummy<wbr>Source<wbr>Loc</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="_engine_evaluator_.html#encodestate" class="tsd-kind-icon">encode<wbr>State</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_engine_evaluator_.html#evalbinop" class="tsd-kind-icon">eval<wbr>Bin<wbr>Op</a>
