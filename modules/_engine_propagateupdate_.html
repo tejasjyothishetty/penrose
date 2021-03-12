@@ -87,13 +87,13 @@
 					<a name="findshapeproperty" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> find<wbr>Shape<wbr>Property</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">find<wbr>Shape<wbr>Property<span class="tsd-signature-symbol">(</span>shapes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, path<span class="tsd-signature-symbol">: </span><a href="_renderer_path_.html#path" class="tsd-signature-type">Path</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_types_shapetypes_.html#value" class="tsd-signature-type">Value</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">any</span></li>
+						<li class="tsd-signature tsd-kind-icon">find<wbr>Shape<wbr>Property<span class="tsd-signature-symbol">(</span>shapes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, path<span class="tsd-signature-symbol">: </span><a href="_types_style_.html#path" class="tsd-signature-type">Path</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_types_value_.html#value" class="tsd-signature-type">Value</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">any</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/3eec8ebe/packages/core/src/engine/PropagateUpdate.ts#L17">packages/core/src/engine/PropagateUpdate.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/95b44393/packages/core/src/engine/PropagateUpdate.ts#L21">packages/core/src/engine/PropagateUpdate.ts:21</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -112,7 +112,7 @@
 									</div>
 								</li>
 								<li>
-									<h5>path: <a href="_renderer_path_.html#path" class="tsd-signature-type">Path</a></h5>
+									<h5>path: <a href="_types_style_.html#path" class="tsd-signature-type">Path</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>a path to a property value in one of the shapes</p>
@@ -120,7 +120,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_types_shapetypes_.html#value" class="tsd-signature-type">Value</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">any</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_types_value_.html#value" class="tsd-signature-type">Value</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">any</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -128,29 +128,24 @@
 					<a name="insertpending" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> insert<wbr>Pending</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">insert<wbr>Pending<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>pendingPaths<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">never</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>translation<span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#translation" class="tsd-signature-type">Translation</a><span class="tsd-signature-symbol"> }</span></li>
+						<li class="tsd-signature tsd-kind-icon">insert<wbr>Pending<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="_types_state_.html#state" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_types_state_.html#state" class="tsd-signature-type">State</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/3eec8ebe/packages/core/src/engine/PropagateUpdate.ts#L78">packages/core/src/engine/PropagateUpdate.ts:78</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/95b44393/packages/core/src/engine/PropagateUpdate.ts#L81">packages/core/src/engine/PropagateUpdate.ts:81</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Take all pending paths in the state, find values for them from shapes in the state, insert these values in the translation, and finally clear pending paths.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>todo</dt>
-									<dd><p>state shouldn&#39;t have the type <code>State</code> yet because the shapes are augumented with extra properties.</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>state: <a href="_types_types_d_.html#state" class="tsd-signature-type">State</a></h5>
+									<h5>state: <a href="_types_state_.html#state" class="tsd-signature-type">State</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>initial state with pending values</p>
@@ -158,15 +153,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>pendingPaths<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">never</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>translation<span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#translation" class="tsd-signature-type">Translation</a><span class="tsd-signature-symbol"> }</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter">
-									<h5>pending<wbr>Paths<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">never</span><span class="tsd-signature-symbol">[]</span></h5>
-								</li>
-								<li class="tsd-parameter">
-									<h5>translation<span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#translation" class="tsd-signature-type">Translation</a></h5>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_types_state_.html#state" class="tsd-signature-type">State</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -174,13 +161,13 @@
 					<a name="updatevaryingvalues" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> update<wbr>Varying<wbr>Values</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">update<wbr>Varying<wbr>Values<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_types_types_d_.html#state" class="tsd-signature-type">State</a></li>
+						<li class="tsd-signature tsd-kind-icon">update<wbr>Varying<wbr>Values<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="_types_state_.html#state" class="tsd-signature-type">State</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_types_state_.html#state" class="tsd-signature-type">State</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/penrose/penrose/blob/3eec8ebe/packages/core/src/engine/PropagateUpdate.ts#L123">packages/core/src/engine/PropagateUpdate.ts:123</a></li>
+									<li>Defined in <a href="https://github.com/penrose/penrose/blob/95b44393/packages/core/src/engine/PropagateUpdate.ts#L126">packages/core/src/engine/PropagateUpdate.ts:126</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -191,7 +178,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>state: <a href="_types_types_d_.html#state" class="tsd-signature-type">State</a></h5>
+									<h5>state: <a href="_types_state_.html#state" class="tsd-signature-type">State</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>Old diagram state</p>
@@ -199,7 +186,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_types_types_d_.html#state" class="tsd-signature-type">State</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_types_state_.html#state" class="tsd-signature-type">State</a></h4>
 						</li>
 					</ul>
 				</section>
