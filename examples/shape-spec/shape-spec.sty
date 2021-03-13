@@ -41,11 +41,26 @@ forall Image i {
     i.icon = Image { }
 }
 
+-- forall Polygon j {
+-- 	j.icon = Polygon { 
+--         points: ((-80.0, 0.0), (100.0, 0.0), (10.0, 50.0))
+--         strokeWidth: 200
+--         pathLength :2000
+-- 	}
+-- }
+
 forall Polygon j {
+    x1 = ?
+    y1 = ?
+    x2 = ?
+    y2 = ?
+    x3 = ?
+    y3 = ?
 	j.icon = Polygon { 
-        points: ((-80.0, 0.0), (100.0, 0.0), (10.0, 50.0))
+        -- With either version, I only see FieldPaths in the translation, not LocalVars
+        points: [(x1,y1), (x2,y2), (x3,y3)]
+        -- points: ((x1,y1), (x2,y2), (x3,y3))
         strokeWidth: 200
-        pathLength :2000
 	}
 }
 
