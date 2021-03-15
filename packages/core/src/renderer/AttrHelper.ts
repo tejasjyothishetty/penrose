@@ -1,4 +1,5 @@
-import { Shape } from "types/shapeTypes";
+import { IColorV, IFloatV, IVectorV, IStrV, IPtListV } from "types/value";
+import { Shape } from "types/shape";
 import { toHex, toScreen } from "utils/Util";
 
 export const attrFill = ({ properties }: Shape, elem: SVGElement) => {
@@ -80,7 +81,6 @@ export const attrPathLength = ({ properties }: Shape, elem: SVGElement) => {
   elem.setAttribute("pathLength", pathLength.contents.toString());
 };
 
-
 export const attrRadiusX = ({ properties }: Shape, elem: SVGElement) => {
   const rx = properties.rx as IFloatV<number>;
   elem.setAttribute("rx", rx.contents.toString());
@@ -130,7 +130,7 @@ export const attrStroke = ({ properties }: Shape, elem: SVGElement) => {
     dashArray = (properties.strokeDashArray as IStrV<string>).contents;
   }
   if (properties.strokeStyle.contents === "dashed") {
-    elem.setAttribute("stroke-dash-array", dashArray.toString());
+    elem.setAttribute("stroke-dasharray", dashArray.toString());
   }
 };
 

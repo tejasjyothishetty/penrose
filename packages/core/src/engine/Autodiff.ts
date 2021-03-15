@@ -2,6 +2,9 @@ import * as _ from "lodash";
 import { all, fromJust, randList, eqList } from "utils/OtherUtils";
 import { settings } from "cluster";
 import consola, { LogLevel } from "consola";
+import { VarAD, IVarAD, GradGraphs } from "types/ad";
+import { MaybeVal } from "types/common";
+import { WeightInfo } from "types/state";
 
 const log = consola.create({ level: LogLevel.Warn }).withScope("Optimizer");
 
@@ -681,6 +684,80 @@ export const lt = (v: VarAD, w: VarAD, isCompNode = true): VarAD => {
 };
 
 /**
+ * Return a conditional `v == w`. (TODO: Maybe check if they are equal up to a tolerance?)
+ * Note, the 1.0, 0.0 stuff is irrelevant, in the codegen they are boolean
+ */
+export const eq = (v: VarAD, w: VarAD, isCompNode = true): VarAD => {
+  // returns a boolean, which is converted to number
+  const z = variableAD(v.val === w.val ? 1.0 : 0.0, "eq");
+  z.isCompNode = isCompNode;
+
+  if (isCompNode) {
+    z.children.push({ node: v, sensitivityNode: just(noGrad) });
+    z.children.push({ node: w, sensitivityNode: just(noGrad) });
+
+    v.parents.push({ node: z, sensitivityNode: just(noGrad) });
+    w.parents.push({ node: z, sensitivityNode: just(noGrad) });
+  } else {
+    z.childrenGrad.push({ node: v, sensitivityNode: none });
+    z.childrenGrad.push({ node: w, sensitivityNode: none });
+
+    v.parentsGrad.push({ node: z, sensitivityNode: none });
+    w.parentsGrad.push({ node: z, sensitivityNode: none });
+  }
+
+  return z;
+};
+
+/**
+ * Return a boolean (number) `v && w`
+ */
+export const and = (v: VarAD, w: VarAD, isCompNode = true): VarAD => {
+  const z = variableAD(v.val * w.val, "and");
+  z.isCompNode = isCompNode;
+
+  if (isCompNode) {
+    z.children.push({ node: v, sensitivityNode: just(noGrad) });
+    z.children.push({ node: w, sensitivityNode: just(noGrad) });
+
+    v.parents.push({ node: z, sensitivityNode: just(noGrad) });
+    w.parents.push({ node: z, sensitivityNode: just(noGrad) });
+  } else {
+    z.childrenGrad.push({ node: v, sensitivityNode: none });
+    z.childrenGrad.push({ node: w, sensitivityNode: none });
+
+    v.parentsGrad.push({ node: z, sensitivityNode: none });
+    w.parentsGrad.push({ node: z, sensitivityNode: none });
+  }
+
+  return z;
+};
+
+/**
+ * Return a boolean (number) `v || w`
+ */
+export const or = (v: VarAD, w: VarAD, isCompNode = true): VarAD => {
+  const z = variableAD(v.val + w.val, "or");
+  z.isCompNode = isCompNode;
+
+  if (isCompNode) {
+    z.children.push({ node: v, sensitivityNode: just(noGrad) });
+    z.children.push({ node: w, sensitivityNode: just(noGrad) });
+
+    v.parents.push({ node: z, sensitivityNode: just(noGrad) });
+    w.parents.push({ node: z, sensitivityNode: just(noGrad) });
+  } else {
+    z.childrenGrad.push({ node: v, sensitivityNode: none });
+    z.childrenGrad.push({ node: w, sensitivityNode: none });
+
+    v.parentsGrad.push({ node: z, sensitivityNode: none });
+    w.parentsGrad.push({ node: z, sensitivityNode: none });
+  }
+
+  return z;
+};
+
+/**
  * Return a conditional `if(cond) then v else w`.
  */
 export const ifCond = (
@@ -689,19 +766,22 @@ export const ifCond = (
   w: VarAD,
   isCompNode = true
 ): VarAD => {
-  // When the computation graph is evaluated, depending on whether cond is nonnegative, either v or w is evaluated (and returned?)
+  // When the computation graph is evaluated, either v or w is evaluated and returned, depending on the boolean value cond in the generated gradient
 
-  const z = variableAD(0.0, "ifCond"); // No value?
+  const z = variableAD(cond.val ? v.val : w.val, "ifCond"); // No value?
   z.isCompNode = isCompNode;
 
   if (isCompNode) {
+    const vNode = ifCond(cond, gvarOf(1.0), gvarOf(0.0), false);
+    const wNode = ifCond(cond, gvarOf(0.0), gvarOf(1.0), false);
+
     z.children.push({ node: cond, sensitivityNode: just(noGrad) });
-    z.children.push({ node: v, sensitivityNode: just(noGrad) });
-    z.children.push({ node: w, sensitivityNode: just(noGrad) });
+    z.children.push({ node: v, sensitivityNode: just(vNode) });
+    z.children.push({ node: w, sensitivityNode: just(wNode) });
 
     cond.parents.push({ node: z, sensitivityNode: just(noGrad) });
-    v.parents.push({ node: z, sensitivityNode: just(noGrad) });
-    w.parents.push({ node: z, sensitivityNode: just(noGrad) });
+    v.parents.push({ node: z, sensitivityNode: just(vNode) });
+    w.parents.push({ node: z, sensitivityNode: just(wNode) });
   } else {
     z.childrenGrad.push({ node: cond, sensitivityNode: none });
     z.childrenGrad.push({ node: v, sensitivityNode: none });
@@ -1265,6 +1345,12 @@ const traverseGraph = (i: number, z: IVarAD, setting: string): any => {
       stmt = `const ${parName} = ${childName0} > ${childName1};`;
     } else if (z.op === "lt") {
       stmt = `const ${parName} = ${childName0} < ${childName1};`;
+    } else if (z.op === "and") {
+      stmt = `const ${parName} = ${childName0} && ${childName1};`;
+    } else if (z.op === "or") {
+      stmt = `const ${parName} = ${childName0} || ${childName1};`;
+    } else if (z.op === "eq") {
+      stmt = `const ${parName} = ${childName0} === ${childName1};`;
     } else if (z.op === "+ list") {
       stmt = `const ${parName} = ${childName0} + ${childName1};`;
     } else if (z.op === "div") {
@@ -1466,7 +1552,7 @@ export const energyAndGradCompiled = (
   xs: number[],
   xsVars: VarAD[],
   energyGraph: VarAD,
-  weightInfo: WeightInfo,
+  weightInfo: MaybeVal<WeightInfo>,
   debug = false
 ) => {
   // Zero xsvars vals, gradients, and caching setting
@@ -1474,7 +1560,9 @@ export const energyAndGradCompiled = (
   clearVisitedNodesOutput(energyGraph);
 
   // Set the weight nodes to have the right weight values (may have been updated at some point during the opt)
-  setWeights(weightInfo);
+  if (weightInfo.tag === "Just") {
+    setWeights(weightInfo.contents);
+  }
 
   // Set the leaves of the graph to have the new input values
   setInputs(xsVars, xs);
@@ -1483,11 +1571,16 @@ export const energyAndGradCompiled = (
   // Note that this does NOT include the weight (i.e. is called on `xsVars`, not `xsVarsWithWeight`! Because the EP weight is not a degree of freedom)
   const gradGraph = gradAllSymbolic(energyGraph, xsVars);
 
+  const epWeightNode: MaybeVal<VarAD> =
+    weightInfo.tag === "Just"
+      ? just(weightInfo.contents.epWeightNode)
+      : { tag: "Nothing" }; // Generate energy and gradient without weight
+
   const graphs: GradGraphs = {
     inputs: xsVars,
     energyOutput: energyGraph,
     gradOutputs: gradGraph,
-    weight: { tag: "Just", contents: weightInfo.epWeightNode },
+    weight: epWeightNode,
   };
 
   // Synthesize energy and gradient code

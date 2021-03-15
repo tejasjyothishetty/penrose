@@ -1,10 +1,48 @@
 // Utils that are unrelated to the engine, but autodiff/opt/etc only
 
-// TODO: Fix imports
-import { varOf, numOf, constOf, constOfIf } from "engine/Autodiff";
-import * as _ from "lodash";
-import { Elem, SubPath, Value } from "types/shapeTypes";
+import { constOfIf, numOf, varOf } from "engine/Autodiff";
+import { findDef } from "renderer/ShapeDef";
 import rfdc from "rfdc";
+import { IVarAD, VarAD } from "types/ad";
+import { ASTNode, Identifier, SourceLoc } from "types/ast";
+import { StyleError, Warning } from "types/errors";
+import { Elem, SubPath, Value } from "types/value";
+import { LbfgsParams } from "types/state";
+import {
+  AnnoFloat,
+  Expr,
+  IAccessPath,
+  IList,
+  IMatrix,
+  IPropertyPath,
+  ITuple,
+  IVector,
+  Path,
+  PropertyDecl,
+} from "types/style";
+import {
+  Color,
+  FieldExpr,
+  GPIExpr,
+  IColorV,
+  IFGPI,
+  IFloatV,
+  IHMatrixV,
+  IListV,
+  ILListV,
+  IMatrixV,
+  IPaletteV,
+  IPathDataV,
+  IPolygonV,
+  IPtListV,
+  IPtV,
+  ITrans,
+  ITupV,
+  IVectorV,
+  TagExpr,
+  Translation,
+} from "types/value";
+import { showError } from "utils/Error";
 const clone = rfdc({ proto: false, circles: false });
 
 // TODO: Is there a way to write these mapping/conversion functions with less boilerplate?
@@ -345,18 +383,39 @@ const dummySourceLoc = (): SourceLoc => {
   return { line: -1, col: -1 };
 };
 
+export const dummyAccessPath = (parent: Path, index: number): IAccessPath =>
+  ({
+    nodeType: "dummyAccessPath",
+    children: [],
+    start: dummySourceLoc(),
+    end: dummySourceLoc(),
+    tag: "AccessPath",
+    path: parent,
+    indices: [dummyASTNode({ tag: "Fix", contents: index })],
+  } as IAccessPath);
+
+export const dummyASTNode = (o: any): ASTNode => {
+  return {
+    ...o,
+    start: dummySourceLoc(),
+    end: dummySourceLoc(),
+    nodeType: "dummyASTNode", // COMBAK: Is this ok?
+    children: [],
+  };
+};
+
 const floatValToExpr = (e: Value<VarAD>): Expr => {
   if (e.tag !== "FloatV") {
     throw Error("expected to insert vector elem of type float");
   }
+
   return {
     nodeType: "dummyExpr",
     children: [],
     start: dummySourceLoc(),
     end: dummySourceLoc(),
-    tag: "Fix",
-    contents: e.contents.val,
-    // COMBAK: This apparently held a VarAD before the AFloat grammar change? Is doing ".val" going to break something?
+    tag: "VaryAD",
+    contents: e.contents,
   };
 };
 
@@ -403,9 +462,27 @@ export const insertGPI = (
   }
 };
 
+const defaultVec2 = (): Expr => {
+  const e1: AnnoFloat = {
+    ...dummyASTNode({}),
+    tag: "Vary",
+  };
+  const e2: AnnoFloat = {
+    ...dummyASTNode({}),
+    tag: "Vary",
+  };
+  const v2: IVector = {
+    ...dummyASTNode({}),
+    tag: "Vector",
+    contents: [e1, e2],
+  };
+  return v2;
+};
+
 // This function is a combination of `addField` and `addProperty` from `Style.hs`
 // `inCompilePhase` = true = put errors and warnings in the translation, otherwise throw them at runtime
 // TODO(error/warn): Improve these warning/error messages (especially for overrides) and distinguish the fatal ones
+// TODO(error): rewrite to use the same pattern as `findExprSafe`
 export const insertExpr = (
   path: Path,
   expr: TagExpr<VarAD>,
@@ -566,6 +643,7 @@ export const insertExpr = (
             throw Error(err);
           }
           const res2: TagExpr<IVarAD> = res.contents;
+
           // Deal with vector expressions
           if (res2.tag === "OptEval") {
             const res3: Expr = res2.contents;
@@ -646,7 +724,37 @@ export const insertExpr = (
           const gpi = trans.trMap[name.contents.value][
             field.value
           ] as IFGPI<VarAD>;
-          const [, properties] = gpi.contents;
+          const [gpiType, properties] = gpi.contents;
+
+          // Right now, a property may not have been initialized (e.g. during the Style interpretation phase, when we are creating a translation).
+          // If the expected property is a non-vector type, throw an error, as we can't insert an expression into an uninitialized non-vector (list or other composite type).
+          const shapeDef = findDef(gpiType);
+          if (!(prop.value in shapeDef.properties)) {
+            return addWarn(trans, {
+              tag: "InvalidGPIPropertyError",
+              givenProperty: prop,
+              expectedProperties: Object.entries(shapeDef.properties).map(
+                (e) => e[0]
+              ),
+            });
+          }
+
+          if (shapeDef.properties[prop.value][0] !== "VectorV") {
+            throw Error(
+              "internal error: Cannot insert expression into an uninitialized non-vector. this feature is currently not supported."
+            );
+          }
+
+          // Otherwise, it's a vector type, so if the value hasn't been set, initialize it with a default vector (?, ?)
+          // TODO(vec): Note this assumes a 2D vector. Otherwise we wouldn't know the size of the vector to initialize.
+          if (!(prop.value in properties)) {
+            properties[prop.value] = {
+              tag: "OptEval",
+              contents: defaultVec2(),
+            };
+          }
+
+          // Continue as usual with insertion. TODO: Deal with overrides? Not sure how to distinguish a user-set `?` from a default-generated `?`
           const res = properties[prop.value];
 
           if (res.tag === "OptEval") {
@@ -744,6 +852,24 @@ export const insertExprs = (
   return tr2;
 };
 
+export const isTagExpr = (e: any): e is TagExpr<VarAD> => {
+  return e.tag === "OptEval" || e.tag === "Done" || e.tag === "Pending";
+};
+
+// Version of findExpr if you expect to not encounter any errors (e.g., if it's being used after the translation has already been checked)
+export const findExprSafe = (
+  trans: Translation,
+  path: Path
+): TagExpr<VarAD> | IFGPI<VarAD> => {
+  const res = findExpr(trans, path);
+  if (res.tag !== "FGPI" && !isTagExpr(res)) {
+    // Is an error
+    throw Error(showError(res));
+  }
+
+  return res;
+};
+
 /**
  * Finds an expression in a translation given a field or property path.
  * @param trans - a translation from `State`
@@ -755,19 +881,22 @@ export const insertExprs = (
 export const findExpr = (
   trans: Translation,
   path: Path
-): TagExpr<VarAD> | IFGPI<VarAD> => {
+): TagExpr<VarAD> | IFGPI<VarAD> | StyleError => {
   let name, field, prop;
 
   switch (path.tag) {
-    case "FieldPath":
+    case "FieldPath": {
       [name, field] = [path.name.contents.value, path.field.value];
+      const fields = trans.trMap[name];
+      if (!fields) {
+        return { tag: "NonexistentNameError", name: path.name.contents, path };
+      }
+
       // Type cast to field expression
-      const fieldExpr = trans.trMap[name][field];
+      const fieldExpr = fields[field];
 
       if (!fieldExpr) {
-        throw Error(
-          `Could not find field '${JSON.stringify(path)}' in translation`
-        );
+        return { tag: "NonexistentFieldError", field: path.field, path };
       }
 
       switch (fieldExpr.tag) {
@@ -776,29 +905,45 @@ export const findExpr = (
         case "FExpr":
           return fieldExpr.contents;
       }
+    }
 
-    case "PropertyPath":
+    case "PropertyPath": {
       [name, field, prop] = [
         path.name.contents.value,
         path.field.value,
         path.property.value,
       ];
+
+      const fieldsP = trans.trMap[name];
+      if (!fieldsP) {
+        return { tag: "NonexistentNameError", name: path.name.contents, path };
+      }
+
       // Type cast to FGPI and get the properties
-      const gpi = trans.trMap[name][field];
+      const gpi = fieldsP[field];
 
       if (!gpi) {
-        throw Error(
-          `Could not find GPI '${JSON.stringify(path)}' in translation`
-        );
+        return { tag: "NonexistentGPIError", gpi: path.field, path };
       }
 
       switch (gpi.tag) {
-        case "FExpr":
-          throw new Error("field path leads to an expression, not a GPI");
-        case "FGPI":
+        case "FExpr": {
+          return { tag: "ExpectedGPIGotFieldError", field: path.field, path };
+        }
+        case "FGPI": {
           const [, propDict] = gpi.contents;
-          return propDict[prop];
+          const propRes = propDict[prop];
+          if (!propRes) {
+            return {
+              tag: "NonexistentPropertyError",
+              property: path.property,
+              path,
+            };
+          }
+          return propRes;
+        }
       }
+    }
 
     case "AccessPath": {
       // Have to look up AccessPaths first, since they make a recursive call, and are not invalid paths themselves
@@ -811,13 +956,26 @@ export const findExpr = (
         if (res2.tag === "Vector") {
           const inner: Expr = res2.contents[i];
           return { tag: "OptEval", contents: inner };
-        } else throw Error("access path lookup is invalid");
+        } else if (res2.tag === "List") {
+          const inner: Expr = res2.contents[i];
+          return { tag: "OptEval", contents: inner };
+        } else if (res2.tag === "PropertyPath" || res2.tag === "FieldPath") {
+          // COMBAK: This deals with accessing elements of path aliases. Maybe there is a nicer way to do it.
+          return findExpr(trans, { ...path, path: res2 });
+        } else {
+          // NOTE: we cannot check because we cannot evaluate right now. Returning the result directly instead
+          return res;
+        }
       } else if (res.tag === "Done") {
         if (res.contents.tag === "VectorV") {
           const inner: VarAD = res.contents.contents[i];
           return { tag: "Done", contents: { tag: "FloatV", contents: inner } };
-        } else throw Error("access path lookup is invalid");
-      } else throw Error("access path lookup is invalid");
+        } else {
+          return { tag: "InvalidAccessPathError", path };
+        }
+      } else {
+        return { tag: "InvalidAccessPathError", path };
+      }
     }
   }
 
@@ -830,6 +988,12 @@ export const isPath = (expr: Expr): expr is Path => {
   return ["FieldPath", "PropertyPath", "AccessPath", "LocalVar"].includes(
     expr.tag
   );
+};
+
+export const isCollection = (
+  expr: Expr
+): expr is IVector | IMatrix | IList | ITuple => {
+  return ["Vector", "Matrix", "List", "Tuple"].includes(expr.tag);
 };
 
 export const exprToNumber = (e: Expr): number => {

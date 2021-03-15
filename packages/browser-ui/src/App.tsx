@@ -10,6 +10,8 @@ import {
   prepareState,
   stateInitial,
   stepUntilConvergence,
+  showError,
+  PenroseError,
 } from "@penrose/core";
 
 /**
@@ -41,6 +43,7 @@ import { FileSocket, FileSocketResult } from "ui/FileSocket";
 
 interface ICanvasState {
   data: PenroseState | undefined; // NOTE: if the backend is not connected, data will be undefined, TODO: rename this field
+  error: PenroseError | null;
   autostep: boolean;
   processedInitial: boolean;
   penroseVersion: string;
@@ -54,6 +57,7 @@ const socketAddress = "ws://localhost:9160";
 class App extends React.Component<any, ICanvasState> {
   public readonly state: ICanvasState = {
     data: undefined,
+    error: null,
     history: [],
     autostep: true,
     processedInitial: false, // TODO: clarify the semantics of this flag
@@ -88,6 +92,7 @@ class App extends React.Component<any, ICanvasState> {
       data: canvasState,
       history: [...this.state.history, canvasState],
       processedInitial: true,
+      error: null,
     });
     this.renderCanvas(canvasState);
     const { autostep } = this.state;
@@ -103,25 +108,31 @@ class App extends React.Component<any, ICanvasState> {
   };
   public downloadState = (): void => {
     const state = this.state.data;
-    const params = {
-      ...state.params,
-      energyGraph: {},
-      xsVars: [],
-      constrWeightNode: undefined,
-      epWeightNode: undefined,
-      graphs: undefined,
-    };
-    const content = JSON.stringify({ ...state, params });
-    const blob = new Blob([content], {
-      type: "text/json",
-    });
-    const url = URL.createObjectURL(blob);
-    const downloadLink = document.createElement("a");
-    downloadLink.href = url;
-    downloadLink.download = `state.json`;
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
+    if (state) {
+      const params = {
+        ...state.params,
+        energyGraph: {},
+        xsVars: [],
+        constrWeightNode: undefined,
+        epWeightNode: undefined,
+        graphs: undefined,
+      };
+      const content = JSON.stringify({ ...state, params });
+      const blob = new Blob([content], {
+        type: "text/json",
+      });
+      const url = URL.createObjectURL(blob);
+      const downloadLink = document.createElement("a");
+      downloadLink.href = url;
+      downloadLink.download = `state.json`;
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    } else {
+      console.warn(
+        "Warning: cannot download the state because state is currently empty."
+      );
+    }
   };
   public autoStepToggle = async () => {
     this.setState({ autostep: !this.state.autostep });
@@ -157,11 +168,6 @@ class App extends React.Component<any, ICanvasState> {
         const { domain, substance, style } = files;
         this.setState({ files, connected: true });
 
-        const oldState = this.state.data;
-        if (oldState) {
-          console.error("state already set");
-        }
-
         // TODO: does `processedInitial` need to be set?
         this.setState({ processedInitial: false });
         const compileRes = compileTrio(
@@ -173,10 +179,7 @@ class App extends React.Component<any, ICanvasState> {
           const initState: PenroseState = await prepareState(compileRes.value);
           void this.onCanvasState(initState);
         } else {
-          void console.error(
-            "Failed to compile with errors:",
-            compileRes.error
-          );
+          this.setState({ error: compileRes.error, data: undefined });
         }
       },
       () => {
@@ -232,6 +235,7 @@ class App extends React.Component<any, ICanvasState> {
       showInspector,
       history,
       files,
+      error,
       connected,
     } = this.state;
     return (
@@ -272,15 +276,19 @@ class App extends React.Component<any, ICanvasState> {
             className={this.state.showInspector ? "" : "soloPane1"}
             pane2Style={{ overflow: "hidden" }}
           >
-            {data && (
-              <div
-                style={{ width: "100%", height: "100%" }}
-                ref={this.canvasRef}
-              />
-            )}
+            <div style={{ width: "100%", height: "100%" }}>
+              {data && (
+                <div
+                  style={{ width: "100%", height: "100%" }}
+                  ref={this.canvasRef}
+                />
+              )}
+              {error && <pre>errors encountered, check inspector</pre>}
+            </div>
             {showInspector && (
               <Inspector
                 history={history}
+                error={error}
                 onClose={this.toggleInspector}
                 modShapes={this.modShapes}
               />

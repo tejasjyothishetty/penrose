@@ -7,6 +7,8 @@
 import * as moo from "moo";
 import { concat, compact, flatten, last } from 'lodash'
 import { optional, tokensIn, basicSymbols, rangeOf, rangeBetween, rangeFrom, nth, convertTokenId } from 'parser/ParserUtil'
+import { ASTNode, IStringLit } from "types/ast";
+import { DomainProg, TypeDecl, PredicateDecl, FunctionDecl, ConstructorDecl, PreludeDecl, NotationDecl, SubTypeDecl, TypeConstructor, Type, Arg, Prop } from "types/domain";
 
 // NOTE: ordering matters here. Top patterns get matched __first__
 const lexer = moo.compile({
@@ -74,11 +76,11 @@ statements
     # base case
     -> _ {% () => [] %} 
     # whitespaces at the beginning (NOTE: comments are allowed)
-    |  _c_ "\n" statements {% nth(2) %} # 
+    |  _c_ nl statements {% nth(2) %} # 
     # spaces around each statement (NOTE: still wrap in list to spread later)
     |  _ statement _c_ {% d => [d[1]] %}
     # whitespaces in between and at the end (NOTE: comments are allowed)
-    |  _ statement _c_ "\n" statements {% d => [d[1], ...d[4]] %}
+    |  _ statement _c_ nl statements {% d => [d[1], ...d[4]] %}
 
 statement 
   -> type        {% id %}
@@ -276,8 +278,10 @@ _ml -> multi_line_ws_char:*
 
 multi_line_ws_char
     -> %ws
-    |  "\n"
+    |  %nl
     | comment # skip comments
+
+nl -> %nl
 
 __ -> %ws:+ 
 

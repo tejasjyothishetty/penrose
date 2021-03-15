@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { compact, flatten } from "lodash";
 import * as moo from "moo";
+import { SourceLoc, Identifier } from "types/ast";
 
 export const basicSymbols: moo.Rules = {
   ws: /[ \t]+/,
-  nl: { match: "\n", lineBreaks: true },
+  nl: { match: /\r\n|\r|\n/, lineBreaks: true },
   subtypeOf: "<:",
   lte: "<=",
   lt: "<",
@@ -172,3 +173,15 @@ export const idOf = (value: string, nodeType: string): Identifier => ({
   type: "identifier",
   value,
 });
+
+export const lastLocation = (parser: nearley.Parser): SourceLoc | undefined => {
+  const lexerState = parser.lexerState;
+  if (lexerState) {
+    return {
+      line: lexerState.line,
+      col: lexerState.col,
+    };
+  } else {
+    return undefined;
+  }
+};

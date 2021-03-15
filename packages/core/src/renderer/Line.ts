@@ -1,3 +1,4 @@
+import { IVectorV, IFloatV, IColorV, IStrV } from "types/value";
 import { toHex, toScreen } from "utils/Util";
 import { arrowHead } from "./Arrow";
 import { attrTitle } from "./AttrHelper";
@@ -42,7 +43,7 @@ const Line = ({ shape, canvasSize }: ShapeProps) => {
   pathElem.setAttribute("stroke-opacity", opacity.toString());
   pathElem.setAttribute("stroke", color);
   pathElem.setAttribute("stroke-width", thickness.toString());
-  pathElem.setAttribute("stroke-dash-array", strokeDasharray);
+  pathElem.setAttribute("stroke-dasharray", strokeDasharray);
   // TODO: dedup in AttrHelper (problem: thickness vs strokeWidth)
   if (shape.properties.leftArrowhead.contents === true) {
     pathElem.setAttribute("marker-start", `url(#${leftArrowId})`);

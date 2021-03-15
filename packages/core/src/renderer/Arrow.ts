@@ -1,5 +1,6 @@
+import { IFloatV, IStrV, IColorV, IVectorV } from "types/value";
 import { arrowheads, round2, toHex, toScreen } from "utils/Util";
-import { attrFill, attrStroke, attrTitle, DASH_ARRAY } from "./AttrHelper";
+import { attrFill, attrTitle, DASH_ARRAY } from "./AttrHelper";
 import { ShapeProps } from "./Renderer";
 
 export const arrowHead = (
@@ -22,7 +23,7 @@ export const arrowHead = (
   marker.setAttribute("refX", arrow.refX.toString());
   marker.setAttribute("refY", arrow.refY.toString());
   marker.setAttribute("orient", "auto-start-reverse");
-  const path = document.createElementNS("svg", "path");
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
   path.setAttribute("d", arrow.path);
   path.setAttribute("fill", color);
   path.setAttribute("fill-opacity", opacity.toString());
@@ -74,7 +75,7 @@ const Arrow = ({ shape, canvasSize }: ShapeProps) => {
     dashArray = (shape.properties.strokeDashArray as IStrV<string>).contents;
   }
   if (shape.properties.style.contents === "dashed") {
-    elem.setAttribute("stroke-dash-array", dashArray.toString());
+    elem.setAttribute("stroke-dasharray", dashArray.toString());
   }
   path.setAttribute(
     "stroke-width",

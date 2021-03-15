@@ -1,16 +1,16 @@
 // Must be run from penrose-web for loading files
 
 import * as S from "compiler/Style";
-import { correctSubsts, possibleSubsts, selEnvs } from "compiler/StyleTestData";
-import {
-  compileSubstance,
-  parseSubstance,
-  SubstanceEnv,
-} from "compiler/Substance";
+import { compileSubstance, parseSubstance } from "compiler/Substance";
 import * as fs from "fs";
 import _ from "lodash";
 import * as path from "path";
-import { andThen, unsafelyUnwrap, Result, showError } from "utils/Error";
+import { Either } from "types/common";
+import { PenroseError, StyleErrors } from "types/errors";
+import { State } from "types/state";
+import { StyProg } from "types/style";
+import { SubProg, SubstanceEnv } from "types/substance";
+import { andThen, Result, showError, unsafelyUnwrap } from "utils/Error";
 import { compileDomain, Env } from "./Domain";
 // TODO: Reorganize and name tests by compiler stage
 
@@ -58,26 +58,28 @@ export const loadProgs = ([domainStr, subStr, styStr]: [
 };
 
 describe("Compiler", () => {
-  // Each possible substitution should be full WRT its selector
-  test("substitution: S.fullSubst true", () => {
-    for (let i = 0; i < selEnvs.length; i++) {
-      for (let j = 0; j < possibleSubsts[i].length; j++) {
-        expect(S.fullSubst(selEnvs[i], possibleSubsts[i][j] as Subst)).toEqual(
-          true
-        );
-      }
-    }
-  });
+  // COMBAK: StyleTestData is deprecated. Make the data in the test file later (@hypotext).
+  // // Each possible substitution should be full WRT its selector
+  // test("substitution: S.fullSubst true", () => {
+  //   for (let i = 0; i < selEnvs.length; i++) {
+  //     for (let j = 0; j < possibleSubsts[i].length; j++) {
+  //       expect(S.fullSubst(selEnvs[i], possibleSubsts[i][j] as Subst)).toEqual(
+  //         true
+  //       );
+  //     }
+  //   }
+  // });
 
-  test("substitution: S.fullSubst false", () => {
-    // Namespace shouldn't have matches
-    const ps0: Subst = { test: "A" };
-    expect(S.fullSubst(selEnvs[0], ps0)).toEqual(false);
+  // COMBAK: StyleTestData is deprecated. Make the data in the test file later (@hypotext).
+  // test("substitution: S.fullSubst false", () => {
+  //   // Namespace shouldn't have matches
+  //   const ps0: Subst = { test: "A" };
+  //   expect(S.fullSubst(selEnvs[0], ps0)).toEqual(false);
 
-    // Selector should have real substitution
-    const ps1 = { v: "x1", U: "X" }; // missing "w" match
-    expect(S.fullSubst(selEnvs[6], ps1)).toEqual(false);
-  });
+  //   // Selector should have real substitution
+  //   const ps1 = { v: "x1", U: "X" }; // missing "w" match
+  //   expect(S.fullSubst(selEnvs[6], ps1)).toEqual(false);
+  // });
 
   test("substitution: S.uniqueKeysAndVals true", () => {
     // This subst has unique keys and vals
@@ -89,81 +91,84 @@ describe("Compiler", () => {
     expect(S.uniqueKeysAndVals({ a: "V", c: "V" })).toEqual(false);
   });
 
-  // For the 6th selector in the LA Style program, substituting in this substitution into the relational expressions yields the correct result (where all vars are unique)
-  test("substitute unique vars in selector", () => {
-    const subst: Subst = { v: "x1", U: "X", w: "x2" };
-    const rels: RelationPattern[] = selEnvs[6].header.contents.where.contents; // This is selector #6 in the LA Style program
-    // `rels` stringifies to this: `["In(v, U)", "Unit(v)", "Orthogonal(v, w)"]`
-    const relsSubStr = rels
-      .map((rel) => S.substituteRel(subst, rel))
-      .map(S.ppRel);
-    const answers = ["In(x1, X)", "Unit(x1)", "Orthogonal(x1, x2)"];
+  // COMBAK: StyleTestData is deprecated. Make the data in the test file later (@hypotext).
+  // // For the 6th selector in the LA Style program, substituting in this substitution into the relational expressions yields the correct result (where all vars are unique)
+  // test("substitute unique vars in selector", () => {
+  //   const subst: Subst = { v: "x1", U: "X", w: "x2" };
+  //   const rels: RelationPattern[] = selEnvs[6].header.contents.where.contents; // This is selector #6 in the LA Style program
+  //   // `rels` stringifies to this: `["In(v, U)", "Unit(v)", "Orthogonal(v, w)"]`
+  //   const relsSubStr = rels
+  //     .map((rel) => S.substituteRel(subst, rel))
+  //     .map(S.ppRel);
+  //   const answers = ["In(x1, X)", "Unit(x1)", "Orthogonal(x1, x2)"];
 
-    for (const [res, expected] of _.zip(relsSubStr, answers)) {
-      expect(res).toEqual(expected);
-    }
-  });
+  //   for (const [res, expected] of _.zip(relsSubStr, answers)) {
+  //     expect(res).toEqual(expected);
+  //   }
+  // });
 
-  // For the 6th selector in the LA Style program, substituting in this substitution into the relational expressions yields the correct result (where two vars are non-unique, `x2`)
-  test("substitute non-unique vars in selector", () => {
-    const subst: Subst = { v: "x2", U: "X", w: "x2" };
-    const rels: RelationPattern[] = selEnvs[6].header.contents.where.contents; // This is selector #6 in the LA Style program
-    // `rels` stringifies to this: `["In(v, U)", "Unit(v)", "Orthogonal(v, w)"]`
-    const relsSubStr = rels
-      .map((rel) => S.substituteRel(subst, rel))
-      .map(S.ppRel);
-    const answers = ["In(x2, X)", "Unit(x2)", "Orthogonal(x2, x2)"];
+  // COMBAK: StyleTestData is deprecated. Make the data in the test file later (@hypotext).
+  // // For the 6th selector in the LA Style program, substituting in this substitution into the relational expressions yields the correct result (where two vars are non-unique, `x2`)
+  // test("substitute non-unique vars in selector", () => {
+  //   const subst: Subst = { v: "x2", U: "X", w: "x2" };
+  //   const rels: RelationPattern[] = selEnvs[6].header.contents.where.contents; // This is selector #6 in the LA Style program
+  //   // `rels` stringifies to this: `["In(v, U)", "Unit(v)", "Orthogonal(v, w)"]`
+  //   const relsSubStr = rels
+  //     .map((rel) => S.substituteRel(subst, rel))
+  //     .map(S.ppRel);
+  //   const answers = ["In(x2, X)", "Unit(x2)", "Orthogonal(x2, x2)"];
 
-    for (const [res, expected] of _.zip(relsSubStr, answers)) {
-      expect(res).toEqual(expected);
-    }
-  });
+  //   for (const [res, expected] of _.zip(relsSubStr, answers)) {
+  //     expect(res).toEqual(expected);
+  //   }
+  // });
 
-  // Compiler finds the right substitutions for LA Style program
-  // Note that this doesn't test subtypes
-  test("finds the right substitutions for LA Style program", () => {
-    // This code is cleaned up from `S.compileStyle`; runs the beginning of compiler checking from scratch
-    const triple: [string, string, string] = [
-      "linear-algebra-domain/linear-algebra.dsl",
-      "linear-algebra-domain/twoVectorsPerp-unsugared.sub",
-      "linear-algebra-domain/linear-algebra-paper-simple.sty",
-    ];
+  // COMBAK: StyleTestData is deprecated. Make the data in the test file later (@hypotext).
+  // // Compiler finds the right substitutions for LA Style program
+  // // Note that this doesn't test subtypes
+  // test("finds the right substitutions for LA Style program", () => {
+  //   // This code is cleaned up from `S.compileStyle`; runs the beginning of compiler checking from scratch
+  //   const triple: [string, string, string] = [
+  //     "linear-algebra-domain/linear-algebra.dsl",
+  //     "linear-algebra-domain/twoVectorsPerp-unsugared.sub",
+  //     "linear-algebra-domain/linear-algebra-paper-simple.sty",
+  //   ];
 
-    const [varEnv, subEnv, subProg, styProgInit]: [
-      Env,
-      SubstanceEnv,
-      SubProg,
-      StyProg
-    ] = loadProgs(loadFiles(triple) as [string, string, string]);
+  //   const [varEnv, subEnv, subProg, styProgInit]: [
+  //     Env,
+  //     SubstanceEnv,
+  //     SubProg,
+  //     StyProg
+  //   ] = loadProgs(loadFiles(triple) as [string, string, string]);
 
-    const selEnvs = S.checkSelsAndMakeEnv(varEnv, styProgInit.blocks);
+  //   const selEnvs = S.checkSelsAndMakeEnv(varEnv, styProgInit.blocks);
 
-    const selErrs: StyleErrors = _.flatMap(selEnvs, (e) =>
-      e.warnings.concat(e.errors)
-    );
+  //   const selErrs: StyleErrors = _.flatMap(selEnvs, (e) =>
+  //     e.warnings.concat(e.errors)
+  //   );
 
-    if (selErrs.length > 0) {
-      const err = `Could not compile. Error(s) in Style while checking selectors`;
-      console.log([err].concat(selErrs.map((e) => showError(e))));
-      fail();
-    }
+  //   if (selErrs.length > 0) {
+  //     const err = `Could not compile. Error(s) in Style while checking selectors`;
+  //     console.log([err].concat(selErrs.map((e) => showError(e))));
+  //     fail();
+  //   }
 
-    const subss = S.findSubstsProg(
-      varEnv,
-      subEnv,
-      subProg,
-      styProgInit.blocks,
-      selEnvs
-    ); // TODO: Use `eqEnv`
+  //   const subss = S.findSubstsProg(
+  //     varEnv,
+  //     subEnv,
+  //     subProg,
+  //     styProgInit.blocks,
+  //     selEnvs
+  //   ); // TODO: Use `eqEnv`
 
-    if (subss.length !== correctSubsts.length) {
-      fail();
-    }
+  //   if (subss.length !== correctSubsts.length) {
+  //     fail();
+  //   }
 
-    for (const [res, expected] of _.zip(subss, correctSubsts)) {
-      expect(res).toEqual(expected);
-    }
-  });
+  //   for (const [res, expected] of _.zip(subss, correctSubsts)) {
+  //     expect(res).toEqual(expected);
+  //   }
+  // });
 
   // There are no AnonAssign statements, i.e. they have all been substituted out (proxy test for `S.nameAnonStatements` working)
   test("There are no anonymous statements", () => {
@@ -201,18 +206,18 @@ describe("Compiler", () => {
   });
 
   const sum = (acc: number, n: number, i: number): Either<string, number> =>
-    i > 2 ? S.Left("error") : S.Right(acc + n);
+    i > 2 ? S.toLeft("error") : S.ToRight(acc + n);
 
   test("S.foldM none", () => {
-    expect(S.foldM([], sum, -1)).toEqual(S.Right(-1));
+    expect(S.foldM([], sum, -1)).toEqual(S.ToRight(-1));
   });
 
   test("S.foldM right", () => {
-    expect(S.foldM([1, 2, 3], sum, -1)).toEqual(S.Right(5));
+    expect(S.foldM([1, 2, 3], sum, -1)).toEqual(S.ToRight(5));
   });
 
   test("S.foldM left", () => {
-    expect(S.foldM([1, 2, 3, 4], sum, -1)).toEqual(S.Left("error"));
+    expect(S.foldM([1, 2, 3, 4], sum, -1)).toEqual(S.toLeft("error"));
   });
 
   const xs = ["a", "b", "c"];
@@ -222,6 +227,65 @@ describe("Compiler", () => {
       ["b", 1],
       ["c", 2],
     ]);
+  });
+
+  describe("Correct Style programs", () => {
+    const domainProg = "type Object";
+    const subProg = "Object o";
+    // TODO: Name these programs
+    const styProgs = [
+      // These are mostly to test setting shape properties as vectors or accesspaths
+      `Object o {
+    shape o.shape = Line {}
+    o.shape.start[0] = 0.
+}
+`,
+      `Object o {
+    shape o.shape = Line {
+        start: (0., ?)
+    }
+}`,
+      `Object o {
+    shape o.shape = Line {
+          start: (?, ?)
+    }
+    o.shape.start[0] = 0.
+}`,
+      `Object o {
+    o.y = ?
+    shape o.shape = Line {
+        start: (0., o.y)
+    }
+}`,
+      // Set field
+      `Object o {
+       o.f = (?, ?)
+       o.f[0] = 0.
+       o.shape = Circle {}
+}`,
+    ];
+
+    const domainRes: Result<Env, PenroseError> = compileDomain(domainProg);
+
+    const subRes: Result<[SubstanceEnv, Env], PenroseError> = andThen(
+      (env) => compileSubstance(subProg, env),
+      domainRes
+    );
+
+    for (const styProg of styProgs) {
+      const styRes: Result<State, PenroseError> = andThen(
+        (res) => S.compileStyle(styProg, ...res),
+        subRes
+      );
+
+      if (!styRes.isOk()) {
+        fail(
+          `Expected Style program to work without errors. Got error ${styRes.error.errorType}`
+        );
+      } else {
+        expect(true).toEqual(true);
+      }
+    }
   });
 
   // TODO: There are no tests directly for the substitution application part of the compiler, though I guess you could walk the AST (making the substitution-application code more generic to do so) and check that there are no Style variables anywhere? Except for, I guess, namespace names?
@@ -257,7 +321,7 @@ describe("Compiler", () => {
     }
   };
 
-  describe("Errors", () => {
+  describe("Expected Style errors", () => {
     const subProg = loadFile("set-theory-domain/twosets-simple.sub");
     const domainProg = loadFile("set-theory-domain/setTheory.dsl");
     // We test variations on this Style program
@@ -275,7 +339,9 @@ describe("Compiler", () => {
         (res) => S.compileStyle(styProg, ...res),
         subRes
       );
-      expectErrorOf(styRes, errorType);
+      describe(errorType, () => {
+        expectErrorOf(styRes, errorType);
+      });
     };
 
     const errorStyProgs = {
@@ -295,6 +361,32 @@ describe("Compiler", () => {
         `forall Set x; Point y
 where IsSubset(y, x) { }`,
       ],
+
+      // ---------- Block static errors
+
+      InvalidGPITypeError: [`forall Set x { x.icon = Circl { } }`],
+
+      // COMBAK: Check that multiple wrong properties are checked -- i.e. this dict ontology has to be extended so that one program can have multiple errors
+      InvalidGPIPropertyError: [
+        `forall Set x {  
+          x.icon = Circle { 
+           centre: (0.0, 0.0) 
+           r: 9.
+           diameter: 100.
+         } 
+       }`,
+      ],
+
+      // Have to do a nested search in expressions for this
+      InvalidFunctionNameError: [
+        `forall Set x { x.icon = Circle { r: ksajfksdafksfh(0.0, "hi") } }`,
+        `forall Set x { x.icon = Circle { r: get(0.0, sjkfhsdk("hi")) } }`,
+        `forall Set x { x.icon = Circle { r: wjhkej(0.0, sjkfhsdk("hi")) } }`,
+      ],
+
+      InvalidObjectiveNameError: [`forall Set x { encourage sjdhfksha(0.0) }`],
+
+      InvalidConstraintNameError: [`forall Set x { ensure jahfkjdhf(0.0) }`],
 
       // ------- Translation errors (deletion)
       DeletedPropWithNoSubObjError: [`forall Set x { delete y.z.p }`],
@@ -352,6 +444,42 @@ delete x.z.p }`,
 }`,
       ],
 
+      // ----------- Translation validation errors
+      // TODO(errors): check multiple errors
+
+      // TODO(errors): This throws too early, gives InsertedPathWithoutOverrideError -- correctly throws error but may be misleading
+
+      // NonexistentNameError:
+      //   [`forall Set x { A.z = 0. }`],
+
+      NonexistentFieldError: [`forall Set x { x.icon = Circle { r: x.r } }`],
+      NonexistentGPIError: [
+        `forall Set x {  
+         x.z = x.c.p
+       }`,
+      ],
+      NonexistentPropertyError: [
+        `forall Set x {  
+          x.icon = Circle { 
+           r: 9.
+           center: (x.icon.z, 0.0)
+         } 
+       }`,
+      ],
+      ExpectedGPIGotFieldError: [
+        `forall Set x { 
+           x.z = 1.0 
+           x.y = x.z.p
+}`,
+      ],
+      // TODO: this test should _not_ fail, but it's failing because we are skipping `OptEval` checks for access paths
+      //       InvalidAccessPathError: [
+      //         `forall Set x {
+      //            x.z = 1.0
+      //            x.y = x.z[0]
+      // }`,
+      //       ],
+
       // ---------- Runtime errors (insertExpr)
 
       // COMBAK / TODO(errors): Test this more thoroughly
@@ -386,6 +514,8 @@ delete x.z.p }`,
     // Test that each program yields its error type
     for (const [errorType, styProgs] of Object.entries(errorStyProgs)) {
       for (const styProg of styProgs) {
+        // TODO(error): improve this so it becomes individual tests, using the framework
+        // console.log("testing", errorType);
         testStyProgForError(styProg, errorType);
       }
     }

@@ -3,6 +3,7 @@ import grammar from "./DomainParser";
 import * as path from "path";
 import * as fs from "fs";
 import { result } from "lodash";
+import { ASTNode } from "types/ast";
 
 const outputDir = "/tmp/asts";
 const saveASTs = false;
@@ -46,13 +47,13 @@ describe("Common", () => {
     const { results } = parser.feed("");
     sameASTs(results);
   });
-  test("comments", () => {
+  test("comments and whitespaces", () => {
     const prog = `
 -- comments
-type Set -- inline comments
+type Set -- inline comments\r
 -- type Point 
-type ParametrizedSet ('T, 'U)
-predicate From : Map f * Set domain * Set codomain
+type ParametrizedSet ('T, 'U)\r\n
+predicate From : Map f * Set domain * Set codomain\n
 /* Multi-line comments
 type ParametrizedSet ('T, 'U)
 predicate From : Map f * Set domain * Set codomain

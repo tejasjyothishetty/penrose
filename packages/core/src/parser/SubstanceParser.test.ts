@@ -3,6 +3,7 @@ import grammar from "./SubstanceParser";
 import * as path from "path";
 import * as fs from "fs";
 import { result } from "lodash";
+import { ASTNode } from "types/ast";
 
 const outputDir = "/tmp/asts";
 const saveASTs = false;
@@ -53,14 +54,14 @@ describe("Common", () => {
     const { results } = parser.feed("");
     sameASTs(results);
   });
-  test("comments", () => {
+  test("comments and white spaces", () => {
     const prog = `
 -- Top-level comments
-Set A, B, C, D, E, F, G -- inline comments
+Set A, B, C, D, E, F, G -- inline comments\r\n
 
 /*
-IsSubset(B, A)
-IsSubset(C, A)
+IsSubset(B, A)\r
+IsSubset(C, A)\r\n
 IsSubset(D, B)
 IsSubset(E, B)
 IsSubset(F, C)
