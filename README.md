@@ -67,4 +67,3 @@ It's specified by the following Substance and Style programs.
 
 Here's how the optimization looks live in the UI. 
 
-<img src="https://i.imgur.com/Q27Xgbn.gif" width=500>
